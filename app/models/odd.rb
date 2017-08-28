@@ -4,7 +4,7 @@ class Odd < ApplicationRecord
   belongs_to :match
   belongs_to :bookmaker
   has_many :bets
-  has_many :users, through: :bets
+  has_many :users, through: :bets ## HOW TO WRITE THIS??
 
   # VALIDATIONS
   validates :match, presence: true
