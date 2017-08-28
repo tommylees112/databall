@@ -4,12 +4,8 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: [:facebook]
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
-
-
-
-
-
+  has_many :odds
+  has_many :bets
 
     def self.find_for_facebook_oauth(auth)
       user_params = auth.slice(:provider, :uid)
@@ -28,7 +24,6 @@ class User < ApplicationRecord
         user.password = Devise.friendly_token[0,20]  # Fake password for validation
         user.save
       end
-
       return user
     end
 end
