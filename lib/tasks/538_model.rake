@@ -114,8 +114,18 @@ namespace :model do
     # THEN ASSIGN PROBABILITIES to a new OBJECT (CLASS INSTANCE)
       Match.where("status = 'FINISHED'").each do |match|
       end
+  _all_matches = html_doc.search('.games-container.upcoming').first
+  _all_matches.children.css('.match_container').each do |match|
 
+      ## INIT THE OBJECTS
       match_model_object = MatchModelOutput.new()
+
+      ## GET THE VARIABLES
+
+      ## SET THE VARIABLES
+
+      ## SAVE THE OBJECTS
+
 
 # MatchModelOutput
 #  home_win_probability: nil,
@@ -124,7 +134,9 @@ namespace :model do
 #  date_updated: nil,
 #  match_id: nil,
 
-##########
+#########
+  html_doc.css('.games-container.completed').each.do |_big_table|
+  end
       #3 GET MATCH STATS
       Match.where("league_id = 1").each do ||
         Match.where("status = 'FINISHED'").each do ||
