@@ -1,6 +1,6 @@
 require 'open-uri'
 require 'json'
-require 'rest-client'
+# require 'rest-client'
 
 namespace :model do
   task seed: :environment do
