@@ -1,2 +1,54 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner">
+  <div class="banner-hex">
+    <div class="banner-content">
+      <h1>Experience Winning</h1>
+      <p>data driven recommendations for the weekend winner</p>
+      <%= image_tag "screen.png", class:"screen" %>
+    </div>
+  </div>
+</div>
+<div class="ready">
+  <h4>Ready to get started?</h4>
+  <a class="navbar-wagon-item navbar-wagon-link" data-toggle="modal" data-target="#upModal">Sign up</a>
+</div>
+
+
+
+
+<div id="upModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+            <div class="modal-body">
+
+              <h2>Sign up</h2>
+
+              <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                <%= f.error_notification %>
+
+                <div class="form-inputs">
+                  <%= f.input :email, required: true, autofocus: true %>
+                  <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+                  <%= f.input :password_confirmation, required: true %>
+                </div>
+
+                <div class="form-actions", style="margin-bottom: 20px;">
+                  <%= f.button :submit, "Sign up" %>
+                </div>
+                <% end %>
+                <hr>
+              <hr>
+              <%= render "devise/shared/links" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
