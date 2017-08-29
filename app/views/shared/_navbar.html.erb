@@ -1,7 +1,11 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
+  <div class="flex-logo">
+
+    <h3>DataBall</h3>
     <%= image_tag "logo.png" %>
+  </div>
   <% end %>
 
   <!-- Right Navigation -->
@@ -10,14 +14,18 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Trips", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Home", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Profile", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "News", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "About", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <% avatar_url = current_user.facebook_picture_url || "logo.png" %>
+          <div class="avatar dropdown-toggle" style="background-image: url(<%= image_path avatar_url %>);" id="navbar-wagon-menu" data-toggle="dropdown">
+
+          </div>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to "#" do %>
