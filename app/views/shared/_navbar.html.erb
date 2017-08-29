@@ -1,7 +1,11 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
+  <div class="flex-logo">
+
+    <h3>DataBall</h3>
     <%= image_tag "logo.png" %>
+  </div>
   <% end %>
 
   <!-- Right Navigation -->
@@ -10,14 +14,18 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Trips", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Home", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Profile", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "News", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "About", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <% avatar_url = current_user.facebook_picture_url || "logo.png" %>
+          <div class="avatar dropdown-toggle" style="background-image: url(<%= image_path avatar_url %>);" id="navbar-wagon-menu" data-toggle="dropdown">
+
+          </div>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to "#" do %>
@@ -39,7 +47,9 @@
       </div>
     <% else %>
       <!-- Login link (when logged out) -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <a class="navbar-wagon-item navbar-wagon-link" data-toggle="modal" data-target="#myModal">Login</a>
+      <a class="navbar-wagon-item navbar-wagon-link" data-toggle="modal" data-target="#upModal">Sign up</a>
+
     <% end %>
   </div>
 
@@ -55,4 +65,85 @@
     </div>
   </div>
 </div>
+
+
+
+<div id="myModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+            <div class="modal-body">
+              <h2>Log in</h2>
+
+              <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <div class="form-inputs">
+                  <%= f.input :email, required: false, autofocus: true %>
+                  <%= f.input :password, required: false %>
+                  <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+                </div>
+
+                <div class="form-actions">
+                  <%= f.button :submit, "Log in" %>
+                </div>
+              <% end %>
+                <hr>
+              <%= render "devise/shared/links" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div id="upModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+            <div class="modal-body">
+
+              <h2>Sign up</h2>
+
+              <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                <%= f.error_notification %>
+
+                <div class="form-inputs">
+                  <%= f.input :email, required: true, autofocus: true %>
+                  <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+                  <%= f.input :password_confirmation, required: true %>
+                </div>
+
+                <div class="form-actions">
+                  <%= f.button :submit, "Sign up" %>
+                </div>
+              <% end %>
+                <hr>
+              <%= render "devise/shared/links" %>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
