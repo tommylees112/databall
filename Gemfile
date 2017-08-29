@@ -18,6 +18,8 @@ gem 'simple_form'
 gem 'uglifier'
 
 gem 'rest-client'
+gem 'nokogiri'
+# gem 'date'
 
 
 
