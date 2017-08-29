@@ -51,10 +51,10 @@ namespace :model do
             #create a new TeamModelOuput object
             team_model_object = TeamModelOutput.new()
 
-            team_model_object.last_updated =
-            team_model_object.defensive_score =
-            team_model_object.offensive_score =
-            team_model_object.simulated_wins =
+            team_model_object.last_updated = row.css('.num.rating.overall').text.strip.to_f
+            team_model_object.defensive_score = row.css('.num.rating.overall').text.strip.to_f
+            team_model_object.offensive_score = row.css('.num.rating.overall').text.strip.to_f
+            team_model_object.simulated_wins = row.css('.num.rating.overall').text.strip.to_f
             team_model_object.simulated_losses =
             team_model_object.simulated_draws =
             team_model_object.simulated_goal_difference =
