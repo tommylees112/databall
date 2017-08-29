@@ -1,18 +1,52 @@
-/* Main navbar */
 .navbar-wagon {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: white;
+  background: #001d2e;
   transition: all 0.3s ease;
   height: 70px;
   padding: 0px 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+}
+
+
+.form-actions {
+  .btn {
+
+  }
+}
+
+
+.flex-logo {
+  display: flex;
+  align-items: center;
+  justify-conent: space-between;
+  h3{
+    margin: 0px;
+    color: white;
+    padding-right: 15px;
+    font-size: lighter;
+
+  }
+}
+.navbar-about {
+  color: #D8D8D8;
+  font-size: 14px;
+  margin-right: 15px;
+  &:hover {
+    color: $green;
+  }
 }
 
 /* Logo */
+
+.navbar-wagon-brand:hover {
+  text-decoration: none;
+}
 .navbar-wagon-brand img {
   height: 50px;
+  color: #50FFB1;
 }
 
 /* User Avatar */
@@ -20,6 +54,7 @@
   height: 35px;
   width: 35px;
   border-radius: 50%;
+  background-size: cover;
 }
 
 /* Right section */
@@ -33,16 +68,20 @@
 .navbar-wagon-item {
   cursor: pointer;
   padding: 0 20px;
+  text-decoration: none;
 }
 
 /* Navbar link */
 .navbar-wagon-link {
-  color: #616668;
+  color: #D8D8D8;
   font-size: 14px;
 }
-.navbar-wagon-link:hover {
-  color: #da552f;
+.navbar-wagon-link:hover, {
+  color: #50FFB1;
   text-decoration: none;
+}
+.navbar-wagon-link i {
+  margin-left: 10px;
 }
 
 /* Dropdown menu */
