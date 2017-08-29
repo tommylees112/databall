@@ -1,0 +1,2 @@
+class TeamModelOutput < ApplicationRecord
+end

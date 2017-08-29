@@ -37,7 +37,7 @@
     <type label="SET" length="1" sql="SET" quote=""/>
     <type label="Bit" length="0" sql="bit" quote=""/>
   </group>
-</datatypes><table x="90" y="275" name="users">
+</datatypes><table x="15" y="520" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -51,7 +51,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="229" y="135" name="bets">
+<table x="212" y="376" name="bets">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -73,7 +73,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="343" y="256" name="odds">
+<table x="398" y="442" name="odds">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -98,7 +98,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="483" y="95" name="matches">
+<table x="555" y="323" name="matches">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -147,20 +147,11 @@
 <row name="away_non_shot_xg" null="1" autoincrement="0">
 <datatype>CHAR</datatype>
 <default>NULL</default></row>
-<row name="home_win_probability" null="1" autoincrement="0">
-<datatype>CHAR</datatype>
-<default>NULL</default></row>
-<row name="away_win_probability" null="1" autoincrement="0">
-<datatype>CHAR</datatype>
-<default>NULL</default></row>
-<row name="draw_probability" null="1" autoincrement="0">
-<datatype>CHAR</datatype>
-<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="668" y="319" name="leagues">
+<table x="783" y="606" name="leagues">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -171,7 +162,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="669" y="149" name="teams">
+<table x="747" y="377" name="teams">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -186,13 +177,13 @@
 <default>NULL</default></row>
 <row name="model_output_id" null="1" autoincrement="0">
 <datatype>CHAR</datatype>
-<default>NULL</default><relation table="model_outputs" row="id" />
+<default>NULL</default><relation table="team_model_outputs" row="id" />
 </row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="145" y="439" name="bookmakers">
+<table x="223" y="641" name="bookmakers">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -206,33 +197,31 @@
 <part>id</part>
 </key>
 </table>
-<table x="432" y="823" name="match_stats">
+<table x="281" y="163" name="match_model_outputs">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="home_adjusted_goals" null="1" autoincrement="0">
+<row name="home_win_probability" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="home_shot_based_expected_goals" null="1" autoincrement="0">
+<row name="away_win_probability" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="away_adjusted_goals" null="1" autoincrement="0">
+<row name="draw_probability" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="away_shot_based_expected_goals" null="1" autoincrement="0">
+<row name="date_updated" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="home_non_shot_based_expected_goals" null="1" autoincrement="0">
+<row name="match_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="away_non_shot_based_expected_goals" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
+<default>NULL</default><relation table="matches" row="id" />
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="847" y="53" name="model_outputs">
+<table x="994" y="390" name="team_model_outputs">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -267,6 +256,12 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="last_updated" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="promotion_probability" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="playoff_probability" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
