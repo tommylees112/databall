@@ -5,6 +5,11 @@ Team.destroy_all
 League.destroy_all
 Match.destroy_all
 
+
+##############################################################################
+######     MATCHES, LEAGUES, TEAMS                                  ##########
+##############################################################################
+
 # Leagues
 ['Premier League', 'La Liga', 'Bundesliga', 'Serie A', 'Ligue 1'].each do |league|
   League.create(name: league)
@@ -157,7 +162,9 @@ serieA_fixtures["fixtures"].each do |fixture|
   match.save!
 end
 
+##############################################################################
+######           MODEL PREDICTIONS                                  ##########
+##############################################################################
 
-
-
+https://projects.fivethirtyeight.com/soccer-predictions/?ex_cid=rrpromo
 
