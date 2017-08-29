@@ -4,6 +4,30 @@ require 'nokogiri'
 namespace :model do
   task seed: :environment do
 
+    ## DICTIONARIES
+
+    DICTIONARY = { "man. united": "Manchester United FC",
+      "man. city": "Manchester City FC",
+      "chelsea": "Chelsea FC",
+      "liverpool": "Liverpool FC",
+      "tottenham": "Tottenham Hotspur FC",
+      "arsenal": "Arsenal FC",
+      "everton": "Everton FC",
+      "leicester city": "Leicester City FC",
+      "southampton": "Southampton FC",
+      "burnley": "Burnley FC",
+      "stoke city": "Stoke City FC",
+      "west brom": "West Bromwich Albion FC",
+      "watford": "Watford FC",
+      "swansea city": "Swansea City FC",
+      "west ham": "West Ham United FC",
+      "bournemouth": "AFC Bournemouth",
+      "huddersfield": "Huddersfield Town",
+      "crystal palace": "Crystal Palace FC",
+      "newcastle": "Newcastle United FC",
+      "brighton": "Brighton & Hove Albion"
+    }
+
     # URL
     League.all.each do |league|
       league_name = league.name.downcase.strip.gsub(' ', '-')
@@ -30,67 +54,77 @@ namespace :model do
       League.first.teams.each do |team|
       end
 
-      ## GET EACH ROW OF THE TABLE
-      # get the team names from the row (but with pts inside the span)
-        teams_dirty = []
-        html_doc.search('.team-row').each do |row|
-          teams_dirty << row.css('.name').text.strip
-        end
-        # use the last 20 (too many for some reason)
-        prem_teams_dirty = teams_dirty.last(20) #only premier league team names eg "Man. United9 pts"
-        teams = []
-        # clean up the team names
-        prem_teams_dirty.each do |team|
-          teams << team.slice(0..(team.index(/\d/)))[0..-2] #remove after the number
-        end
-        # use the teams
-        html_doc.search('.team-row').each do |row|
-          teams.each do |team|
-            # find the right team based on the parsed string
-            team_object = Team.find_by_name(DICTIONARY["#{team}".to_sym])
-            #create a new TeamModelOuput object
+    ##### ATTEMPT 2 ########
+        html_doc.search('#forecast-table').each do |_big_table|
+          _table_body = _big_table.css('tbody')
+          _table_body.css('tr').each do |table_row|
+
+            ## INIT THE OBJECTS
+            team = table_row.css('.team').attribute('data-str').value
+            team_object = Team.find_by_name(DICTIONARY["#{team_parsed}".to_sym])
             team_model_object = TeamModelOutput.new()
 
-            team_model_object.last_updated = row.css('.num.rating.overall').text.strip.to_f
-            team_model_object.defensive_score = row.css('.num.rating.overall').text.strip.to_f
-            team_model_object.offensive_score = row.css('.num.rating.overall').text.strip.to_f
-            team_model_object.simulated_wins = row.css('.num.rating.overall').text.strip.to_f
-            team_model_object.simulated_losses =
-            team_model_object.simulated_draws =
-            team_model_object.simulated_goal_difference =
-            team_model_object.simulated_season_total =
-            team_model_object.relegation_probability =
-            team_model_object.ucl_probability =
-            team_model_object.league_win_probability =
+            ## GET THE VARIABLES
+              spi = table_row.css('.num.rating.overall').attribute('data-val').value.to_f
+              offensive_score = table_row.css('.num.rating.offense').attribute('data-val').value.to_f
+              defensive_score = table_row.css('.num.rating.defense').attribute('data-val').value.to_f # higher the worse!
+              simulated_wins = table_row.css('.num.record.wins').text.to_f
+              simulated_losses = table_row.css('.num.record.losses').text.to_f
+              simulated_draws = table_row.css('.num.record.ties').text.to_f
 
+              values = []
+              table_row.css('.num.record.drop-3').each do |element|
+                << element.text.to_f
+              end
+              simulated_goal_difference = values[0]
+              simulated_season_total = values[1]
+
+              values_2 = []
+              table_row.css('.pct').each do |element|
+                values_2 << element.attribute('data-val').value.to_f
+              end
+              relegation_probability = values_2[0]
+              ucl_probability = values_2[1]
+              league_win_probability = values_2[2]
+
+            ## SET THE VARIABLES
+              team_model_object.soccer_power_index = spi
+              team_model_object.defensive_score = defensive_score
+              team_model_object.offensive_score = offensive_score
+              team_model_object.simulated_wins = simulated_wins
+              team_model_object.simulated_losses = simulated_losses
+              team_model_object.simulated_draws = simulated_draws
+              team_model_object.simulated_goal_difference = simulated_goal_difference
+              team_model_object.simulated_season_total = simulated_season_total
+              team_model_object.relegation_probability = relegation_probability
+              team_model_object.ucl_probability = ucl_probability
+              team_model_object.league_win_probability = league_win_probability
+              team_model_object.last_updated = date_object
+
+            ## SAVE THE OBJECTS
             team_model_object.save!
-            team.team_model_output = team_model_object
+            team_object.team_model_output = team_model_object
           end
         end
 
-# TeamModelOutput OBJECT
-  # defensive_score: nil,
-  # offensive_score: nil,
-  # simulated_wins: nil,
-  # simulated_losses: nil,
-  # simulated_draws: nil,
-  # simulated_goal_difference: nil,
-  # simulated_season_total: nil,
-  # relegation_probability: nil,
-  # ucl_probability: nil,
-  # league_win_probability: nil,
-  # last_updated: nil,
-
-
-
 ##########
     #2 GET MATCH MODEL OUTPUTS
+    # ONLY DO FOR FINISHED MATCHES
+    # FIND MATCH BY home_team & away_team (unique!)
+    # THEN ASSIGN PROBABILITIES to a new OBJECT (CLASS INSTANCE)
       Match.where("status = 'FINISHED'").each do |match|
-        #get date
-        date = match.match_date
-        date_string = date.strftime("%m/%e") #turn date into 08/09
       end
 
+      match_model_object = MatchModelOutput.new()
+
+# MatchModelOutput
+#  home_win_probability: nil,
+#  away_win_probability: nil,
+#  draw_probability: nil,
+#  date_updated: nil,
+#  match_id: nil,
+
+##########
       #3 GET MATCH STATS
       Match.where("league_id = 1").each do ||
         Match.where("status = 'FINISHED'").each do ||
@@ -98,7 +132,8 @@ namespace :model do
         Match.where("status NOT = 'FINISHED'").each do || #??
         end
       end
-      end
+
+
 
 
   end

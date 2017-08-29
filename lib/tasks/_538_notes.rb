@@ -1,4 +1,4 @@
-DICTIONARY = { "Man. United": "Manchester United FC",
+DICTIONARY_capitalized = { "Man. United": "Manchester United FC",
   "Man. City": "Manchester City FC",
   "Chelsea": "Chelsea FC",
   "Liverpool": "Liverpool FC",
@@ -19,6 +19,30 @@ DICTIONARY = { "Man. United": "Manchester United FC",
   "Newcastle": "Newcastle United FC",
   "Brighton": "Brighton & Hove Albion"
 }
+
+
+DICTIONARY = { "man. united": "Manchester United FC",
+  "man. city": "Manchester City FC",
+  "chelsea": "Chelsea FC",
+  "liverpool": "Liverpool FC",
+  "tottenham": "Tottenham Hotspur FC",
+  "arsenal": "Arsenal FC",
+  "everton": "Everton FC",
+  "leicester city": "Leicester City FC",
+  "southampton": "Southampton FC",
+  "burnley": "Burnley FC",
+  "stoke city": "Stoke City FC",
+  "west brom": "West Bromwich Albion FC",
+  "watford": "Watford FC",
+  "swansea city": "Swansea City FC",
+  "west ham": "West Ham United FC",
+  "bournemouth": "AFC Bournemouth",
+  "huddersfield": "Huddersfield Town",
+  "crystal palace": "Crystal Palace FC",
+  "newcastle": "Newcastle United FC",
+  "brighton": "Brighton & Hove Albion"
+}
+
 
 number_teams = {
   "Premier League": 20,
@@ -124,3 +148,34 @@ number_teams = {
     #             td.title(inner-text) #non-shot-xg
     #             td(innertext) # data
     #             td(innertext) # data
+
+
+
+    # ATTEMPT 1
+    #       ## GET EACH ROW OF THE TABLE
+    #   # get the team names from the row (but with pts inside the span)
+    #     teams_dirty = []
+    #     html_doc.search('.team-row').each do |row|
+    #       teams_dirty << row.css('.name').text.strip
+    #     end
+    #     # use the last 20 (too many for some reason)
+    #     prem_teams_dirty = teams_dirty.last(20) #only premier league team names eg "Man. United9 pts"
+    #     teams = []
+    #     # clean up the team names
+    #     prem_teams_dirty.each do |team|
+    #       teams << team.slice(0..(team.index(/\d/)))[0..-2] #remove after the number
+    #     end
+    #     # use the teams
+
+    # #####ATTEMPT 1#######
+    #     html_doc.search('.team-row').each do |row|
+    #       teams.each do |team|
+    #         # find the right team based on the parsed string
+    #         team_object = Team.find_by_name(DICTIONARY["#{team}".to_sym])
+    #         #create a new TeamModelOuput object
+    #         team_model_object = TeamModelOutput.new()
+
+    #         team_model_object.last_updated = date_object
+    #         # model inputs
+    #       end
+    #     end
