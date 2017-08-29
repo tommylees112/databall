@@ -1,0 +1,52 @@
+.banner {
+  position: relative;
+  margin: 0;
+  background-image: linear-gradient(rgba(0, 21, 33, 0.79)), url('<%= asset_path("fifawallpaper.png") %>');
+  background-size: cover !important;
+  background-position: center;
+  text-align:center;
+  color: white;
+  text-align: center;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+   h1 {
+  font-family: $headers-font;
+  font-size: 50px;
+  font-weight: lighter;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+ }
+
+
+
+.screen {
+  background-size: cover !important;
+  background-position: center;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  height: 40vh;
+}
+
+ p {
+  font-family: $body-font;
+  font-size: 25px;
+  font-weight: lighter;
+  color: rgb(255, 255, 255);
+  opacity: 0.6;
+  margin-bottom: 30px;
+ }
+}
+
+.banner-hex {
+  height: 100%;
+  width: 100%;
+  background-image: url('<%= asset_path("hexfifa.png") %>');
+  background-size: cover !important;
+  background-position: center;
+}
