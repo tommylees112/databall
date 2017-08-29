@@ -9,10 +9,11 @@ class Match < ApplicationRecord
   has_many :users, through: :bets
 
   # VALIDATIONS
-
+  VALUES = ["Home", "Away", "Draw"]
   validates :match_date, presence: true
   validates :gameweek, presence: true, numericality: true
   validates :league, presence: true
+  # validates :outcome, inclusion: {in: VALUES}
 
   def teams
     { home: home_team, away: away_team }
