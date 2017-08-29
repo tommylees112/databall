@@ -6,7 +6,6 @@ class Match < ApplicationRecord
   has_many :odds
   has_many :bets, through: :odds
   has_many :users, through: :bets ##HOW TO WRITE THIS?
-  # eg has_many :owned_odds, through: :bookings, source: :odds
 
   # VALIDATIONS
   validates :home_team, presence: true
