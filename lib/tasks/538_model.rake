@@ -1,6 +1,5 @@
 require 'open-uri'
 require 'nokogiri'
-require 'date'
 
 namespace :model do
   task seed: :environment do
@@ -16,7 +15,7 @@ namespace :model do
       html_doc = Nokogiri::HTML(webpage)
 
 
-      # GET TIMESTAMP FOR MODEL UPDATED
+      # GET TIMESTAMP FOR MODEL UPDATED AT ...
       time_string = html_doc.css('.timestamp').last.text.strip
       # => "Updated Aug. 27, 2017 at 12:55 PM"
       #clean up the string
@@ -24,9 +23,10 @@ namespace :model do
       time_string.slice! "at "
       time_string.slice! ". "
       # => "Aug 27, 2017 12:55 PM"
-      DateTime.strptime(time_string, '%d/%m/%Y %H:%M:%S')
+      date_object = DateTime.strptime(time_string, '%b %e, %Y %m:%M %p')
 
-      #1 GET TEAM MODEL OUTPUTS
+###############
+    #1 GET TEAM MODEL OUTPUTS
       League.first.teams.each do |team|
       end
 
@@ -46,7 +46,9 @@ namespace :model do
         # use the teams
         html_doc.search('.team-row').each do |row|
           teams.each do |team|
+            # find the right team based on the parsed string
             team_object = Team.find_by_name(DICTIONARY["#{team}".to_sym])
+            #create a new TeamModelOuput object
             team_model_object = TeamModelOutput.new()
 
             team_model_object.last_updated =
@@ -81,8 +83,8 @@ namespace :model do
 
 
 
-
-      #2 GET MATCH MODEL OUTPUTS
+##########
+    #2 GET MATCH MODEL OUTPUTS
       Match.where("status = 'FINISHED'").each do |match|
         #get date
         date = match.match_date

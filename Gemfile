@@ -22,7 +22,6 @@ gem 'nokogiri'
 # gem 'date'
 
 
-
 gem 'omniauth-facebook'
 
 group :development, :test do
