@@ -161,12 +161,3 @@ serieA_fixtures["fixtures"].each do |fixture|
   match.league = League.where(name: 'Serie A').first
   match.save!
 end
-
-##############################################################################
-######           MODEL PREDICTIONS                                  ##########
-##############################################################################
-
-https://projects.fivethirtyeight.com/soccer-predictions/?ex_cid=rrpromo
-
-
-

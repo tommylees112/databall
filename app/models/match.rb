@@ -21,4 +21,17 @@ class Match < ApplicationRecord
   def flat_teams
     [ home_team, away_team ]
   end
+
+  def outcome
+    if self.status = "FINISHED"
+      outcome = ""
+      if self.match.goals_home_team > self.match.goals_away_team
+        outcome = "Home"
+       elsif self.match.goals_home_team < self.match.goals_away_team
+         outcome = "Away"
+       elsif self.match.goals_home_team == self.match.goals_away_team
+         outcome = "Draw"
+       end
+    end
+  end
 end
