@@ -58,33 +58,29 @@ namespace :model do
       url = "https://projects.fivethirtyeight.com/soccer-predictions/#{league_name}/"
     end
 
-      url = "https://projects.fivethirtyeight.com/soccer-predictions/premier-league/"
+      url = "https://projects.fivethirtyeight.com/soccer-predictions/#{league_name}/"
       webpage = open(url).read
       html_doc = Nokogiri::HTML(webpage)
 
-
       # GET TIMESTAMP FOR MODEL UPDATED AT ...
-      time_string = html_doc.css('.timestamp').last.text.strip
+      time_string = html_doc.css('h3.timestamp').text.strip
       # => "Updated Aug. 27, 2017 at 12:55 PM"
       #clean up the string
       time_string.slice! "Updated "
       time_string.slice! "at "
-      time_string.slice! ". "
+      time_string.slice! "."
       # => "Aug 27, 2017 12:55 PM"
-      date_object = DateTime.strptime(time_string, '%b %e, %Y %m:%M %p')
+      model_updated_date = DateTime.strptime(time_string, '%b %e, %Y %m:%M %p')
 
 ###############
     #1 GET TEAM MODEL OUTPUTS
       League.first.teams.each do |team|
       end
 
-    ##### ATTEMPT 2 ########
-        html_doc.search('#forecast-table').each do |_big_table|
-          _table_body = _big_table.css('tbody')
-          _table_body.css('tr').each do |table_row|
-
+        _big_table = html_doc.search('#forecast-table').children.last
+        _big_table.css('tr').each do |table_row|
             ## INIT THE OBJECTS
-            team = table_row.css('.team').attribute('data-str').value
+            team_parsed = table_row.css('.team').attribute('data-str').value
             team_object = Team.find_by_name(DICTIONARY["#{team_parsed}".to_sym])
             team_model_object = TeamModelOutput.new()
 
@@ -98,7 +94,7 @@ namespace :model do
 
             values = []
             table_row.css('.num.record.drop-3').each do |element|
-              << element.text.to_f
+              values << element.text.to_f
             end
             simulated_goal_difference = values[0]
             simulated_season_total = values[1]
@@ -123,17 +119,16 @@ namespace :model do
             team_model_object.relegation_probability = relegation_probability
             team_model_object.ucl_probability = ucl_probability
             team_model_object.league_win_probability = league_win_probability
-            team_model_object.last_updated = date_object
+            team_model_object.last_updated = model_updated_date
 
           ## SAVE THE OBJECTS
           team_model_object.save!
           team_object.team_model_output = team_model_object
-        end
       end
 
 ##########
     #2 GET MATCH MODEL OUTPUTS
-    # ONLY DO FOR FINISHED MATCHES
+    # ONLY FOR UNFINISHED MATCHES
     # FIND MATCH BY home_team & away_team (unique!)
     # THEN ASSIGN PROBABILITIES to a new OBJECT (CLASS INSTANCE)
 
@@ -141,7 +136,8 @@ namespace :model do
   _all_matches = html_doc.search('.games-container.upcoming')[1].children[1..-1]
   _all_matches.each do |match|
 
-    # TEAM NAMES (which match?)
+  ## INIT THE OBJECTS
+    # team names (which match?)
     team_names = []
     match.css('.name').each do |team_name|
       team_names << team_name.text
@@ -151,40 +147,88 @@ namespace :model do
 
     home_team_object = Team.find_by_name(DICTIONARY_CAPITALIZED["#{_538_home_team}".to_sym])
     away_team_object = Team.find_by_name(DICTIONARY_CAPITALIZED["#{_538_away_team}".to_sym])
+    #find the match
+    match_object = Match.find_by home_team: home_team_object, away_team: away_team_object
 
-    Match.find_by home_team: home_team_object, away_team: away_team_object
-    # match.home_team == home_team_object && match.away_team == away_team_object
+    # build new match_model
+    match_model_object = MatchModelOutput.new()
 
-      ## INIT THE OBJECTS
-      match_model_object = MatchModelOutput.new()
+    ## GET THE VARIABLES
+    draw_float = match.css('.tie-prob').text.to_i / 100.0
 
+    probabilities = [] # push floats for outcomes
+    match.css('.prob').each do |probability|
+      probabilities << probability.text.to_i / 100.0
+    end
+
+    home_win_probability = probabilities[0]
+    draw_probability = probabilities[1]
+    away_win_probability = probabilities[2]
+
+    ## SET THE VARIABLES
+    match_model_object.match = match_object
+
+    match_model_object.home_win_probability
+    match_model_object.away_win_probability
+    match_model_object.draw_probability
+    match_model_object.date_updated = model_updated_date
+
+    ## SAVE THE OBJECTS
+    match_model_object.save!
   end
-      ## GET THE VARIABLES
-
-      ## SET THE VARIABLES
-
-      ## SAVE THE OBJECTS
-
-
-# MatchModelOutput
-#  home_win_probability: nil,
-#  away_win_probability: nil,
-#  draw_probability: nil,
-#  date_updated: nil,
-#  match_id: nil,
 
 #########
-  html_doc.css('.games-container.completed').each.do |_big_table|
-  end
-      #3 GET MATCH STATS
-      Match.where("league_id = 1").each do ||
-        Match.where("status = 'FINISHED'").each do ||
-        end
-        Match.where("status NOT = 'FINISHED'").each do || #??
-        end
-      end
+    #3 GET MATCH STATS
+    _completed_match_div = html_doc.search('.games-container.upcoming').children
+    # drop the first element(dirty)
+    _all_completed_matches = _completed_match_div[1..-1]
 
+    _all_completed_matches.each do |match_html|
 
+    ## INIT THE OBJECTS
+      _538_home_team = match_html.attribute('data-team1').value
+      _538_away_team = match_html.attribute('data-team2').value
+
+      home_team_object = Team.find_by_name(DICTIONARY_CAPITALIZED["#{_538_home_team}".to_sym])
+      away_team_object = Team.find_by_name(DICTIONARY_CAPITALIZED["#{_538_away_team}".to_sym])
+
+      match_object = Match.find_by home_team: home_team_object, away_team: away_team_object
+
+    ## GET THE VARIABLES
+    # get the table rows with the stats
+      stats_rows = match_html.css('tr')[-3..-1].children
+
+      _adj_goals = stats_rows[1..2]
+      home_adj_goals = _adj_goals[0].inner_text.to_f
+      away_adj_goals = _adj_goals[1].inner_text.to_f
+
+      _shot_xg = stats_rows[4..5]
+      home_shot_xg = _shot_xg[0].inner_text.to_f
+      away_shot_xg = _shot_xg[1].inner_text.to_f
+
+      _non_shot_xg = stats_rows[7..8]
+      home_non_shot_xg = _non_shot_xg[0].inner_text.to_f
+      away_non_shot_xg = _non_shot_xg[1].inner_text.to_f
+
+    ## SET THE VARIABLES
+      match_object.home_adj_goals = home_adj_goals
+      match_object.away_adj_goals = away_adj_goals
+      match_object.home_shot_xg = home_shot_xg
+      match_object.away_shot_xg = away_shot_xg
+      match_object.home_non_shot_xg = home_non_shot_xg
+      match_object.away_non_shot_xg = away_non_shot_xg
+
+    ## SAVE THE OBJECTS
+      match.save!
+    end
+
+# MATCH Variables
+#  home_adj_goals: nil,
+#  away_adj_goals: nil,
+#  home_shot_xg: nil,
+#  away_shot_xg: nil,
+#  home_non_shot_xg: nil,
+#  away_non_shot_xg: nil
 
 
   end

@@ -20,7 +20,6 @@ DICTIONARY_CAPITALIZED = { "Man. United": "Manchester United FC",
   "Brighton": "Brighton & Hove Albion"
 }
 
-
 DICTIONARY = { "man. united": "Manchester United FC",
   "man. city": "Manchester City FC",
   "chelsea": "Chelsea FC",
