@@ -1,2 +1,109 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner">
+  <div class="banner-hex">
+    <div class="banner-content">
+      <h1>Experience Winning</h1>
+      <p>data driven recommendations for the weekend winner</p>
+      <%= image_tag "screen.png", class:"screen" %>
+    </div>
+  </div>
+</div>
+<div class="ready">
+  <h4>Ready to get started?</h4>
+  <a class="navbar-wagon-item navbar-wagon-link" data-toggle="modal" data-target="#upModal">Sign up</a>
+</div>
+<div class="container1" style="background-color: #001521; width: 100%;">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <div class="card">
+        <div class="card-category">Data informed</div>
+        <i class="fa fa-database fa-4x" aria-hidden="true"></i>
+        <div class="card-description">
+          <p>Utilise the power of statistical modelling to find the most lucrative oppurtunities across multiple betting markets.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card">
+        <%= image_tag "match-data.png", class:"img-data" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container2" style="background-color: #001D2E; width: 100%;">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <div class="card">
+        <div class="card-category">Track performance</div>
+        <i class="fa fa-bar-chart fa-4x" aria-hidden="true"></i>
+        <div class="card-description">
+          <p>Save bets to your profile outlining your performance and keep track of your winnings.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card">
+        <%= image_tag "chart-candle.png", class:"img-data" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container3" style="background-color: #001521; width: 100%;">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <div class="card">
+        <div class="card-category">Complexity simplified</div>
+        <i class="fa fa-tasks fa-4x" aria-hidden="true"></i>
+        <div class="card-description">
+          <p>Our interface will make it easy to spot opportunities and condense the complexity of the beautiful game into an engine for profit.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card">
+        <%= image_tag "cardtest.png", class:"img-data" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="upModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+            <div class="modal-body">
+
+              <h2>Sign up</h2>
+
+              <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                <%= f.error_notification %>
+
+                <div class="form-inputs">
+                  <%= f.input :email, required: true, autofocus: true %>
+                  <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+                  <%= f.input :password_confirmation, required: true %>
+                </div>
+
+                <div class="form-actions", style="margin-bottom: 20px;">
+                  <%= f.button :submit, "Sign up" %>
+                </div>
+                <% end %>
+                <hr>
+              <hr>
+              <%= render "devise/shared/links" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
