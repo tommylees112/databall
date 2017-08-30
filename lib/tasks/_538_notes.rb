@@ -1,4 +1,4 @@
-DICTIONARY_capitalized = { "Man. United": "Manchester United FC",
+DICTIONARY_CAPITALIZED = { "Man. United": "Manchester United FC",
   "Man. City": "Manchester City FC",
   "Chelsea": "Chelsea FC",
   "Liverpool": "Liverpool FC",
