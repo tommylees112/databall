@@ -7,6 +7,7 @@ class Match < ApplicationRecord
   has_many :odds
   has_many :bets, through: :odds
   has_many :users, through: :bets
+  has_many :match_model_outputs
 
   # VALIDATIONS
   VALUES = ["Home", "Away", "Draw"]
@@ -26,13 +27,18 @@ class Match < ApplicationRecord
   def outcome
     if self.status = "FINISHED"
       outcome = ""
-      if self.match.goals_home_team > self.match.goals_away_team
+      if self.goals_home_team > self.goals_away_team
         outcome = "Home"
-       elsif self.match.goals_home_team < self.match.goals_away_team
+       elsif self.goals_home_team < self.goals_away_team
          outcome = "Away"
-       elsif self.match.goals_home_team == self.match.goals_away_team
+       elsif self.goals_home_team == self.goals_away_team
          outcome = "Draw"
        end
     end
   end
+
+  def model_output
+    self.match_model_outputs.order(created_at: :desc).first
+  end
+
 end
