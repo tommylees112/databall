@@ -180,7 +180,7 @@ namespace :model do
                   team_model_object.team = team_object
 
                 ## SAVE THE OBJECT
-                team_model_object.save!
+                team_model_object.save
               end
           end
 
@@ -236,7 +236,7 @@ namespace :model do
           match_model_object.date_updated = model_updated_date
 
           ## SAVE THE OBJECTS
-          match_model_object.save!
+          match_model_object.save
         end
       end
 
@@ -291,7 +291,7 @@ namespace :model do
               match_object.away_non_shot_xg = away_non_shot_xg
 
             ## SAVE THE OBJECTS
-              match_object.save!
+              match_object.save
             end
           end
         puts "Completed Match Statistics!"
