@@ -1,3 +1,3 @@
 class TeamModelOutput < ApplicationRecord
-  has_one :team
+  belongs_to :team
 end

@@ -154,7 +154,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="773" y="551" name="leagues">
+<table x="751" y="630" name="leagues">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -165,7 +165,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="809" y="367" name="teams">
+<table x="768" y="426" name="teams">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -179,10 +179,6 @@
 <row name="name" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="model_output_id" null="1" autoincrement="0">
-<datatype>CHAR</datatype>
-<default>NULL</default><relation table="team_model_outputs" row="id" />
-</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
@@ -225,7 +221,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="994" y="390" name="team_model_outputs">
+<table x="922" y="176" name="team_model_outputs">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -268,6 +264,10 @@
 <row name="playoff_probability" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
+<row name="team_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="teams" row="id" />
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>

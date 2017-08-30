@@ -20,7 +20,8 @@ DICTIONARY_CAPITALIZED = { "Man. United": "Manchester United FC",
   "Brighton": "Brighton & Hove Albion"
 }
 
-DICTIONARY = { "man. united": "Manchester United FC",
+DICTIONARY = {
+  "man. united": "Manchester United FC",
   "man. city": "Manchester City FC",
   "chelsea": "Chelsea FC",
   "liverpool": "Liverpool FC",
@@ -39,8 +40,195 @@ DICTIONARY = { "man. united": "Manchester United FC",
   "huddersfield": "Huddersfield Town",
   "crystal palace": "Crystal Palace FC",
   "newcastle": "Newcastle United FC",
-  "brighton": "Brighton & Hove Albion"
+  "brighton": "Brighton & Hove Albion",
+  "monaco": "AS Monaco FC",
+  "st etienne": "AS Saint-Étienne",
+  "amiens": "Amiens SC",
+  "angers": "Angers SCO",
+  "dijon fco": "Dijon FCO",
+  "guingamp": "EA Guingamp",
+  "troyes": "ES Troyes AC",
+  "bordeaux": "FC Girondins de Bordeaux",
+  "metz": "FC Metz",
+  "Nantes": "FC Nantes",
+  "montpellier": "Montpellier Hérault SC",
+  "nice": "OGC Nice",
+  "lille": "OSC Lille",
+  "lyon": "Olympique Lyonnais",
+  "marseille": "Olympique de Marseille",
+  "psg": "Paris Saint-Germain",
+  "strasbourg": "RC Strasbourg Alsace",
+  "caen": "SM Caen",
+  "rennes": "Stade Rennais FC",
+  "toulouse": "Toulouse FC",
+  "athletic bilbao": "Athletic Club",
+  "leganes": "CD Leganes",
+  "atletico madrid": "Club Atlético de Madrid",
+  "alaves": "Deportivo Alavés",
+  "barcelona": "FC Barcelona",
+  "getafe": "Getafe CF",
+  "girona": "Girona FC",
+  "levante": "Levante UD",
+  "malaga": "Málaga CF",
+  "celta vigo": "RC Celta de Vigo",
+  "deportivo": "RC Deportivo La Coruna",
+  "espanyol": "RCD Espanyol",
+  "real betis": "Real Betis",
+  "real madrid": "Real Madrid CF",
+  "real sociedad": "Real Sociedad de Fútbol",
+  "eibar": "SD Eibar",
+  "sevilla": "Sevilla FC",
+  "las palmas": "UD Las Palmas",
+  "valencia": "Valencia CF",
+  "villarreal": "Villarreal CF",
+  "fc cologne": "1. FC Köln",
+  "mainz": "1. FSV Mainz 05",
+  "leverkusen": "Bayer Leverkusen",
+  "gladbach": "Bor. Mönchengladbach",
+  "dortmund": "Borussia Dortmund",
+  "eintracht": "Eintracht Frankfurt",
+  "fc augsburg": "FC Augsburg",
+  "bayern munich": "FC Bayern München",
+  "schalke 04": "FC Schalke 04",
+  "hamburger sv": "Hamburger SV",
+  "hannover 96": "Hannover 96",
+  "hertha bsc": "Hertha BSC",
+  "rb leipzig": "Red Bull Leipzig",
+  "sc freiburg": "SC Freiburg",
+  "hoffenheim": "TSG 1899 Hoffenheim",
+  "vfb stuttgart": "VfB Stuttgart",
+  "wolfsburg": "VfL Wolfsburg",
+  "werder bremen": "Werder Bremen",
+  "juventus": "Juventus Turin",
+  "cagliari": "Cagliari Calcio",
+  "verona": "Hellas Verona FC",
+  "napoli": "SSC Napoli",
+  "atalanta": "Atalanta BC",
+  "roma": "AS Roma",
+  "udinese": "Udinese Calcio",
+  "chievo": "AC Chievo Verona",
+  "sassuolo": "US Sassuolo Calcio",
+  "genoa": "Genoa CFC",
+  "sampdoria": "UC Sampdoria",
+  "benevento": "Benevento",
+  "lazio": "SS Lazio",
+  "spal": "SPAL Ferrara",
+  "inter milan": "FC Internazionale Milano",
+  "fiorentina": "ACF Fiorentina",
+  "bologna": "Bologna FC",
+  "torino": "Torino FC",
+  "crotone": "FC Crotone",
+  "ac milan": "AC Milan"
 }
+
+Ligue1
+"monaco": "AS Monaco FC",
+"st etienne": "AS Saint-Étienne",
+"amiens": "Amiens SC",
+"angers": "Angers SCO",
+"dijon fco": "Dijon FCO",
+"guingamp": "EA Guingamp",
+"troyes": "ES Troyes AC",
+"bordeaux": "FC Girondins de Bordeaux",
+"metz": "FC Metz",
+"Nantes": "FC Nantes",
+"montpellier": "Montpellier Hérault SC",
+"nice": "OGC Nice",
+"lille": "OSC Lille",
+"lyon": "Olympique Lyonnais",
+"marseille": "Olympique de Marseille",
+"psg": "Paris Saint-Germain",
+"strasbourg": "RC Strasbourg Alsace",
+"caen": "SM Caen",
+"rennes": "Stade Rennais FC",
+"toulouse": "Toulouse FC",
+
+LaLiga
+"athletic bilbao": "Athletic Club",
+"leganes": "CD Leganes",
+"atletico madrid": "Club Atlético de Madrid",
+"alaves": "Deportivo Alavés",
+"barcelona": "FC Barcelona",
+"getafe": "Getafe CF",
+"girona": "Girona FC",
+"levante": "Levante UD",
+"malaga": "Málaga CF",
+"celta vigo": "RC Celta de Vigo",
+"deportivo": "RC Deportivo La Coruna",
+"espanyol": "RCD Espanyol",
+"real betis": "Real Betis",
+"real madrid": "Real Madrid CF",
+"real sociedad": "Real Sociedad de Fútbol",
+"eibar": "SD Eibar",
+"sevilla": "Sevilla FC",
+"las palmas": "UD Las Palmas",
+"valencia": "Valencia CF",
+"villarreal": "Villarreal CF",
+
+"Athletic Bilbao": "Athletic Club",
+"Leganés": "CD Leganes",
+"Atlético Madrid": "Club Atlético de Madrid",
+"Alavés": "Deportivo Alavés",
+"Barcelona": "FC Barcelona",
+"Getafe": "Getafe CF",
+"Girona": "Girona FC",
+"Levante": "Levante UD",
+"Málaga": "Málaga CF",
+"Celta Vigo": "RC Celta de Vigo",
+"Deportivo": "RC Deportivo La Coruna",
+"Espanyol": "RCD Espanyol",
+"Real Betis": "Real Betis",
+"Real Madrid": "Real Madrid CF",
+"Real Sociedad": "Real Sociedad de Fútbol",
+"Eibar": "SD Eibar",
+"Sevilla": "Sevilla FC",
+"Las Palmas": "UD Las Palmas",
+"Valencia": "Valencia CF",
+"Villarreal": "Villarreal CF",
+
+Bundesliga
+"fc cologne": "1. FC Köln",
+"mainz": "1. FSV Mainz 05",
+"leverkusen": "Bayer Leverkusen",
+"gladbach": "Bor. Mönchengladbach",
+"dortmund": "Borussia Dortmund",
+"eintracht": "Eintracht Frankfurt",
+"fc augsburg": "FC Augsburg",
+"bayern munich": "FC Bayern München",
+"schalke 04": "FC Schalke 04",
+"hamburger sv": "Hamburger SV",
+"hannover 96": "Hannover 96",
+"hertha bsc": "Hertha BSC",
+"rb leipzig": "Red Bull Leipzig",
+"sc freiburg": "SC Freiburg",
+"hoffenheim": "TSG 1899 Hoffenheim",
+"vfb stuttgart": "VfB Stuttgart",
+"wolfsburg": "VfL Wolfsburg",
+"werder bremen": "Werder Bremen",
+
+SerieA
+"juventus": "Juventus Turin",
+"cagliari": "Cagliari Calcio",
+"verona": "Hellas Verona FC",
+"napoli": "SSC Napoli",
+"atalanta": "Atalanta BC",
+"roma": "AS Roma",
+"udinese": "Udinese Calcio",
+"chievo": "AC Chievo Verona",
+"sassuolo": "US Sassuolo Calcio",
+"genoa": "Genoa CFC",
+"sampdoria": "UC Sampdoria",
+"benevento": "Benevento",
+"lazio": "SS Lazio",
+"spal": "SPAL Ferrara",
+"inter milan": "FC Internazionale Milano",
+"fiorentina": "ACF Fiorentina",
+"bologna": "Bologna FC",
+"torino": "Torino FC",
+"crotone": "FC Crotone",
+"ac milan": "AC Milan",
+
+
 
 
 number_teams = {
@@ -52,10 +240,44 @@ number_teams = {
 }
 
 
+##### GETTING TEAM NAMES
+url = "https://projects.fivethirtyeight.com/soccer-predictions/serie-a/"
+webpage = open(url).read
+html_doc = Nokogiri::HTML(webpage)
+_big_table = html_doc.search('#forecast-table').children.last
+_big_table.css('tr').each do |table_row|
+  p team_parsed = table_row.css('.team').attribute('data-str').value
+end
 
+## DON'T NEED THIS - for capitalized team_names
+_all_matches = html_doc.search('.games-container.upcoming')[1].children[1..-1]
+team_names = []
+_all_matches.each do |match|
+  match.css('.name').each do |team_name|
+    team_names << team_name.text
+  end
+end
+team_names = team_names.uniq
 
+##
+team_names = []
+_all_matches.each do |match|
+  ## INIT THE OBJECTS
+  match.css('.name').each do |team_name|
+    if team_name.text.downcase
+      team_names << team_name.text.downcase
+    end
+  end
+end
 
-
+_all_matches.each_with_index do |match, index|
+  team_names = []
+  match.css('.name').each do |team_name|
+    team_names << team_name.text.downcase
+  end
+  p team_names
+  p index
+end
 
     # STRUCTURE OF SITE
     # # LAST UPDATED

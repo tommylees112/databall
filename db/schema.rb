@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170829200733) do
+ActiveRecord::Schema.define(version: 20170830143106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,15 +59,14 @@ ActiveRecord::Schema.define(version: 20170829200733) do
     t.integer  "gameweek"
     t.integer  "league_id"
     t.string   "status"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.float    "home_adj_goals"
     t.float    "away_adj_goals"
     t.float    "home_shot_xg"
     t.float    "away_shot_xg"
     t.float    "home_non_shot_xg"
     t.float    "away_non_shot_xg"
-    t.float    "soccer_power_index"
     t.index ["away_team_id"], name: "index_matches_on_away_team_id", using: :btree
     t.index ["home_team_id"], name: "index_matches_on_home_team_id", using: :btree
     t.index ["league_id"], name: "index_matches_on_league_id", using: :btree
@@ -100,17 +99,18 @@ ActiveRecord::Schema.define(version: 20170829200733) do
     t.float    "playoff_probability"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.integer  "team_id"
+    t.float    "soccer_power_index"
+    t.index ["team_id"], name: "index_team_model_outputs_on_team_id", using: :btree
   end
 
   create_table "teams", force: :cascade do |t|
     t.string   "logo"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "name"
     t.integer  "league_id"
-    t.integer  "team_model_output_id"
     t.index ["league_id"], name: "index_teams_on_league_id", using: :btree
-    t.index ["team_model_output_id"], name: "index_teams_on_team_model_output_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -145,6 +145,6 @@ ActiveRecord::Schema.define(version: 20170829200733) do
   add_foreign_key "matches", "teams", column: "home_team_id"
   add_foreign_key "odds", "bookmakers"
   add_foreign_key "odds", "matches"
+  add_foreign_key "team_model_outputs", "teams"
   add_foreign_key "teams", "leagues"
-  add_foreign_key "teams", "team_model_outputs"
 end
