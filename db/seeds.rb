@@ -43,27 +43,38 @@ premier_teams["teams"].each do |team|
   team.league = League.where(name: 'Premier League').first
   team.save!
 end
+
 bundesliga_teams["teams"].each do |team|
   team_name = team["name"]
   crest_url = team["crestUrl"]
-  Team.create(name: team_name, logo: crest_url)
+  team = Team.new(name: team_name, logo: crest_url)
+  team.league = League.where(name: 'Bundesliga').first
+  team.save!
 end
+
 laLiga_teams["teams"].each do |team|
   team_name = team["name"]
   crest_url = team["crestUrl"]
-  Team.create(name: team_name, logo: crest_url)
+  team = Team.new(name: team_name, logo: crest_url)
+  team.league = League.where(name: 'La Liga').first
+  team.save!
 end
+
 serieA_teams["teams"].each do |team|
   team_name = team["name"]
   crest_url = team["crestUrl"]
-  Team.create(name: team_name, logo: crest_url)
+  team = Team.new(name: team_name, logo: crest_url)
+  team.league = League.where(name: 'Serie A').first
+  team.save!
 end
+
 ligue1_teams["teams"].each do |team|
   team_name = team["name"]
   crest_url = team["crestUrl"]
-  Team.create(name: team_name, logo: crest_url)
+  team = Team.new(name: team_name, logo: crest_url)
+  team.league = League.where(name: 'Ligue 1').first
+  team.save!
 end
-
 
 # Matches
 
