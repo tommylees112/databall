@@ -17,7 +17,8 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 
-
+gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 
 gem 'omniauth-facebook'
 
