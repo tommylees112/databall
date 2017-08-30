@@ -298,6 +298,7 @@ namespace :model do
 
     # END THE LEAGUE LOOP
     puts "Ending for the #{league.name}!!!"
+    puts "___________________________________"
     end
 
   end
