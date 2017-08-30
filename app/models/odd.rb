@@ -8,8 +8,7 @@ class Odd < ApplicationRecord
 
   # VALIDATIONS
   validates :match, presence: true
-  validates :user, presence: true
-  validates :odds, presence: true, numericality: true
+  validates :odds, presence: true
   validates :outcome, presence: true, inclusion: { in: VALUES }
 
 end
