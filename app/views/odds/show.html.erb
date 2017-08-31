@@ -1,0 +1,69 @@
+<% home_team = @match.home_team %>
+<% away_team = @match.away_team %>
+
+<div class="banner">
+  <div class="banner-hex" id="show-banner-hex">
+    <div class="banner-content">
+      <div class="banner-team-div">
+        <div class="team-div">
+            <div class="team-image">
+              <%= image_tag home_team.logo %>
+            </div>
+            <div class="team-name">
+              <p><%= home_team.name %></p>
+            </div>
+        </div>
+        <div class="vs">
+            <p>vs.</p>
+        </div>
+        <div class="team-div">
+            <div class="team-image">
+              <%= image_tag away_team.logo %>
+            </div>
+            <div class="team-name">
+              <p><%= away_team.name %></p>
+            </div>
+        </div>
+        <div class="match-info-grid">
+            <div id="prediction"></div>
+            <div id="model-odds"></div>
+            <div id="databall-rating"></div>
+            <div id="bookies-odds"></div>
+        </div>
+      </div>
+      <%= render 'shared/hover_button' %>
+    </div>
+  </div>
+</div>
+
+<div id="hex-container">
+    <div class="container">
+      <ul id="hexGrid">
+            <li class="hex">
+              <div class="hexIn">
+                <a class="hexLink" href="#">
+                  <h1>Model Probability</h1>
+                  <p>of a Home Win</p>
+                </a>
+              </div>
+            </li>
+            <li class="hex">
+              <div class="hexIn">
+                <a class="hexLink" href="#">
+                  <h1>Model Probability</h1>
+                  <p>of a Away Win</p>
+                </a>
+              </div>
+            </li>
+            <li class="hex">
+              <div class="hexIn">
+                <a class="hexLink" href="#">
+                  <h1>Model Probability</h1>
+                  <p>of a Draw</p>
+                </a>
+              </div>
+            </li>
+      </ul>
+  </div>
+
+</div>

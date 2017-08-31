@@ -5,6 +5,7 @@ namespace :odds do
   task seed: :environment do
     desc 'Scrapes all odds from internet'
 
+    puts "Starting odds seed ..."
     DICTIONARY = {
       "Arsenal FC" => "arsenal",
       "Leicester City FC" => "leicester-city",
@@ -126,22 +127,27 @@ namespace :odds do
     end
 
     def convert_odds(odd)
-      odd_arr = odd.split("/")
-      decimal = ((odd_arr[0].to_i / odd_arr[1].to_f) + 1).round(2)
+      if odd.include?("/")
+        odd_arr = odd.split("/")
+        decimal = ((odd_arr[0].to_i / odd_arr[1].to_f) + 1).round(2)
+      else
+        decimal = odd.to_i + 1
+      end
+      return decimal
     end
 
     def rate_bet(outcome, odd, match)
       if outcome == "Home"
-        model_prob = match.match_model_outputs.home_win_probability
+        model_prob = match.model_output.home_win_probability
       elsif outcome == "Away"
-        model_prob = match.match_model_outputs.away_win_probability
+        model_prob = match.model_output.away_win_probability
       else
-        model_prob = match.match_model_outputs.draw_probability
+        model_prob = match.model_output.draw_probability
       end
       return rating = odd * model_prob
     end
 
-    Match.where(status: "TIMED").first(10).each do |match|
+    Match.where(status: "TIMED").first(1).each do |match|
       p (match.home_team.name + "v" + match.away_team.name)
       url = build_url(match)
       html_file = open(url).read
@@ -152,7 +158,7 @@ namespace :odds do
         element.search('.cellOdd').each do |column|
           odd = convert_odds(column.text.strip)
           rating = rate_bet(outcome, odd, match)
-          Odd.create!(bookmaker: Bookmaker.find_by(name: column.attribute('title').value), match_id: match.id, outcome: outcome, odds: odd) if Bookmaker.find_by(name: column.attribute('title').value)
+          Odd.create!(bookmaker: Bookmaker.find_by(name: column.attribute('title').value), match_id: match.id, outcome: outcome, odds: odd, rating: rating) if Bookmaker.find_by(name: column.attribute('title').value)
         end
       end
     end
