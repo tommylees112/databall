@@ -5,6 +5,7 @@ namespace :odds do
   task seed: :environment do
     desc 'Scrapes all odds from internet'
 
+    puts "Starting odds seed ..."
     DICTIONARY = {
       "Arsenal FC" => "arsenal",
       "Leicester City FC" => "leicester-city",
@@ -140,7 +141,7 @@ namespace :odds do
         outcome = outcomes[index]
         element.search('.cellOdd').each do |column|
           odd = convert_odds(column.text.strip)
-          Odd.create!(bookmaker: Bookmaker.find_by(name: column.attribute('title').value), match_id: match.id, outcome: outcome, odds: odd) if Bookmaker.find_by(name: column.attribute('title').value)
+          Odd.create(bookmaker: Bookmaker.find_by(name: column.attribute('title').value), match_id: match.id, outcome: outcome, odds: odd) if Bookmaker.find_by(name: column.attribute('title').value)
         end
       end
       # puts "about to sleep"
