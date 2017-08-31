@@ -1,0 +1,90 @@
+.index-card {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgba(0, 21, 33, 0.50);
+  position: relative;
+  margin: 25px;
+  .rating {
+    text-align: center;
+    height: 50px;
+    width: 50px;
+    border-color: $green;
+    position: absolute;
+    top: -15px;
+    left: -5px;
+    border: 1px solid $gray;
+    border-radius: 70%;
+    font-size: 22px;
+
+    span {
+      position: absolute;
+      left: 18px;
+      top: 7px;
+    }
+  }
+    a {
+    padding: 3px;
+    text-align: center;
+    border-radius: 30px;
+    font-size:19px;
+    background-color: rgba(80, 255, 177, 0.6);
+    color: black;
+    font-weight: lighter;
+    border: 1px solid $green;
+    border-color: transparent;
+    width: 100%;
+    height: 40%;
+    &:hover {
+      background-color: rgba(80, 255, 177, 1);
+      text-decoration: none !important;
+      color: black;
+    }
+    }
+.winning-team {
+  border-bottom: 1px solid $green;
+}
+
+  .team-logo {
+    width: 50px;
+  }
+}
+
+.form-inline {
+  input {
+    width: 75px !important;
+    height: 25px !important;
+    background-color: transparent !important;
+    border-radius: 10px;
+    text-align: center;
+    padding: 5px;
+  }
+
+
+  margin:10px;
+
+  .model-prediction {
+    border-bottom: 1px solid $green;
+
+  }
+}
+
+.hexagon {
+  position: relative;
+  img {
+    width: 80px;
+
+  }
+  .match-rating {
+    position: absolute;
+    top: 33px;
+    left:30px;
+  }
+}
+
+.avatar-square {
+  width: 30px;
+  border-radius: 0px;
+  margin-right: 10px;
+}

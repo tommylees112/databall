@@ -3,6 +3,7 @@ require 'nokogiri'
 
 namespace :odds do
   task seed: :environment do
+    desc 'Scrapes all odds from internet'
 
     puts "Starting odds seed ..."
     DICTIONARY = {
@@ -25,10 +26,10 @@ namespace :odds do
       "Newcastle United FC" => "newcastle-united",
       "Tottenham Hotspur FC" => "tottenham-hotspur",
       "Manchester United FC" => "manchester-united",
-      "West Ham United FC" => "west-ham-united",
+      "West Ham United FC" => "west-ham",
 
       "AS Monaco FC" => "as-monaco",
-      "AS Saint-Étienne" => "saint-étienne",
+      "AS Saint-Étienne" => "saint-%C3%A9tienne",
       "Amiens SC" => "amiens-sc",
       "Angers SCO" => "angers-sco",
       "Dijon FCO" => "dijon-fco",
@@ -49,34 +50,34 @@ namespace :odds do
       "Toulouse FC" => "toulouse-fc",
 
       "Athletic Club" => "athletic-bilbao",
-      "CD Leganes" => "leganés",
-      "Club Atlético de Madrid" => "atlético-de-madrid",
+      "CD Leganes" => "legan%C3%A9s",
+      "Club Atlético de Madrid" => "atl%C3%A9tico-de-madrid",
       "Deportivo Alavés" => "deportivo-alaves",
       "FC Barcelona" => "fc-barcelona",
       "Getafe CF" => "getafe",
       "Girona FC" => "girona",
       "Levante UD" => "levante-ud",
-      "Málaga CF" => "málaga",
+      "Málaga CF" => "m%C3%A1laga",
       "RC Celta de Vigo" => "celta-de-vigo",
-      "RC Deportivo La Coruna" => "deportivo-la-coruña",
+      "RC Deportivo La Coruna" => "deportivo-la-coru%C3%B1a",
       "RCD Espanyol" => "espanyol",
       "Real Betis" => "real-betis",
       "Real Madrid CF" => "real-madrid",
       "Real Sociedad de Fútbol" => "real-sociedad",
-      "SD Eibar" => "sd-eiba",
+      "SD Eibar" => "sd-eibar",
       "Sevilla FC" => "sevilla",
       "UD Las Palmas" => "ud-las-palmas",
       "Valencia CF" => "valencia",
       "Villarreal CF" => "villarreal",
 
-      "1. FC Köln" => "1-fc-köln",
+      "1. FC Köln" => "1-fc-k%C3%B6ln",
       "1. FSV Mainz 05" => "1-fsv-mainz-05",
       "Bayer Leverkusen" => "bayer-04-leverkusen",
-      "Bor. Mönchengladbach" => "borussia-mönchengladbach",
+      "Bor. Mönchengladbach" => "borussia-m%C3%B6nchengladbach",
       "Borussia Dortmund" => "borussia-dortmund",
       "Eintracht Frankfurt" => "eintracht-frankfurt",
       "FC Augsburg" => "fc-augsburg",
-      "FC Bayern München" => "fc-bayern-münchen",
+      "FC Bayern München" => "fc-bayern-m%C3%BCnchen",
       "FC Schalke 04" => "fc-schalke-04",
       "Hamburger SV" => "hamburger-sv",
       "Hannover 96" => "hannover-96",
@@ -108,12 +109,21 @@ namespace :odds do
       "Torino FC" => "torino",
       "FC Crotone" => "crotone",
       "AC Milan" => "ac-milan",
+
+      "Premier League" => "england/premier-league",
+      "La Liga" => "spain/primera-divisi%C3%B3n",
+      "Bundesliga" => "germany/fussball-bundesliga",
+      "Serie A" => "italy/serie-a",
+      "Ligue 1" => "france/le-championnat"
     }
+
+
 
     def build_url(match)
       gameweek = match.gameweek
       sub_url_fixture = DICTIONARY[match.home_team.name] + "-v-" + DICTIONARY[match.away_team.name]
-      url = "http://odds.bestbetting.com/football/england/premier-league/round-#{gameweek}/#{sub_url_fixture}/match-result/all-odds"
+      sub_url_league = DICTIONARY[match.league.name]
+      url = "http://odds.bestbetting.com/football/#{sub_url_league}/round-#{gameweek}/#{sub_url_fixture}/match-result/all-odds"
     end
 
     def convert_odds(odd)
@@ -121,7 +131,8 @@ namespace :odds do
       decimal = ((odd_arr[0].to_i / odd_arr[1].to_f) + 1).round(2)
     end
 
-    Match.where(status: "TIMED").order(:gameweek).first(10).each do |match|
+    Match.where(status: "TIMED").each do |match|
+      p (match.home_team.name + "v" + match.away_team.name)
       url = build_url(match)
       html_file = open(url).read
       html_doc = Nokogiri::HTML(html_file)
@@ -133,8 +144,31 @@ namespace :odds do
           Odd.create(bookmaker: Bookmaker.find_by(name: column.attribute('title').value), match_id: match.id, outcome: outcome, odds: odd) if Bookmaker.find_by(name: column.attribute('title').value)
         end
       end
+      # puts "about to sleep"
+      # # sleep rand(10..14)
+      # puts "back"
     end
+  end
 
-
+  task clean_up: :environment do
+    desc 'Destroys all odds with no bets on them'
+    Odd.left_outer_joins(:bets).where(bets: {odd_id: nil}).destroy_all
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

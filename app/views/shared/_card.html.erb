@@ -1,0 +1,52 @@
+<%= link_to odd_path(odd) do %>
+  <div class="index-card">
+  <div class="rating">
+  <span>5</span>
+  </div>
+    <div class="card-teams">
+      <div class="up-team <%= "winning-team" if true %>">
+        <% if odd.match.home_team.logo %>
+          <% photo = odd.match.home_team.logo %>
+        <% else %>
+          <% photo = "logo.png" %>
+        <% end %>
+        <h5><%= image_tag photo, class:"team-logo" %> AC Milan</h5>
+      </div>
+      <div class="down-team <%= "winning-team" if false %>">
+        <% if odd.match.away_team.logo %>
+          <% photo = odd.match.away_team.logo %>
+        <% else %>
+          <% photo = "logo.png" %>
+        <% end %>
+        <h5><%= image_tag photo, class:"team-logo" %> Barcelona</h5>
+      </div>
+    </div>
+    <div class="card-middle">
+    <% if %>
+
+    <% end %>
+      <% hex = "dark-purple" %>
+
+      <div class="hexagon">
+        <%= image_tag hex, class:"hexagon-png" %>
+        <span class="match-rating">90</span>
+      </div>
+    </div>
+    <div class="card-odds">
+      <div class="bookmaker">
+        <%= image_tag "logo.png", class:"avatar-square" %>
+        <span>1.9</span>
+      </div>
+
+      <form class="form-inline">
+        <label>bet</label>
+        <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="1$">
+        <label>get</label>
+        <span class="model-prediction">2</span>
+      </form>
+
+      <%= link_to "Add to profile", "#", class: 'btn btn-success'  %>
+    </div>
+
+  </div>
+<% end %>
