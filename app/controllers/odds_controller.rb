@@ -1,7 +1,7 @@
 class OddsController < ApplicationController
 
   def index
-    @odd = Odd.all
+    @odds = Odd.all
   end
 
   def show
@@ -9,4 +9,5 @@ class OddsController < ApplicationController
     @match = @odd.match #Match.where(status: "TIMED").first
     @bookmaker = @odd.bookmaker
   end
+
 end
