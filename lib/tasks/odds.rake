@@ -130,7 +130,18 @@ namespace :odds do
       decimal = ((odd_arr[0].to_i / odd_arr[1].to_f) + 1).round(2)
     end
 
-    Match.where(status: "TIMED").each do |match|
+    def rate_bet(outcome, odd, match)
+      if outcome == "Home"
+        model_prob = match.match_model_outputs.home_win_probability
+      elsif outcome == "Away"
+        model_prob = match.match_model_outputs.away_win_probability
+      else
+        model_prob = match.match_model_outputs.draw_probability
+      end
+      return rating = odd * model_prob
+    end
+
+    Match.where(status: "TIMED").first(10).each do |match|
       p (match.home_team.name + "v" + match.away_team.name)
       url = build_url(match)
       html_file = open(url).read
@@ -140,12 +151,10 @@ namespace :odds do
         outcome = outcomes[index]
         element.search('.cellOdd').each do |column|
           odd = convert_odds(column.text.strip)
+          rating = rate_bet(outcome, odd, match)
           Odd.create!(bookmaker: Bookmaker.find_by(name: column.attribute('title').value), match_id: match.id, outcome: outcome, odds: odd) if Bookmaker.find_by(name: column.attribute('title').value)
         end
       end
-      # puts "about to sleep"
-      # # sleep rand(10..14)
-      # puts "back"
     end
   end
 
