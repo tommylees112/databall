@@ -5,12 +5,27 @@
   <div class="banner-hex" id="show-banner-hex">
     <div class="banner-content">
       <div class="banner-team-div">
-        <div class="home-team">
-          <p><%= home_team.name %></p>
+        <div class="team-div">
+            <div class="team-image">
+              <%= image_tag home_team.logo %>
+            </div>
+            <div class="team-name">
+              <p><%= home_team.name %></p>
+            </div>
         </div>
-        <div class="home-team">
-          <p><%= away_team.name %></p>
+        <div class="vs">
+            <p>vs.</p>
         </div>
+        <div class="team-div">
+            <div class="team-image">
+              <%= image_tag away_team.logo %>
+            </div>
+            <div class="team-name">
+              <p><%= away_team.name %></p>
+            </div>
+        </div>
+      <div class="match-info-grid">
+      </div>
       </div>
     </div>
   </div>

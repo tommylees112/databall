@@ -1,17 +1,28 @@
 
 .banner-team-div {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+}
+
+.team-image {
+  img {
+    height: 200px;
+  }
 }
 
 #hex-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 90vh;
 }
 
 #show-banner-hex {
-  height: 470px;
 }
 
+.match-info-grid {
+  display: grid;
+  grid-template-columns:50% 50%;
+  grid-template-rows:50% 50%;
+}
