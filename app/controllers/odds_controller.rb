@@ -7,4 +7,5 @@ class OddsController < ApplicationController
   def show
     @odd = Odd.find(params[:id])
   end
+
 end
