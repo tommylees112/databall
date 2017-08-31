@@ -1,35 +1,83 @@
 .index-card {
-  height: 150px;
+  padding: 20px 10px;
+  width: 70%;
+  background-color: rgba(0, 21, 33, 0.79);
+  border: 1px solid transparent;
+  border-radius: 5px;
+  margin: 10px auto;
   display: flex;
-  align-items: center;
-  justify-content: space-around;
-  background-color: rgba(0, 21, 33, 0.50);
   position: relative;
-  margin: 25px;
-  .rating {
-    text-align: center;
-    height: 50px;
-    width: 50px;
-    border-color: $green;
-    position: absolute;
-    top: -15px;
-    left: -5px;
-    border: 1px solid $gray;
-    border-radius: 70%;
-    font-size: 22px;
+  justify-content: space-between;
 
-    span {
-      position: absolute;
-      left: 18px;
-      top: 7px;
+  .flex-item {
+    flex: 1 0 30%;
+
+  }
+  .rating {
+    position: absolute;
+    top: -20px;
+    left:-20px;
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .odd-card-link {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background: transparent;
+    &:hover {
+      background: rgba(0,0,0,0.1);
     }
   }
-    a {
+  .card-teams {
+
+    .team {
+      color: white;
+      .team-logo {
+        width: 50px;
+      }
+    }
+  }
+
+  .card-middle {
+    display: flex;
+    align-items: center;
+    .hexagon {
+      margin: auto;
+      width: 90px;
+      height: 104px;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: .5s;
+      .hover-text {
+        display: none;
+      }
+    }
+  }
+
+  .card-odds {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+      .btn {
+        z-index: 3;
     padding: 3px;
     text-align: center;
     border-radius: 30px;
     font-size:19px;
-    background-color: rgba(80, 255, 177, 0.6);
+    background-color: rgba(80, 255, 177, 0.8);
     color: black;
     font-weight: lighter;
     border: 1px solid $green;
@@ -42,49 +90,56 @@
       color: black;
     }
     }
-.winning-team {
-  border-bottom: 1px solid $green;
-}
+    .input-group-addon {
+      background: transparent;
+      border: none;
+    }
+    .form-control {
+      margin: 5px;
+      width: 50px;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid white;
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
 
-  .team-logo {
+
+  .avatar-square {
     width: 50px;
   }
-}
 
-.form-inline {
-  input {
-    width: 75px !important;
-    height: 25px !important;
-    background-color: transparent !important;
-    border-radius: 10px;
-    text-align: center;
-    padding: 5px;
+
+  .winning-team {
+    padding-bottom: 8px;
+    h5 {
+    border-bottom: 2px solid $green;
+    padding-bottom: 2px;
+    }
   }
 
-
-  margin:10px;
-
-  .model-prediction {
-    border-bottom: 1px solid $green;
+  .icons {
+    display: flex;
+    align-items: center;
 
   }
-}
+  &:hover {
+    .hexagon {
+      transform: scale(1.1);
+      a {
+        text-decoration: none;
+        color:white;
+      }
+      .match-rating {
+        display: none;
+      }
+      .hover-text {
+        display: flex;
+        text-align: center;
 
-.hexagon {
-  position: relative;
-  img {
-    width: 80px;
-
+      }
+    }
   }
-  .match-rating {
-    position: absolute;
-    top: 33px;
-    left:30px;
-  }
-}
-
-.avatar-square {
-  width: 30px;
-  border-radius: 0px;
-  margin-right: 10px;
 }
