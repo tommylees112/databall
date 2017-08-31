@@ -1,23 +1,23 @@
-
+<%= link_to odd_path(odd) do %>
   <div class="index-card">
   <div class="rating">
   <span>5</span>
   </div>
     <div class="card-teams">
       <div class="up-team <%= "winning-team" if true %>">
-        <%# if odd.match.home_team.logo %>
-          <%# photo = odd.match.home_team.logo %>
-        <%# else %>
+        <% if odd.match.home_team.logo %>
+          <% photo = odd.match.home_team.logo %>
+        <% else %>
           <% photo = "logo.png" %>
-        <%# end %>
+        <% end %>
         <h5><%= image_tag photo, class:"team-logo" %> AC Milan</h5>
       </div>
       <div class="down-team <%= "winning-team" if false %>">
-        <%# if odd.match.away_team.logo %>
-          <%# photo = odd.match.away_team.logo %>
-        <%# else %>
+        <% if odd.match.away_team.logo %>
+          <% photo = odd.match.away_team.logo %>
+        <% else %>
           <% photo = "logo.png" %>
-        <%# end %>
+        <% end %>
         <h5><%= image_tag photo, class:"team-logo" %> Barcelona</h5>
       </div>
     </div>
@@ -49,3 +49,4 @@
     </div>
 
   </div>
+<% end %>

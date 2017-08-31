@@ -1,7 +1,7 @@
 class OddsController < ApplicationController
 
   def index
-    @odd = Odd.all
+    @odds = Odd.all
   end
 
   def show
