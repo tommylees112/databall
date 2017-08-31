@@ -24,9 +24,14 @@
               <p><%= away_team.name %></p>
             </div>
         </div>
-      <div class="match-info-grid">
+        <div class="match-info-grid">
+            <div id="prediction"></div>
+            <div id="model-odds"></div>
+            <div id="databall-rating"></div>
+            <div id="bookies-odds"></div>
+        </div>
       </div>
-      </div>
+      <%= render 'shared/hover_button' %>
     </div>
   </div>
 </div>

@@ -1,35 +1,25 @@
-html, body {
-  background: #333;
-  height: 100%;
-  overflow: hidden;
-  text-align: center;
-}
-
 .svg-wrapper {
   height: 60px;
-  margin: 0 auto;
+  margin: 15px auto;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
   width: 320px;
-}
-
-.shape {
-  fill: transparent;
-  stroke-dasharray: 140 540;
-  stroke-dashoffset: -474;
-  stroke-width: 8px;
-  stroke: #19f6e8;
-}
-
-.text {
-  color: #fff;
-  font-family: 'Roboto Condensed';
-  font-size: 22px;
-  letter-spacing: 8px;
-  line-height: 32px;
-  position: relative;
-  top: -48px;
+  .shape {
+    fill: transparent;
+    stroke-dasharray: 190 540;
+    stroke-dashoffset: -450;
+    stroke-width: 8px;
+    stroke: #50FFB1;
+  }
+  .text {
+    color: #50FFB1;
+    font-size: 22px;
+    letter-spacing: 8px;
+    line-height: 32px;
+    position: relative;
+    top: -48px;
+  }
 }
 
 @keyframes draw {
