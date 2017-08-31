@@ -1,0 +1,49 @@
+<% home_team = @match.home_team %>
+<% away_team = @match.away_team %>
+
+<div class="banner">
+  <div class="banner-hex" id="show-banner-hex">
+    <div class="banner-content">
+      <div class="banner-team-div">
+        <div class="home-team">
+          <p><%= home_team.name %></p>
+        </div>
+        <div class="home-team">
+          <p><%= away_team.name %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="hex-container">
+    <div class="container">
+      <ul id="hexGrid">
+            <li class="hex">
+              <div class="hexIn">
+                <a class="hexLink" href="#">
+                  <h1>Model Probability</h1>
+                  <p>of a Home Win</p>
+                </a>
+              </div>
+            </li>
+            <li class="hex">
+              <div class="hexIn">
+                <a class="hexLink" href="#">
+                  <h1>Model Probability</h1>
+                  <p>of a Away Win</p>
+                </a>
+              </div>
+            </li>
+            <li class="hex">
+              <div class="hexIn">
+                <a class="hexLink" href="#">
+                  <h1>Model Probability</h1>
+                  <p>of a Draw</p>
+                </a>
+              </div>
+            </li>
+      </ul>
+  </div>
+
+</div>
