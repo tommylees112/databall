@@ -3,6 +3,7 @@ require 'nokogiri'
 
 namespace :odds do
   task seed: :environment do
+    desc 'Scrapes all odds from internet'
 
     DICTIONARY = {
       "Arsenal FC" => "arsenal",
@@ -132,8 +133,12 @@ namespace :odds do
           Odd.create!(bookmaker: Bookmaker.find_by(name: column.attribute('title').value), match_id: match.id, outcome: outcome, odds: odd) if Bookmaker.find_by(name: column.attribute('title').value)
         end
       end
+      sleep rand(10..14)
     end
+  end
 
-
+  task clean_up: :environment do
+    desc 'Destroys all odds with no bets on them'
+    Odd.left_outer_joins(:bets).where(bets: {odd_id: nil}).destroy_all
   end
 end
