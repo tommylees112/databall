@@ -8,6 +8,9 @@
   display: flex;
   position: relative;
   justify-content: space-between;
+    &:hover .hexagon {
+      transform: scale(1.1);
+    }
 
   .flex-item {
     flex: 1 0 30%;
@@ -51,6 +54,8 @@
     display: flex;
     align-items: center;
     .hexagon {
+      color: white;
+      text-shadow: 0.5px 0.5px 0px black;
       margin: auto;
       width: 90px;
       height: 104px;
@@ -62,6 +67,11 @@
       .hover-text {
         display: none;
       }
+      span {
+        &.active {
+          color: red;
+        }
+      }
     }
   }
 
@@ -70,6 +80,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
 
       .btn {
         z-index: 3;
@@ -96,7 +107,7 @@
     }
     .form-control {
       margin: 5px;
-      width: 50px;
+      width: 75px;
       background: transparent;
       border: none;
       border-bottom: 2px solid white;
@@ -151,3 +162,5 @@
 }
 }
 }
+
+
