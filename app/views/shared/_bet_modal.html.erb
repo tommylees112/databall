@@ -1,4 +1,4 @@
-<div id="makeBet" class="modal fade" role="dialog">
+<div id="makeBet-<%= odd.id %>" class="modal fade" role="dialog">
   <div class="modal-dialog modal-sm">
 
     <!-- Modal content-->
@@ -8,7 +8,7 @@
         <h4 class="modal-title">Add this bet to your profile</h4>
       </div>
       <div class="modal-body">
-        <%= simple_form_for [@match, odd_selected, @booking] do |f| %>
+        <%= simple_form_for [odd, @bet] do |f| %>
           <%= f.label 'Stake:' %>
           <%= f.input :stake, label: false, input_html: { min: '0', step: 'any' }  do %>
           <%= content_tag :span, "£", class: "add-on" %>
