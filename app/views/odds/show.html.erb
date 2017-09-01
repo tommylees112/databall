@@ -2,8 +2,8 @@
 <% away_team = @match.away_team %>
 <% hex = "dark-purple" %>
 
-<div class="banner">
-  <div class="banner-hex" id="show-banner-hex">
+<div class="banner" id="show-page-banner">
+  <div id="show-banner-hex">
     <div class="banner-content">
       <div class="banner-team-div">
         <div class="team-div">
@@ -53,6 +53,7 @@
   </div>
 </div>
 
+<%= render 'hex-container' %>
 <div id="hex-container">
     <div class="container">
       <ul id="hexGrid">
@@ -82,5 +83,4 @@
             </li>
       </ul>
   </div>
-
 </div>
