@@ -53,7 +53,7 @@
 
       <div class="hexagon" style="background-image: url(<%= image_path hex %>)">
         <%= link_to odd_path(odd) do %>
-          <span class="match-rating" id = "new_match"><%= rating %></span>
+          <span class="match-rating"><%= rating %></span>
         <% end %>
       </div>
 
@@ -61,7 +61,7 @@
     <div class="card-odds flex-item">
       <div class="bookmaker">
         <%= image_tag "logo.png", class:"avatar-square" %>
-        <span><%= odd.odds %></span>
+        <span id = "new_match" ><%= odd.odds.to_f %></span>
       </div>
 
       <form class="form-inline">
