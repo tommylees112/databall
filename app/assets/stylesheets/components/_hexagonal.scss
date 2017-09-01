@@ -1,4 +1,4 @@
-// .common(2) {
+// .common {
 //   width:58/16 * 1rem * 2;
 //   height:101/16 * 1rem * 2;
 //   box-sizing:border-box;
@@ -12,19 +12,23 @@
 
 // .hexagonal {
 //   margin:60px auto;
-//   .common;
+//   .common{
+//   }
 
 //   &::before {
-//     .common;
-//     .secondary-common;
-//     transform:rotate(-60deg);
+//     .common{
+//       .secondary-common{
+//         transform:rotate(-60deg);
+//       }
+//     }
 //   }
 
 //   &::after {
 //     .common{
-//       .secondary-common;
-//       margin-top:(101/16 * 1rem * 2) * -1;
-//       transform:rotate(60deg);
+//       .secondary-common{
+//         margin-top:(101/16 * 1rem * 2) * -1;
+//         transform:rotate(60deg);
+//       }
 //     }
 //   }
 // }

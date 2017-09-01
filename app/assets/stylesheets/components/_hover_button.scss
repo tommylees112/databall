@@ -23,6 +23,9 @@ a:focus {
     stroke-width: 8px;
     stroke: #50FFB1;
   }
+  &:hover .shape{
+    animation: 0.5s draw linear forwards;
+  }
   .text {
     color: #50FFB1;
     font-size: 22px;
@@ -46,7 +49,7 @@ a:focus {
   }
 }
 
-.svg-wrapper:hover .shape {
-  -webkit-animation: 0.5s draw linear forwards;
-  animation: 0.5s draw linear forwards;
-}
+// .svg-wrapper:hover .shape {
+//   -webkit-animation: 0.5s draw linear forwards;
+//   animation: 0.5s draw linear forwards;
+// }
