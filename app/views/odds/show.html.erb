@@ -48,7 +48,8 @@
           </div>
         </div>
       </div>
-      <%= render 'shared/hover_button' %>
+
+      <%= render 'shared/hover_button', odd: @odd %>
     </div>
   </div>
 </div>
@@ -84,3 +85,4 @@
       </ul>
   </div>
 </div>
+<%= render 'shared/bet_modal', odd: @odd %>

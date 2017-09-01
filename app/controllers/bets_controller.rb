@@ -1,6 +1,10 @@
 class BetsController < ApplicationController
   def create
     @bet = Bet.new(bets_params)
+    @bet.odd = Odd.find(params[:odd_id])
+    @bet.user = current_user
+    @bet.save
+    redirect_to odds_path
   end
 
   def destroy
