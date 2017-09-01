@@ -22,6 +22,11 @@
 #show-banner-hex {
 }
 
+#show-hex {
+  display: flex;
+  align-items: center;
+}
+
 // GRID
 .match-info-grid {
   display: grid;
