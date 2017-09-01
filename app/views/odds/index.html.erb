@@ -2,7 +2,7 @@
   <div class="cards-container">
 
   <% matches = [] %>
-  <% @odds.first(100).each do |odd| %>
+  <% @odds.first(1000).each do |odd| %>
       <%= render "shared/card", odd: odd  unless matches.include? odd.match.id %>
       <% matches << odd.match.id %>
   <% end %>

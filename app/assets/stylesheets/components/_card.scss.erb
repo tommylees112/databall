@@ -54,7 +54,7 @@
     display: flex;
     align-items: center;
     .hexagon {
-      color: white;
+      color: white !important;
       text-shadow: 0.5px 0.5px 0px black;
       margin: auto;
       width: 90px;
@@ -64,6 +64,10 @@
       justify-content: center;
       align-items: center;
       transition: .5s;
+      a {
+        text-decoration: none;
+        color: white;
+      }
       .hover-text {
         display: none;
       }

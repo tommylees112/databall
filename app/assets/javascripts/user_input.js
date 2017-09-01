@@ -12,7 +12,7 @@
 $(document).ready(function() {
   $(".form-input-odd").on("keyup", function() {
 
-    var calc = ((parseInt($(this).val(), 10) * parseInt($("#new_match").text())) / 100)
+    var calc =  (parseInt($(this).val(), 10) * $("#new_match").text())
     // console.log($("#new_match").text());
     var selector = $(this).data('insert');
     if (calc) {
