@@ -51,7 +51,8 @@
           </div>
         </div>
       </div>
-      <%= render 'shared/hover_button' %>
+
+      <%= render 'shared/hover_button', odd: @odd %>
     </div>
   </div>
 </div>
@@ -149,6 +150,7 @@
     <div class="away-form"></div>
   </div>
 </div>
-
-
 </div>
+
+<%= render 'shared/bet_modal', odd: @odd %>
+

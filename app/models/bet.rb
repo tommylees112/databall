@@ -9,7 +9,7 @@ class Bet < ApplicationRecord
   end
 
   # VALIDATIONS
-  validates :user_id, uniqueness: { scope: :odd_id }
+  # validates :user_id, uniqueness: { scope: :odd_id }
 
   # METHODS
  #  def won?
