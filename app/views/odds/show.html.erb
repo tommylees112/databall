@@ -1,8 +1,8 @@
 <% home_team = @match.home_team %>
 <% away_team = @match.away_team %>
-<% hex = "dark-purple" %>
+<% hex = "dark-purple.png" %>
 
-<div class="banner" id="show-page-banner">
+<div class="show banner" id="show-page-banner">
   <div id="show-banner-hex">
     <div class="banner-content">
       <div class="banner-team-div">
@@ -39,8 +39,7 @@
                 </div>
                 <div id="databall-rating">
                   <h6>DataBall Rating</h6>
-                    <p><%= @odd.rating %></p>
-                  </div>
+                    <p><%= @odd.rating.round(2) %></p>
                 </div>
                 <div id="bookies-odds">
                   <h6>Best Odds</h6>
@@ -53,35 +52,90 @@
     </div>
   </div>
 </div>
-
-<%= render 'hex-container' %>
-<div id="hex-container">
-    <div class="container">
-      <ul id="hexGrid">
-            <li class="hex">
-              <div class="hexIn">
-                <a class="hexLink" href="#">
-                  <h1>Model Probability</h1>
-                  <p>of a Home Win</p>
-                </a>
+<div class="container2" style="background-color: #001D2E; width: 100%;">
+<!--     <div class="show model-information">
+        <div class="row">
+            <div class="col-xs-6 col-xs-offset-4">
+              <div class="container">
+                  <%# render 'hex-grid2' %>
               </div>
-            </li>
-            <li class="hex">
-              <div class="hexIn">
-                <a class="hexLink" href="#">
-                  <h1>Model Probability</h1>
-                  <p>of a Away Win</p>
-                </a>
+            </div>
+        </div> -->
+      <!-- NOTE 2x GRID -->
+      <%= render 'hex-container' %>
+      <div class="team-info-container">
+        <div class="row">
+          <div class="team-info col-xs-4 col-xs-offset-3">
+              <div class="team-offensive-score">
+                <p>data1</p>
               </div>
-            </li>
-            <li class="hex">
-              <div class="hexIn">
-                <a class="hexLink" href="#">
-                  <h1>Model Probability</h1>
-                  <p>of a Draw</p>
-                </a>
+              <div class="team-defensive-score">
+                <p>data1</p>
               </div>
-            </li>
-      </ul>
+              <div class="model-performance-score">
+                <p>data1</p>
+              </div>
+          </div>
+          <div class="team-info col-xs-4">
+              <div class="team-offensive-score">
+                <p>data1</p>
+              </div>
+              <div class="team-defensive-score">
+                <p>data1</p>
+              </div>
+              <div class="model-performance-score">
+                <p>data1</p>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="container3-show" style="background-color: #001521; width: 100%;">
+  <div class="team-form-container">
+    <div class="container form-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Home Form</th>
+              <th>H2H</th>
+              <th>Away Form</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>@home.last_match <i class="fa fa-home" aria-hidden="true"></i></td>
+              <td>@match.last_match</td>
+              <td>@away.last_match</td>
+            </tr>
+            <tr>
+              <td>@home.last_match</td>
+              <td>@match.last_match</td>
+              <td>@away.last_match <i class="fa fa-home" aria-hidden="true"></i></td>
+            </tr>
+            <tr>
+              <td>@home.last_match <i class="fa fa-home" aria-hidden="true"></i></td>
+              <td>@match.last_match</td>
+              <td>@away.last_match</td>
+            </tr>
+            <tr>
+              <td>@home.last_match</td>
+              <td>@match.last_match</td>
+              <td>@away.last_match</td>
+            </tr>
+            <tr>
+              <td>@home.last_match <i class="fa fa-home" aria-hidden="true"></i></td>
+              <td>@match.last_match</td>
+              <td>@away.last_match <i class="fa fa-home" aria-hidden="true"></i></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <div class="home-form"></div>
+    <div class="h2h-form"></div>
+    <div class="away-form"></div>
   </div>
+</div>
+
+
 </div>

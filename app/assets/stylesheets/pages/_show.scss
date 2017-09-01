@@ -1,12 +1,43 @@
 // TEAM-BANNER
+// .show-banner {
+//   position: relative;
+//   margin: 0;
+//   background-size: cover !important;
+//   background-position: center;
+//   text-align:center;
+//   color: white;
+//   text-align: center;
+//   height: 90vh;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   flex-direction: column;
+
+//    h1 {
+//   font-family: $headers-font;
+//   font-size: 50px;
+//   font-weight: lighter;
+//   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+//  }
+// }
+
+// CONTAINERS (page wrappers)
+.container3-show {
+  height: auto;
+}
+
+.banner.show {
+  min-height: 85vh;
+}
 .show-page-banner {
-  height: 90vh;
+  height: 77vh;
 }
 
 .banner-team-div {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  padding-top: 35px;
 }
 
 .team-image {
@@ -20,15 +51,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 60vh;
 }
 
 #show-banner-hex {
 }
 
 #show-hex {
+}
+// BUTTON
+// .show-page-hover-button{
+//   padding-top: 42px;
+// }
+
+//HEX CONTAINER
+.hex-container {
   display: flex;
-  align-items: center;
+  justify-content: space-around
 }
 
 // GRID
@@ -54,4 +93,37 @@
 #bookies-odds {
   grid-column: 2/span 1;
   grid-row: 2/span 1;
+}
+
+// TEAM INFO CONTAINER
+.team-info-container {
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}
+.team-form-container {
+  display: flex;
+  .form-table {
+    display: flex;
+    justify-content: space-around;
+  }
+  thead th {
+    font-weight: 500;
+    color: #FFF;
+  }
+  th, td {
+    padding: 15px;
+    text-align: center;
+  }
+  td {
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    &:first-child {
+      border-left: none;
+    }
+    &:last-child {
+      border-right: none;
+    }
+  }
 }

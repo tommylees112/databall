@@ -14,6 +14,7 @@
   // font-family: 'Raleway', sans-serif;
   font-size: 13px;
   list-style-type: none;
+  padding-left: 0;
 }
 
 .hex {
@@ -42,7 +43,6 @@
   outline:1px solid transparent; // fix for jagged edges in FF on hover transition */
 }
 .hexLink {
-    background-color: #001D2E;
     display:block;
     width: 100%;
     height: 100%;
@@ -50,6 +50,22 @@
     color: #fff;
     overflow: hidden;
     transform: skewY(-30deg) rotate3d(0,0,1,60deg);
+}
+
+li:nth-child(1) .hexLink {
+   background-color: #35DA57;
+   content: 65%;
+   color: black;
+}
+li:nth-child(2) .hexLink {
+  background-color: #39508E;
+  content: 65%;
+  color: black;
+}
+li:nth-child(3) .hexLink {
+  background-color: #530B78;
+  content: 65%;
+  color: black;
 }
 
 //** HEX CONTENT **********************************************************************/
