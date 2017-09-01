@@ -1,5 +1,6 @@
 <% home_team = @match.home_team %>
 <% away_team = @match.away_team %>
+<% hex = "dark-purple" %>
 
 <div class="banner">
   <div class="banner-hex" id="show-banner-hex">
@@ -10,25 +11,41 @@
               <%= image_tag home_team.logo %>
             </div>
             <div class="team-name">
-              <p><%= home_team.name %></p>
+              <h3><%= home_team.name %></h3>
             </div>
         </div>
         <div class="vs">
-            <p>vs.</p>
+            <h3>vs.</h3>
         </div>
         <div class="team-div">
             <div class="team-image">
               <%= image_tag away_team.logo %>
             </div>
             <div class="team-name">
-              <p><%= away_team.name %></p>
+              <h3><%= away_team.name %></h3>
             </div>
         </div>
-        <div class="match-info-grid">
-            <div id="prediction"></div>
-            <div id="model-odds"></div>
-            <div id="databall-rating"></div>
-            <div id="bookies-odds"></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-xs-offset-3">
+            <div class="match-info-grid">
+                <div id="prediction">
+                  <h6>Prediction</h6>
+                  <p><%= @odd.outcome %></p>
+                </div>
+                <div id="model-odds">
+                  <h6>Model Odds</h6>
+                  <p><%= @match.model_outcome_odds(@odd) %></p>
+                </div>
+                <div id="databall-rating">
+                  <h6>DataBall Rating</h6>
+                  <p><%= @odd.rating %></p>
+                </div>
+                <div id="bookies-odds">
+                  <h6>Best Odds</h6>
+                  <p><%= @odd.bookmaker.name %> - <span><%= @odd.odds %></span></p>
+              </div>
+          </div>
         </div>
       </div>
       <%= render 'shared/hover_button' %>

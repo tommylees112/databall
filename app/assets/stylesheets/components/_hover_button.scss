@@ -1,3 +1,13 @@
+
+
+a:hover {
+  text-decoration: none !important;
+}
+
+a:focus {
+  text-decoration: none !important;
+}
+
 .svg-wrapper {
   height: 60px;
   margin: 15px auto;
@@ -5,6 +15,7 @@
   top: 50%;
   transform: translateY(-50%);
   width: 320px;
+  margin-top: 15px;
   .shape {
     fill: transparent;
     stroke-dasharray: 190 540;
@@ -20,9 +31,6 @@
     position: relative;
     top: -48px;
   }
-  .li {
-    text-decoration: none;
-  }
 }
 
 @keyframes draw {
@@ -34,7 +42,7 @@
   100% {
     stroke-dasharray: 760;
     stroke-dashoffset: 0;
-    stroke-width: 2px;
+    stroke-width: 8px;
   }
 }
 
