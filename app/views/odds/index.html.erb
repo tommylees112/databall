@@ -1,7 +1,10 @@
 <div class="ind-container">
   <div class="cards-container">
-  <% @odds.first(5).each do |odd| %>
-    <%= render "shared/card", odd: odd %>
+
+  <% matches = [] %>
+  <% @odds.first(100).each do |odd| %>
+      <%= render "shared/card", odd: odd  unless matches.include? odd.match.id %>
+      <% matches << odd.match.id %>
   <% end %>
   </div>
 </div>

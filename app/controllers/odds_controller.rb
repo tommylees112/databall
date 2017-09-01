@@ -1,7 +1,7 @@
 class OddsController < ApplicationController
 
   def index
-    @odds = Odd.all
+    @odds = Odd.where(odds_bias_filter: true).order(rating: :DESC)
     @bet = Bet.new
   end
 
