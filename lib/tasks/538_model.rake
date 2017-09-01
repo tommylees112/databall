@@ -180,7 +180,7 @@ namespace :model do
                   team_model_object.team = team_object
 
                 ## SAVE THE OBJECT
-                team_model_object.save
+                team_model_object.save!
               end
           end
 
