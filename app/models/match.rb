@@ -41,4 +41,22 @@ class Match < ApplicationRecord
     self.match_model_outputs.order(created_at: :desc).first
   end
 
+  def model_outcome_probability(odd)
+    if odd.outcome == "Home"
+      return self.model_output.home_win_probability
+    elsif odd.outcome == "Away"
+      return self.model_output.away_win_probability
+    elsif odd.outcome == "Draw"
+      return self.model_output.draw_probability
+    else
+      return "N/A"
+    end
+  end
+
+  def model_outcome_odds(odd)
+    probability = self.model_outcome_probability(odd)
+    model_odds = 1/probability
+    return model_odds.round(2)
+  end
+
 end

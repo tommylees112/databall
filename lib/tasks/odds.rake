@@ -147,7 +147,7 @@ namespace :odds do
       return rating = odd * model_prob
     end
 
-    Match.where(status: "TIMED").first(1).each do |match|
+    Match.where(status: "TIMED").each do |match|
       p (match.home_team.name + "v" + match.away_team.name)
       url = build_url(match)
       html_file = open(url).read

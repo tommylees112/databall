@@ -11,4 +11,6 @@ class Odd < ApplicationRecord
   validates :odds, presence: true
   validates :outcome, presence: true, inclusion: { in: VALUES }
 
+  def self.rank
+  end
 end
