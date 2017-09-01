@@ -144,7 +144,7 @@ namespace :odds do
       else
         model_prob = match.model_output.draw_probability
       end
-      return rating = odd * model_prob
+      return rating = (odd * model_prob).round(2)
     end
 
     Match.where(status: "TIMED").each do |match|
