@@ -1,49 +1,61 @@
-
   <div class="index-card">
-  <div class="rating">
-  <span>5</span>
-  </div>
-    <div class="card-teams">
-      <div class="up-team <%= "winning-team" if true %>">
-        <%# if odd.match.home_team.logo %>
-          <%# photo = odd.match.home_team.logo %>
-        <%# else %>
+    <div class="rating">
+      <span>5</span>
+    </div>
+    <div class="card-teams flex-item">
+      <div class="team <%= "winning-team" if true %>">
+        <% if odd.match.home_team.logo %>
+          <% photo = odd.match.home_team.logo %>
+        <% else %>
           <% photo = "logo.png" %>
-        <%# end %>
-        <h5><%= image_tag photo, class:"team-logo" %> AC Milan</h5>
+
+        <% end %>
+        <div class="icons">
+          <%= image_tag photo, class:"team-logo" %>
+          <div style="margin-left: 20px;">
+          <h5><%= odd.match.home_team.name %></h5>
+          </div>
+        </div>
       </div>
-      <div class="down-team <%= "winning-team" if false %>">
-        <%# if odd.match.away_team.logo %>
-          <%# photo = odd.match.away_team.logo %>
-        <%# else %>
+      <div class="team <%= "winning-team" if false %>">
+        <% if odd.match.away_team.logo %>
+          <% photo = odd.match.away_team.logo %>
+        <% else %>
           <% photo = "logo.png" %>
-        <%# end %>
-        <h5><%= image_tag photo, class:"team-logo" %> Barcelona</h5>
+        <% end %>
+        <div class="icons">
+          <%= image_tag photo, class:"team-logo" %>
+          <div style="margin-left: 20px;">
+          <h5><%= odd.match.away_team.name %></h5>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="card-middle">
+    <div class="card-middle flex-item">
     <% if %>
 
     <% end %>
-      <% hex = "dark-purple" %>
-
-      <div class="hexagon">
-        <%= image_tag hex, class:"hexagon-png" %>
+      <% hex = "dark-purple.png" %>
+      <div class="hexagon" style="background-image: url(<%= image_path hex %>)">
         <span class="match-rating">90</span>
+        <%= link_to "Show Details", odd_path(odd), class:"hover-text"  %>
       </div>
     </div>
-    <div class="card-odds">
+    <div class="card-odds flex-item">
       <div class="bookmaker">
         <%= image_tag "logo.png", class:"avatar-square" %>
         <span>1.9</span>
       </div>
 
       <form class="form-inline">
-        <label>bet</label>
-        <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="1$">
-        <label>get</label>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-addon">$</div>
+            <input type="text" class="form-control" id="inlineFormInputGroup" value="1">
+          </div>
+        <label>Profit:</label>
         <span class="model-prediction">2</span>
       </form>
+
 
       <div class="flex-center make-bet-button" style="width: 100%">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#makeBet">Add to Profile</button>

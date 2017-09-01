@@ -1,0 +1,86 @@
+<% home_team = @match.home_team %>
+<% away_team = @match.away_team %>
+<% hex = "dark-purple" %>
+
+<div class="banner">
+  <div class="banner-hex" id="show-banner-hex">
+    <div class="banner-content">
+      <div class="banner-team-div">
+        <div class="team-div">
+            <div class="team-image">
+              <%= image_tag home_team.logo %>
+            </div>
+            <div class="team-name">
+              <h3><%= home_team.name %></h3>
+            </div>
+        </div>
+        <div class="vs">
+            <h3>vs.</h3>
+        </div>
+        <div class="team-div">
+            <div class="team-image">
+              <%= image_tag away_team.logo %>
+            </div>
+            <div class="team-name">
+              <h3><%= away_team.name %></h3>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-xs-offset-3">
+            <div class="match-info-grid">
+                <div id="prediction">
+                  <h6>Prediction</h6>
+                  <p><%= @odd.outcome %></p>
+                </div>
+                <div id="model-odds">
+                  <h6>Model Odds</h6>
+                  <p><%= @match.model_outcome_odds(@odd) %></p>
+                </div>
+                <div id="databall-rating">
+                  <h6>DataBall Rating</h6>
+                  <p><%= @odd.rating %></p>
+                </div>
+                <div id="bookies-odds">
+                  <h6>Best Odds</h6>
+                  <p><%= @odd.bookmaker.name %> - <span><%= @odd.odds %></span></p>
+              </div>
+          </div>
+        </div>
+      </div>
+      <%= render 'shared/hover_button' %>
+    </div>
+  </div>
+</div>
+
+<div id="hex-container">
+    <div class="container">
+      <ul id="hexGrid">
+            <li class="hex">
+              <div class="hexIn">
+                <a class="hexLink" href="#">
+                  <h1>Model Probability</h1>
+                  <p>of a Home Win</p>
+                </a>
+              </div>
+            </li>
+            <li class="hex">
+              <div class="hexIn">
+                <a class="hexLink" href="#">
+                  <h1>Model Probability</h1>
+                  <p>of a Away Win</p>
+                </a>
+              </div>
+            </li>
+            <li class="hex">
+              <div class="hexIn">
+                <a class="hexLink" href="#">
+                  <h1>Model Probability</h1>
+                  <p>of a Draw</p>
+                </a>
+              </div>
+            </li>
+      </ul>
+  </div>
+
+</div>

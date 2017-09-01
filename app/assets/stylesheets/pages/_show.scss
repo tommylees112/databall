@@ -1,0 +1,48 @@
+// TEAM-BANNER
+.banner-team-div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.team-image {
+  img {
+    height: 200px;
+  }
+}
+
+// HEX GRID (probabilities)
+#hex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+#show-banner-hex {
+}
+
+// GRID
+.match-info-grid {
+  display: grid;
+  grid-template-columns:50% 50%;
+  grid-template-rows:50% 50%;
+  // width: ;
+}
+
+#prediction {
+  grid-column: 1/span 1;
+  grid-row: 1/span 1;
+}
+#model-odds {
+  grid-column: 2/span 1;
+  grid-row: 1/span 1;
+}
+#databall-rating {
+  grid-column: 1/span 1;
+  grid-row: 2/span 1;
+}
+#bookies-odds {
+  grid-column: 2/span 1;
+  grid-row: 2/span 1;
+}

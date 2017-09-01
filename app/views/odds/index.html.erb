@@ -1,6 +1,8 @@
 <div class="ind-container">
-  <div class="content">
-    <%= render "shared/card" %>
+  <div class="cards-container">
+  <% @odds.first(5).each do |odd| %>
+    <%= render "shared/card", odd: odd%>
+  <% end %>
   </div>
 </div>
 <%= render 'shared/bet_modal' %>
