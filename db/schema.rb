@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170901115315) do
+ActiveRecord::Schema.define(version: 20170902134246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 20170901115315) do
     t.float    "away_shot_xg"
     t.float    "home_non_shot_xg"
     t.float    "away_non_shot_xg"
+    t.string   "url"
     t.index ["away_team_id"], name: "index_matches_on_away_team_id", using: :btree
     t.index ["home_team_id"], name: "index_matches_on_home_team_id", using: :btree
     t.index ["league_id"], name: "index_matches_on_league_id", using: :btree

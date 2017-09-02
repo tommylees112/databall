@@ -168,6 +168,17 @@ namespace :odds do
     desc 'Destroys all odds with no bets on them'
     Odd.left_outer_joins(:bets).where(bets: {odd_id: nil}).destroy_all
   end
+
+  task match_test: :environment do
+    desc 'Destroys all odds with no bets on them'
+
+    fixtures_url = 'http://api.football-data.org/v1/competitions/450/fixtures'
+    fixtures_serialized = open(fixtures_url).read
+    fixtures = JSON.parse(fixtures_serialized)
+    fixtures["fixtures"].each do |fixture|
+      p fixture["_links"]["self"]["href"]
+    end
+  end
 end
 
 

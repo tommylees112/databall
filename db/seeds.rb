@@ -87,9 +87,11 @@ premier_fixtures["fixtures"].each do |fixture|
   matchday = fixture["matchday"]
   date = fixture["date"]
   status = fixture["status"]
+  match_url = fixture["_links"]["self"]["href"]
   match = Match.new(goals_home_team: goals_home_team, goals_away_team: goals_away_team, gameweek: matchday, match_date: date, status: status)
   match.home_team = home_team
   match.away_team = away_team
+  match.url = match_url
   match.league = League.where(name: 'Premier League').first
   match.save!
 end
@@ -106,9 +108,11 @@ bundesliga_fixtures["fixtures"].each do |fixture|
   matchday = fixture["matchday"]
   date = fixture["date"]
   status = fixture["status"]
+  match_url = fixture["_links"]["self"]["href"]
   match = Match.new(goals_home_team: goals_home_team, goals_away_team: goals_away_team, gameweek: matchday, match_date: date, status: status)
   match.home_team = home_team
   match.away_team = away_team
+  match.url = match_url
   match.league = League.where(name: 'Bundesliga').first
   match.save!
 end
@@ -125,9 +129,11 @@ ligue1_fixtures["fixtures"].each do |fixture|
   matchday = fixture["matchday"]
   date = fixture["date"]
   status = fixture["status"]
+  match_url = fixture["_links"]["self"]["href"]
   match = Match.new(goals_home_team: goals_home_team, goals_away_team: goals_away_team, gameweek: matchday, match_date: date, status: status)
   match.home_team = home_team
   match.away_team = away_team
+  match.url = match_url
   match.league = League.where(name: 'Ligue 1').first
   match.save!
 end
@@ -144,9 +150,11 @@ laLiga_fixtures["fixtures"].each do |fixture|
   matchday = fixture["matchday"]
   date = fixture["date"]
   status = fixture["status"]
+  match_url = fixture["_links"]["self"]["href"]
   match = Match.new(goals_home_team: goals_home_team, goals_away_team: goals_away_team, gameweek: matchday, match_date: date, status: status)
   match.home_team = home_team
   match.away_team = away_team
+  match.url = match_url
   match.league = League.where(name: 'La Liga').first
   match.save!
 end
@@ -163,9 +171,11 @@ serieA_fixtures["fixtures"].each do |fixture|
   matchday = fixture["matchday"]
   date = fixture["date"]
   status = fixture["status"]
+  match_url = fixture["_links"]["self"]["href"]
   match = Match.new(goals_home_team: goals_home_team, goals_away_team: goals_away_team, gameweek: matchday, match_date: date, status: status)
   match.home_team = home_team
   match.away_team = away_team
+  match.url = match_url
   match.league = League.where(name: 'Serie A').first
   match.save!
 end

@@ -1,3 +1,7 @@
+require 'open-uri'
+require 'json'
+
+
 class Match < ApplicationRecord
   # ASSOCIATIONS
   belongs_to :home_team, class_name: 'Team', foreign_key: 'home_team_id'
@@ -58,5 +62,56 @@ class Match < ApplicationRecord
     model_odds = 1/probability
     return model_odds.round(2)
   end
+
+  def h2h_info
+    h2h_url = self.url
+    h2h_serialized = open(h2h_url).read
+    h2h = JSON.parse(h2h_serialized)
+
+    h2h_array = []
+    h2h["head2head"]["fixtures"].each do |h2h_fixture|
+      home_team = Team.find_by(name: h2h_fixture["homeTeamName"])
+      goals_home_team = h2h_fixture["result"]["goalsHomeTeam"]
+      away_team = Team.find_by(name: h2h_fixture["awayTeamName"])
+      goals_away_team = h2h_fixture["result"]["goalsAwayTeam"]
+      matchday = h2h_fixture["matchday"]
+      date = h2h_fixture["date"]
+      match = Match.new(goals_home_team: goals_home_team, goals_away_team: goals_away_team, gameweek: matchday, match_date: date)
+      match.home_team = home_team
+      match.away_team = away_team
+      match.status = "H2H"
+      match.league = self.league
+      match.save
+      h2h_array << match
+    end
+    return h2h_array
+  end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 end
