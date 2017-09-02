@@ -19,6 +19,7 @@ gem 'uglifier'
 
 gem 'rest-client'
 gem 'nokogiri'
+gem 'cloudinary'
 # gem 'date'
 # gem 'csv'
 
