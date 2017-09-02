@@ -34,4 +34,9 @@ class Odd < ApplicationRecord
     save
   end
 
+  def mapped_rating
+    highest_valid_score = Odd.where(odds_bias_filter: true).order(rating: :DESC).first.rating
+    self.rating = ((self.rating / highest_valid_score) * 100).round(2)
+  end
+
 end
