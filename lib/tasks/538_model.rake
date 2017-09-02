@@ -77,7 +77,7 @@ DICTIONARY = {
     "levante": "Levante UD",
     "málaga": "Málaga CF",
     "celta vigo": "RC Celta de Vigo",
-    "rc deportivo la coruna": "RC Deportivo La Coruna",
+    "deportivo": "RC Deportivo La Coruna",
     "espanyol": "RCD Espanyol",
     "real betis": "Real Betis",
     "real madrid": "Real Madrid CF",
