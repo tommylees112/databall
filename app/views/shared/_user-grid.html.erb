@@ -1,0 +1,12 @@
+<div class="user-grid">
+  <div class="row">
+    <div class="col-xs-6 col-sm-6 col-sm-offset-6">
+      <div class="user-info">
+        <% dashboard_picture = @user.facebook_picture_url%>
+        <%= image_tag dashboard_picture %>
+        <% user_info = @user.email%>
+        <%= user_info %>
+      </div>
+    </div>
+  </div>
+</div>
