@@ -2,5 +2,14 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-preset-es2015": "^6.24.1"
+  },
+  "name": "UNLICENSED",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:tommylees112/databall.git",
+  "author": "Adrian Mustea <mustea.adrian95@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "chart.js": "^2.6.0"
   }
 }
