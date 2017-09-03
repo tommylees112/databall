@@ -30,6 +30,7 @@
         </div>
       </div>
     </div>
+
     <div class="card-middle flex-item">
 
       <% rating = odd.mapped_rating %>
@@ -62,9 +63,11 @@
       <h3><%= odd.outcome.capitalize %></h3>
     </div>
     <!-- TOMMYS CODE ENDS HERE -->
+
     <div class="card-odds flex-item">
       <div class="bookmaker">
-        <%= image_tag "logo.png", class:"avatar-square" %>
+        <%= cl_image_tag("#{odd.bookmaker.logo}.png", :radius=>15, :width=>50, :crop=>"scale")  %>
+
         <span id = "new_match" ><%= odd.odds.to_f %></span>
       </div>
 
@@ -77,5 +80,33 @@
         <span class="model-prediction" id = "insert-text<%= odd.id %>">2</span>
       </form>
     </div>
+
+
+    <div class="card-middle flex-item">
+      <% rating = odd.mapped_rating %>
+      <% if %>
+        <% (rating <= 100) && (rating > 97) %>
+        <% hex = "yellowbright.png" %>
+      <% elsif %>
+        <% (rating <= 97) && (rating > 90) %>
+        <% hex = "yellow1.png" %>
+      <% elsif %>
+        <% (rating <= 90) && (rating > 87) %>
+        <% hex = "fucking-bright-green.png" %>
+      <% elsif %>
+        <% (rating <= 87) && (rating > 80) %>
+      <% hex = "very-light-green.png" %>
+      <% else %>
+        <% hex = "yellowbright.png.png" %>
+      <% end %>
+      <div class="hexagon" style="background-image: url(<%= image_path hex %>)">
+        <%= link_to odd_path(odd) do %>
+          <span class="match-rating"><%= rating %></span>
+        <% end %>
+      </div>
+    </div>
+
+
+
   </div>
 
