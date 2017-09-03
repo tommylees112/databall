@@ -27,7 +27,7 @@
 }
 
 #model-output-container {
-  min-height: 70vh
+  min-height: 64vh
 }
 
 .banner.show {
@@ -39,7 +39,7 @@
 
 .banner-team-div {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   padding-top: 35px;
 }
@@ -48,6 +48,10 @@
   img {
     height: 200px;
   }
+}
+
+.banner-content{
+  min-height: 750px;
 }
 
 // HEX GRID (probabilities)
@@ -70,6 +74,14 @@
   grid-template-columns:50% 50%;
   grid-template-rows:50% 50%;
   // width: ;
+  .grid {
+    max-width: 250px;
+  }
+}
+
+#model-show-head {
+  text-decoration: underline $green;
+  padding-bottom: 15px;
 }
 
 #prediction {
@@ -87,6 +99,9 @@
 #bookies-odds {
   grid-column: 2/span 1;
   grid-row: 2/span 1;
+  p {
+    margin-top: 30px;
+  }
 }
 
 // MODEL INFO CONTAINER
@@ -110,6 +125,10 @@
 
 .hex-grid-container {
   margin-bottom: 100px;
+}
+
+.hex-grid-center {
+  margin-left: 15%;
 }
 
 // TEAM INFO CONTAINER

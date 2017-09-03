@@ -5,11 +5,13 @@
 <% match_model = @match.match_model_outputs.first %>
 
 <% hex = "dark-purple.png" %>
-
+<!-- ________________________________ -->
+<!-- CONTAINER 1 -->
+<!-- ________________________________ -->
 <div class="show banner" id="show-page-banner">
   <div id="show-banner-hex">
     <div class="banner-content">
-      <div class="banner-team-div">
+      <div class="banner-team-div col-xs-10 col-xs-offset-1">
         <div class="team-div">
             <div class="team-image">
               <%= image_tag home_team.logo %>
@@ -33,15 +35,15 @@
         <div class="row">
           <div class="col-xs-6 col-xs-offset-3 odds-show-grid">
             <div class="match-info-grid">
-                <div id="prediction">
+                <div class="grid" id="prediction">
                   <h6>Prediction</h6>
                   <p><%= @odd.outcome %></p>
                 </div>
-                <div id="model-odds">
+                <div class="grid" id="model-odds">
                   <h6>Model Odds</h6>
                   <p><%= @match.model_outcome_odds(@odd) %></p>
                 </div>
-                <div id="databall-rating">
+                <div class="grid" id="databall-rating">
                   <h6>DataBall Rating</h6>
                     <div class="hex_show" id="databall-rating-hex-show">
                         <div class="top">
@@ -52,9 +54,12 @@
                         <div class="bottom"></div>
                   </div>
                 </div>
-                <div id="bookies-odds">
+                <div class="grid" id="bookies-odds">
                   <h6>Best Odds</h6>
-                  <p><%= @odd.bookmaker.name %> - <span><%= @odd.odds %></span></p>
+                    <%= link_to "#" do %>
+                      <p><%= cl_image_tag("#{@odd.bookmaker.logo}.png", :radius=>15, :width=>70, :height=>70, :crop=>"scale")  %>
+                      <span><%= @odd.odds %></span></p>
+                    <% end %>
               </div>
           </div>
         </div>
@@ -63,10 +68,14 @@
     </div>
   </div>
 </div>
+<!-- ________________________________ -->
+<!-- CONTAINER 2 -->
+<!-- ________________________________ -->
 <div class="container2" id="model-output-container" style="background-color: #001D2E; width: 100%;">
     <div class="show model-information">
         <div class="row">
-            <div class="col-xs-6 col-md-offset-4 hex-grid-container">
+            <h2 class="text-center" id="model-show-head">What does the model say?</h2>
+            <div class="col-xs-6 col-xs-offset-3 col-sm-offset-4 hex-grid-container">
               <div class="text-center hex-grid-center">
                   <%= render 'hex-grid2', model: match_model %>
               </div>
@@ -112,6 +121,9 @@
       </div>
     </div>
 </div>
+<!-- ________________________________ -->
+<!-- CONTAINER 3 -->
+<!-- ________________________________ -->
 <div class="container3-show" style="background-color: #001521; width: 100%;">
   <div class="team-form-container">
     <div class="container form-table">
@@ -124,29 +136,55 @@
             </tr>
           </thead>
           <tbody>
+          <% h2h = @match.h2h_info%>
             <tr>
               <td>@home.last_match <i class="fa fa-home" aria-hidden="true"></i></td>
-              <td>@match.last_match</td>
+              <td>
+                  <% if h2h[0] %>
+                    <% h2h = h2h[0] %>
+                    <%= puts "#{h2h.home_team.name} - #{h2h.goals_home_team} vs #{h2h.away_team.name}- #{h2h.goals_away_team}" %>
+                  <% end %>
+              </td>
               <td>@away.last_match</td>
             </tr>
             <tr>
               <td>@home.last_match</td>
-              <td>@match.last_match</td>
+              <td>
+                  <% if h2h[1] %>
+                    <% h2h = h2h[1] %>
+                    <%= puts "#{h2h.home_team.name} - #{h2h.goals_home_team} vs #{h2h.away_team.name}- #{h2h.goals_away_team}" %>
+                  <% end %>
+              </td>
               <td>@away.last_match <i class="fa fa-home" aria-hidden="true"></i></td>
             </tr>
             <tr>
               <td>@home.last_match <i class="fa fa-home" aria-hidden="true"></i></td>
-              <td>@match.last_match</td>
+              <td>
+                  <% if h2h[2] %>
+                    <% h2h = h2h[2] %>
+                    <%= puts "#{h2h.home_team.name} - #{h2h.goals_home_team} vs #{h2h.away_team.name}- #{h2h.goals_away_team}" %>
+                  <% end %>
+              </td>
               <td>@away.last_match</td>
             </tr>
             <tr>
               <td>@home.last_match</td>
-              <td>@match.last_match</td>
+              <td>
+                  <% if h2h[3] %>
+                    <% h2h = h2h[3] %>
+                    <%= puts "#{h2h.home_team.name} - #{h2h.goals_home_team} vs #{h2h.away_team.name}- #{h2h.goals_away_team}" %>
+                  <% end %>
+              </td>
               <td>@away.last_match</td>
             </tr>
             <tr>
               <td>@home.last_match <i class="fa fa-home" aria-hidden="true"></i></td>
-              <td>@match.last_match</td>
+              <td>
+                  <% if h2h[4] %>
+                    <% h2h = h2h[4] %>
+                    <%= puts "#{h2h.home_team.name} - #{h2h.goals_home_team} vs #{h2h.away_team.name}- #{h2h.goals_away_team}" %>
+                  <% end %>
+              </td>
               <td>@away.last_match <i class="fa fa-home" aria-hidden="true"></i></td>
             </tr>
           </tbody>
