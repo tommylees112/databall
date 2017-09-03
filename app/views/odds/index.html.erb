@@ -1,5 +1,11 @@
 <div class="ind-container">
   <div class="cards-container">
+  <!-- CAN WE FIX THIS SO WE DON'T LOSE THE REFERENCE TO HEADERS? -->
+    <div class="cards-header">
+      <h4>DataBall Rating <a href="#">?</a> </h3>
+      <h4>Outcome</h3>
+      <h4>Best Odds</h3>
+    </div>
 
   <% matches = [] %>
   <% @odds.first(1000).each do |odd| %>

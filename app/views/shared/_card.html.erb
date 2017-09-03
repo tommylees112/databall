@@ -34,7 +34,6 @@
 
       <% rating = odd.mapped_rating %>
 
-
     <% if %>
       <% (rating <= 100) && (rating > 97) %>
       <% hex = "yellowbright.png" %>
@@ -58,6 +57,11 @@
       </div>
 
     </div>
+  <!-- TOMMY'S CODE STARTS HERE  -->
+    <div class="outcome">
+      <h3><%= odd.outcome.capitalize %></h3>
+    </div>
+    <!-- TOMMYS CODE ENDS HERE -->
     <div class="card-odds flex-item">
       <div class="bookmaker">
         <%= image_tag "logo.png", class:"avatar-square" %>

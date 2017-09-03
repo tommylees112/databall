@@ -169,20 +169,3 @@ namespace :odds do
     Odd.left_outer_joins(:bets).where(bets: {odd_id: nil}).destroy_all
   end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
