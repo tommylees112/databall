@@ -1,17 +1,20 @@
 // Import Google fonts
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
 @import url("https://fonts.googleapis.com/css?family=Roboto+Mono:300,300i,400,400i,700|Roboto:400,700");
+@import url("https://fonts.googleapis.com/css?family=Share+Tech+Mono");
+@import url("https://fonts.googleapis.com/css?family=Overpass+Mono:300,400,700");
 @import url('https://fonts.googleapis.com/css?family=Varela+Round');
 // Define fonts for body and headers
-$body-font: "Roboto-Mono", "Helvetica", "monospace";
-$headers-font: "Roboto", "Helvetica", "sans-serif";
+$body-font: "Share Tech Mono", "Helvetica", "monospace";
+$headers-font: "Overpass Mono", "Helvetica", "monospace";
 $facebook-font: "Valera-Round";
+
 // To use a font file (.woff) uncomment following lines
 // @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
+//   font-family: "Roboto-Mono";
+//   src: font-url('roboto_mono/');
 //   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
 //        font-url('FontFile.woff') format('woff'),
 //        font-url('FontFile.ttf') format('truetype')
 // }
-// $my-font: "Font Name";
+// $my-font: "Roboto Mono";

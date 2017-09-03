@@ -1,29 +1,33 @@
-// TEAM-BANNER
-// .show-banner {
-//   position: relative;
-//   margin: 0;
-//   background-size: cover !important;
-//   background-position: center;
-//   text-align:center;
-//   color: white;
-//   text-align: center;
-//   height: 90vh;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   flex-direction: column;
+// TEAM-BANNER (header - info)
 
-//    h1 {
-//   font-family: $headers-font;
-//   font-size: 50px;
-//   font-weight: lighter;
-//   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
-//  }
-// }
+#databall-rating {
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+}
+
+#databall-rating-hex-show {
+  p {
+    opacity: 1;
+  }
+}
+.odds-show-grid {
+  margin-bottom: 100px;
+  h2, h3, h4, h6 {
+    opacity: 0.6;
+  }
+  p {
+    opacity: 1;
+  }
+}
 
 // CONTAINERS (page wrappers)
 .container3-show {
   height: auto;
+}
+
+#model-output-container {
+  min-height: 70vh
 }
 
 .banner.show {
@@ -54,21 +58,11 @@
   height: 60vh;
 }
 
-#show-banner-hex {
-}
-
-#show-hex {
-}
 // BUTTON
 // .show-page-hover-button{
 //   padding-top: 42px;
 // }
 
-//HEX CONTAINER
-.hex-container {
-  display: flex;
-  justify-content: space-around
-}
 
 // GRID
 .match-info-grid {
@@ -93,6 +87,29 @@
 #bookies-odds {
   grid-column: 2/span 1;
   grid-row: 2/span 1;
+}
+
+// MODEL INFO CONTAINER
+.team-offensive-score{
+  p.data {
+    color: $green;
+  }
+}
+
+.team-defensive-score{
+  p.data {
+    color: $red;
+  }
+}
+
+//HEX CONTAINER
+.hex-container {
+  display: flex;
+  justify-content: space-around
+}
+
+.hex-grid-container {
+  margin-bottom: 100px;
 }
 
 // TEAM INFO CONTAINER
@@ -127,3 +144,4 @@
     }
   }
 }
+

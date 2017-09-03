@@ -1,7 +1,9 @@
+// https://jtauber.github.io/articles/css-hexagon.html/
 .hex_show {
     float: left;
     margin-left: 3px;
     margin-bottom: -26px;
+    position: relative;
 }
 .hex_show .top {
     width: 0;
@@ -13,6 +15,14 @@
     width: 104px;
     height: 60px;
     background: #6C6;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    p {
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
 }
 .hex_show .bottom {
     width: 0;
@@ -25,4 +35,40 @@
 }
 .hex_show-row.even {
     margin-left: 53px;
+}
+
+.hex-grid-center {
+  margin-left: 10%;
+  margin-top: 30px;
+  padding-top: 20px;
+}
+
+// TRANSITION CSS
+
+.hidden-info {
+  display: none;
+  visibility: none;
+}
+
+.home-win-text{
+  position: absolute;
+  font-size: 20px;
+  bottom: 105px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  margin-left: 5px;
+}
+.away-win-text{
+  position: absolute;
+  font-size: 20px;
+  bottom: 105px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  margin-right: 2px;
+}
+.draw-text{
+  position: absolute;
+  font-size: 20px;
+  top: 95px;
+  left: 25px;
 }

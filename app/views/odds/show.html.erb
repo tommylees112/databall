@@ -2,6 +2,7 @@
 <% away_team = @match.away_team %>
 <% home_team_model = home_team.team_model_outputs.first %>
 <% away_team_model = away_team.team_model_outputs.first %>
+<% match_model = @match.match_model_outputs.first %>
 
 <% hex = "dark-purple.png" %>
 
@@ -30,7 +31,7 @@
         </div>
         </div>
         <div class="row">
-          <div class="col-xs-6 col-xs-offset-3">
+          <div class="col-xs-6 col-xs-offset-3 odds-show-grid">
             <div class="match-info-grid">
                 <div id="prediction">
                   <h6>Prediction</h6>
@@ -42,7 +43,14 @@
                 </div>
                 <div id="databall-rating">
                   <h6>DataBall Rating</h6>
-                    <p><%= @odd.rating.round(2) %></p>
+                    <div class="hex_show" id="databall-rating-hex-show">
+                        <div class="top">
+                        </div>
+                        <div class="middle">
+                            <p><%= @odd.rating.round(2) %></p>
+                        </div>
+                        <div class="bottom"></div>
+                  </div>
                 </div>
                 <div id="bookies-odds">
                   <h6>Best Odds</h6>
@@ -51,22 +59,21 @@
           </div>
         </div>
       </div>
-
       <%= render 'shared/hover_button', odd: @odd %>
     </div>
   </div>
 </div>
-<div class="container2" style="background-color: #001D2E; width: 100%;">
-<!--     <div class="show model-information">
+<div class="container2" id="model-output-container" style="background-color: #001D2E; width: 100%;">
+    <div class="show model-information">
         <div class="row">
-            <div class="col-xs-6 col-xs-offset-4">
-              <div class="container">
-                  <%# render 'hex-grid2' %>
+            <div class="col-xs-6 col-md-offset-4 hex-grid-container">
+              <div class="text-center hex-grid-center">
+                  <%= render 'hex-grid2', model: match_model %>
               </div>
             </div>
-        </div> -->
+        </div>
       <!-- NOTE 2x GRID -->
-      <%= render 'hex-container' %>
+      <%# render 'hex-container' %>
       <div class="team-info-container">
         <div class="row">
           <div class="team-info text-center col-xs-4 col-xs-offset-2">
@@ -78,11 +85,11 @@
               </div>
               <div class="team-offensive-score">
                 <p>Offensive Score</p>
-                <p><%= home_team_model.offensive_score %></p>
+                <p class="data"><%= "%.2f" % home_team_model.offensive_score %></p>
               </div>
-              <div class="model-defensive-score">
+              <div class="team-defensive-score">
                 <p>Defensive Score</p>
-                <p><%= home_team_model.defensive_score %></p>
+                <p class="data"><%= "%.2f" % home_team_model.defensive_score %></p>
               </div>
           </div>
           <div class="team-info text-center col-xs-4">
@@ -94,11 +101,11 @@
               </div>
               <div class="team-offensive-score">
                 <p>Offensive Score</p>
-                 <p><%= away_team_model.offensive_score %></p>
+                 <p class="data"><%= "%.2f" % away_team_model.offensive_score %></p>
               </div>
-              <div class="model-defensive-score">
+              <div class="team-defensive-score">
                 <p>Defensive Score</p>
-                 <p><%= away_team_model.defensive_score %></p>
+                 <p class="data"><%= "%.2f" % away_team_model.defensive_score %></p>
               </div>
           </div>
         </div>
@@ -111,9 +118,9 @@
         <table>
           <thead>
             <tr>
-              <th>Home Form</th>
+              <th><%= home_team.name %> Form</th>
               <th>H2H</th>
-              <th>Away Form</th>
+              <th><%= away_team.name %> Form</th>
             </tr>
           </thead>
           <tbody>
