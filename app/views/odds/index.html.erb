@@ -1,16 +1,45 @@
-<div class="ind-container">
-  <div class="cards-container">
-  <!-- CAN WE FIX THIS SO WE DON'T LOSE THE REFERENCE TO HEADERS? -->
-    <div class="cards-header">
-      <h4>DataBall Rating <a href="#">?</a> </h3>
-      <h4>Outcome</h3>
-      <h4>Best Odds</h3>
+<div class="front-page-container">
+  <div class="tabs-container">
+    <div class="league-tab" id="all-tab">
+      All
     </div>
-
-  <% matches = [] %>
-  <% @odds.first(1000).each_with_index do |odd, index| %>
-      <%= render "shared/card", index: index, odd: odd unless matches.include? odd.match.id %>
-      <% matches << odd.match.id %>
-  <% end %>
+    <div class="league-tab">
+      <%= image_tag "premier.png" %>
+    </div>
+    <div class="league-tab">
+      <%= image_tag "bundes.png" %>
+    </div>
+    <div class="league-tab">
+      <%= image_tag "laliga.png" %>
+    </div>
+    <div class="league-tab">
+      <%= image_tag "seriea.png" %>
+    </div>
+    <div class="league-tab">
+      <%= image_tag "ligue1.png" %>
+    </div>
   </div>
+
+  <div class="ind-container">
+    <div class="front-body">
+      <h2>Recommended bets of the week:</h2>
+      <div class="body-headers">
+        <h4 id="outcome-header">Outcome</h3>
+        <h4 id="odds-header">Best Odds</h3>
+        <h4 id="rating-header">DataBall Rating <a href="#">?</a> </h3>
+      </div>
+      <div class="card-container text-center">
+        <div class="card-container-child">
+          <% matches = [] %>
+          <% @odds.first(1000).each do |odd| %>
+              <%= render "shared/card", odd: odd  unless matches.include? odd.match.id %>
+              <% matches << odd.match.id %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
+
+
