@@ -93,10 +93,10 @@ ActiveRecord::Schema.define(version: 20170902134246) do
     t.integer  "bookmaker_id"
     t.float    "odds"
     t.string   "outcome"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.float    "rating"
-    t.boolean  "odds_bias_filter"
+    t.boolean  "odds_bias_filter", default: false, null: false
     t.index ["bookmaker_id"], name: "index_odds_on_bookmaker_id", using: :btree
     t.index ["match_id"], name: "index_odds_on_match_id", using: :btree
   end
