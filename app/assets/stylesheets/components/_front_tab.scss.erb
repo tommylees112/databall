@@ -1,0 +1,34 @@
+.front-page-container {
+  display: flex;
+}
+
+.tabs-container {
+  height: calc(100vh - 70px);
+  width: 300px;
+    background-color: #021721;
+}
+.league-tab {
+  height: calc(( 100vh - 70px) / 6.5);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  img {
+    height: 100px;
+    filter: brightness(0) invert(1);
+  }
+}
+.legaue-tab:first-child {
+  height: calc(( 100vh - 70px) / 13);
+}
+
+
+.ind-container {
+  flex-grow: 1;
+  height: calc(100vh - 70px);
+}
+#all-tab {
+  color: white;
+  font-family: "Roboto", "Helvetica", "sans-serif";
+  font-size: 40px;
+  font-weight: bold;
+}
