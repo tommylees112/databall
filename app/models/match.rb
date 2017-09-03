@@ -87,28 +87,21 @@ class Match < ApplicationRecord
     return h2h_array
   end
 
+  def prev_info
+    first_team_form = []
+    first_team_home_prev = Match.where(home_team: self.home_team).where(status: "FINISHED")
+    first_team_home_prev.each {|match| first_team_form << match}
+    first_team_away_prev = Match.where(away_team: self.home_team).where(status: "FINISHED")
+    first_team_away_prev.each {|match| first_team_form << match}
 
+    second_team_form = []
+    second_team_home_prev = Match.where(home_team: self.away_team).where(status: "FINISHED")
+    second_team_home_prev.each {|match| second_team_form << match}
+    second_team_away_prev = Match.where(away_team: self.away_team).where(status: "FINISHED")
+    second_team_away_prev.each {|match| second_team_form << match}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return previous_matches = [first_team_form, second_team_form]
+  end
 
 
 
