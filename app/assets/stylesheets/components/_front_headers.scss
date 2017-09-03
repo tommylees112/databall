@@ -1,0 +1,39 @@
+.front-body {
+  padding: 20px;
+  h2 {
+    margin-top: 0px;
+    color: white;
+    font-family: "Roboto", "Helvetica", "sans-serif";
+    font-size: 40px;
+    font-weight: bold;
+  }
+}
+.body-headers {
+  display: flex;
+  justify-content: space-between;
+}
+
+#outcome-header {
+  padding-left: 345px;
+}
+#odds-header {
+  padding-right: 40px;
+}
+#rating-header {
+  padding-right: 100px;
+}
+.card-container {
+  height: 65vh;
+  padding-top: 20px;
+  overflow: hidden;
+  position: relative;
+  .card-container-child {
+    position: absolute;
+    padding-top: 20px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: -17px; /* Increase/Decrease this value for cross-browser compatibility */
+    overflow-y: scroll;
+  }
+}
