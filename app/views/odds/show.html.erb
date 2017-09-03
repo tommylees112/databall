@@ -124,78 +124,22 @@
 <!-- ________________________________ -->
 <!-- CONTAINER 3 -->
 <!-- ________________________________ -->
-<div class="container3-show" style="background-color: #001521; width: 100%;">
+<div class="container3-show " style="background-color: #001521; width: 100%;">
   <div class="team-form-container">
-    <div class="container form-table">
-        <table>
-          <thead>
-            <tr>
-              <th><%= home_team.name %> Form</th>
-              <th>H2H</th>
-              <th><%= away_team.name %> Form</th>
-            </tr>
-          </thead>
-          <tbody>
-          <% h2h = @match.h2h_info%>
-            <tr>
-              <td>@home.last_match <i class="fa fa-home" aria-hidden="true"></i></td>
-              <td>
-                  <% if h2h[0] %>
-                    <% h2h = h2h[0] %>
-                    <%= puts "#{h2h.home_team.name} - #{h2h.goals_home_team} vs #{h2h.away_team.name}- #{h2h.goals_away_team}" %>
-                  <% end %>
-              </td>
-              <td>@away.last_match</td>
-            </tr>
-            <tr>
-              <td>@home.last_match</td>
-              <td>
-                  <% if h2h[1] %>
-                    <% h2h = h2h[1] %>
-                    <%= puts "#{h2h.home_team.name} - #{h2h.goals_home_team} vs #{h2h.away_team.name}- #{h2h.goals_away_team}" %>
-                  <% end %>
-              </td>
-              <td>@away.last_match <i class="fa fa-home" aria-hidden="true"></i></td>
-            </tr>
-            <tr>
-              <td>@home.last_match <i class="fa fa-home" aria-hidden="true"></i></td>
-              <td>
-                  <% if h2h[2] %>
-                    <% h2h = h2h[2] %>
-                    <%= puts "#{h2h.home_team.name} - #{h2h.goals_home_team} vs #{h2h.away_team.name}- #{h2h.goals_away_team}" %>
-                  <% end %>
-              </td>
-              <td>@away.last_match</td>
-            </tr>
-            <tr>
-              <td>@home.last_match</td>
-              <td>
-                  <% if h2h[3] %>
-                    <% h2h = h2h[3] %>
-                    <%= puts "#{h2h.home_team.name} - #{h2h.goals_home_team} vs #{h2h.away_team.name}- #{h2h.goals_away_team}" %>
-                  <% end %>
-              </td>
-              <td>@away.last_match</td>
-            </tr>
-            <tr>
-              <td>@home.last_match <i class="fa fa-home" aria-hidden="true"></i></td>
-              <td>
-                  <% if h2h[4] %>
-                    <% h2h = h2h[4] %>
-                    <%= puts "#{h2h.home_team.name} - #{h2h.goals_home_team} vs #{h2h.away_team.name}- #{h2h.goals_away_team}" %>
-                  <% end %>
-              </td>
-              <td>@away.last_match <i class="fa fa-home" aria-hidden="true"></i></td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="form-table container">
+      <div class="form-column text-center">
+        <%= match. %>
+      </div>
+      <div class="form-column text-center">
+        <%=  %>
+      </div>
+      <div class="form-column text-center">
+        <%=  %>
+      </div>
     </div>
-    <div class="home-form"></div>
-    <div class="h2h-form"></div>
-    <div class="away-form"></div>
   </div>
 </div>
-</div>
+
 
 <%= render 'shared/bet_modal', odd: @odd %>
 
