@@ -1,6 +1,6 @@
   <div class="index-card" data-target="#new_match">
     <div class="rating">
-      <span><%= odd.id %></span>
+      <span><%= index+1 %></span>
     </div>
     <div class="card-teams flex-item">
       <div class="team <%= "winning-team" if true %>">
@@ -12,7 +12,7 @@
         <div class="icons">
           <%= image_tag photo, class:"team-logo" %>
           <div style="margin-left: 20px;">
-          <h5><%= odd.match.home_team.name %></h5>
+          <h5 class="team-name"><%= odd.match.home_team.name %></h5>
           </div>
         </div>
       </div>
@@ -25,7 +25,7 @@
         <div class="icons">
           <%= image_tag photo, class:"team-logo" %>
           <div style="margin-left: 20px;">
-          <h5><%= odd.match.away_team.name %></h5>
+          <h5 class="team-name"><%= odd.match.away_team.name %></h5>
           </div>
         </div>
       </div>
@@ -34,7 +34,7 @@
 
   <!-- TOMMY'S CODE STARTS HERE  -->
     <div class="outcome">
-      <h3><%= odd.outcome.capitalize %></h3>
+      <h3><%= odd.outcome.upcase %></h3>
     </div>
     <!-- TOMMYS CODE ENDS HERE -->
 
@@ -47,7 +47,7 @@
 
       <form class="form-inline">
         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-          <div class="input-group-addon">$</div>
+          <div class="input-group-addon">£</div>
           <input type="text" autocomplete="off" class="form-control form-input-odd" placeholder="1" data-insert="#insert-text<%= odd.id %>">
         </div>
         <label>Profit:</label>
