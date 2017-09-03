@@ -31,8 +31,8 @@
       <div class="card-container text-center">
         <div class="card-container-child">
           <% matches = [] %>
-          <% @odds.first(1000).each do |odd| %>
-              <%= render "shared/card", odd: odd  unless matches.include? odd.match.id %>
+          <% @odds.first(1000).each_with_index do |odd, index| %>
+              <%= render "shared/card", index: index, odd: odd  unless matches.include? odd.match.id %>
               <% matches << odd.match.id %>
           <% end %>
         </div>
