@@ -8,6 +8,10 @@
     font-weight: bold;
   }
 }
+.top-row {
+  display: flex;
+  justify-content: space-between;
+}
 .body-headers {
   display: flex;
   justify-content: space-between;

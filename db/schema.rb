@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170902134246) do
+ActiveRecord::Schema.define(version: 20170903142651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,10 +93,11 @@ ActiveRecord::Schema.define(version: 20170902134246) do
     t.integer  "bookmaker_id"
     t.float    "odds"
     t.string   "outcome"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.float    "rating"
-    t.boolean  "odds_bias_filter", default: false, null: false
+    t.boolean  "odds_bias_filter"
+    t.string   "frac_odd"
     t.index ["bookmaker_id"], name: "index_odds_on_bookmaker_id", using: :btree
     t.index ["match_id"], name: "index_odds_on_match_id", using: :btree
   end
