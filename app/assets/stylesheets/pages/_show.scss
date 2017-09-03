@@ -27,7 +27,7 @@
 }
 
 #model-output-container {
-  min-height: 70vh
+  min-height: 64vh
 }
 
 .banner.show {
@@ -77,6 +77,11 @@
   .grid {
     max-width: 250px;
   }
+}
+
+#model-show-head {
+  text-decoration: underline $green;
+  padding-bottom: 15px;
 }
 
 #prediction {
