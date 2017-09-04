@@ -226,8 +226,8 @@ DICTIONARY = {
       end
 
       final_home_win_probability = probabilities[0]
-      final_away_win_probability = probabilities[1]
-      final_draw_probability = probabilities[2]
+      final_away_win_probability = probabilities[2]
+      final_draw_probability = probabilities[1]
 
     ## SET THE VARIABLES
       match_object.home_adj_goals = home_adj_goals

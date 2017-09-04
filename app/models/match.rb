@@ -109,11 +109,11 @@ class Match < ApplicationRecord
 
 
   def odds_bias?
-    if model_difference > 0.3 && outcome == "Home"
+    if model_difference > 0.3
       return true
-    elsif model_difference < -0.3 && outcome == "Away"
+    elsif model_difference < -0.3
       return true
-    elsif model_difference.abs < 0.15 && outcome == "Draw"
+    elsif model_difference.abs < 0.15
       return true
     else
       return false
@@ -121,15 +121,11 @@ class Match < ApplicationRecord
   end
 
   def predicted_outcome
-    home_prob = self.model_output.home_win_probability
-    away_prob = self.model_output.away_win_probability
-    draw_prob = self.model_output.draw_probability
-    difference = (home_prob - away_prob)
-    if difference > 0.3 && outcome == "Home"
+    if model_difference > 0.3
       return "Home"
-    elsif difference < -0.3 && outcome == "Away"
+    elsif model_difference < -0.3
       return "Away"
-    elsif difference.abs < 0.15 && outcome == "Draw"
+    elsif model_difference.abs < 0.15
       return "Draw"
     else
       return false
@@ -139,11 +135,11 @@ class Match < ApplicationRecord
   private
 
   def model_difference
-     home_prob = self.final_home_win_probability
-     away_prob = self.final_away_win_probability
-     draw_prob = self.final_draw_probability
-     model_difference = (home_prob - away_prob)
-     return model_difference
+    home_prob = self.final_home_win_probability
+    away_prob = self.final_away_win_probability
+    draw_prob = self.final_draw_probability
+    model_difference = (home_prob - away_prob)
+    return model_difference
   end
 
 end
