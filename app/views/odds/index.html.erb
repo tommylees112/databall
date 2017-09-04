@@ -1,28 +1,46 @@
 <div class="front-page-container">
   <div class="tabs-container">
-    <div class="league-tab" id="all-tab">
-      <h3>All</h3>
-    </div>
-    <div class="league-tab">
-      <%= image_tag "premier.png" %>
-    </div>
-    <div class="league-tab">
-      <%= image_tag "bundes.png" %>
-    </div>
-    <div class="league-tab">
-      <%= image_tag "laliga.png" %>
-    </div>
-    <div class="league-tab">
-      <%= image_tag "seriea.png" %>
-    </div>
-    <div class="league-tab">
-      <%= image_tag "ligue1.png" %>
-    </div>
+    <a href="/">
+      <div class="league-tab topfive" id="all-tab">
+        <h3>Top</h3>
+      </div>
+    </a>
+    <a href="http://localhost:3000/?league=Premier%20League">
+      <div class="league-tab" id="PremierLeague">
+        <%= image_tag "premier.png" %>
+      </div>
+    </a>
+    <a href="http://localhost:3000/?league=Bundesliga">
+      <div class="league-tab" id="Bundesliga">
+        <%= image_tag "bundes.png" %>
+      </div>
+    </a>
+    <a href="http://localhost:3000/?league=La%20Liga">
+      <div class="league-tab" id="LaLiga">
+        <%= image_tag "laliga.png" %>
+      </div>
+    </a>
+    <a href="http://localhost:3000/?league=Serie%20A">
+      <div class="league-tab" id="SerieA">
+        <%= image_tag "seriea.png" %>
+      </div>
+    </a>
+    <a href="http://localhost:3000/?league=Ligue%201">
+      <div class="league-tab" id="Ligue1">
+        <%= image_tag "ligue1.png" %>
+      </div>
+    </a>
   </div>
 
   <div class="ind-container">
     <div class="front-body">
-      <h2>Recommended Bets of the Week:</h2>
+      <h2>
+        <% if params[:league].present? %>
+          <%= params[:league] %>
+        <% else %>
+          Top 5 Bets:
+        <% end %>
+      </h2>
       <div class="odds-toggle">
         <h6>Decimal/Fractional:</h6>
         <label class="switch">
@@ -30,18 +48,16 @@
           <span class="slider round"></span>
         </label>
       </div>
-    
+
       <div class="body-headers">
         <h4 id="outcome-header">Outcome</h3>
-        <h4 id="odds-header">Best Odds</h3>
+        <h4 id="odds-header">Best Odd</h3>
         <h4 id="rating-header">DataBall Rating <a href="#">?</a> </h3>
       </div>
       <div class="card-container text-center">
         <div class="card-container-child">
-          <% matches = [] %>
-          <% @odds.first(1000).each_with_index do |odd, index| %>
-              <%= render "shared/card", index: index, odd: odd  unless matches.include? odd.match.id %>
-              <% matches << odd.match.id %>
+          <% @odds.each_with_index do |odd, index| %>
+              <%= render "shared/card", count: index + 1, odd: odd  %>
           <% end %>
         </div>
       </div>

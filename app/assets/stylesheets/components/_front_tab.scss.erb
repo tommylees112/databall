@@ -4,35 +4,47 @@
 
 .tabs-container {
   height: calc(100vh - 70px);
-  width: 250px;
+  width: 180px;
     background-color: #021721;
 
 }
 .league-tab {
-  height: calc(( 100vh - 70px) / 5.5);
+  a {
+    height: calc(( 100vh - 70px) / 5.5);
+  }
   display: flex;
   justify-content: space-around;
   align-items: center;
+  padding-top: 5px;
   img {
-    height: 120px;
-    filter: brightness(0) invert(1);
+    height: 100px;
+    filter: brightness(0) invert(1) opacity(0.7);
+  }
+  &.active {
+      img {
+        filter: brightness(0) invert(1) opacity(1);
+    }
   }
 }
 .league-tab:first-child {
-  height: calc(( 100vh - 70px) / 11);
+  a {
+    height: calc(( 100vh - 70px) / 11);
+  }
 }
-
 
 .ind-container {
   flex-grow: 1;
   height: calc(100vh - 70px);
 }
 #all-tab {
-  color: white;
+  color: rgba(255, 255, 255, 0.7);
   font-family: "Roboto", "Helvetica", "sans-serif";
   font-size: 40px;
   font-weight: bold;
   padding-top: 20px;
+  &.active {
+    color: white;
+  }
 }
 .front-body {
   position: relative;
@@ -46,3 +58,27 @@
     margin-right: 10px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
