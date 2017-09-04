@@ -1,56 +1,80 @@
-<div class="dashboard">
-  <%= render 'shared/user-grid' %>
-   <div class="user-bets-grid">
+<div class="container text-center grid">
+  <div class="bar-chart">
+    <canvas id="birdsChart" width="600" height="400"></canvas>
+    <% content_for(:after_js) do  %>
+      <script>
+        new Chart(document.getElementById("birdsChart"), {
+        type: 'bar',
+        data: {
+          labels: <%= raw @bet_dates %>,
+          datasets: [
+            {
+              label: "Performance",
+              backgroundColor: <%= raw @bet_color %>,
+              data: <%= raw @bet_returns %>
+            }
+          ]
+        },
+        options: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'Predicted world population (millions) in 2050'
+          }
+        }
+    });
+      </script>
+    <% end %>
+  </div>
+
+  <div class="profit">
+    <h4 style="color: #50FFB1;">Max: <%= @bet_returns.max %>$</h4>
+    <h4 style="color: #EA526F;">Lowest: <%= @bet_returns.min %>$</h4>
+    <h4 style="color: #50FFB1;">Total bets: <%= @bet_returns.count %></h4>
+    <h3 style="color: #EA526F;">Current profit: <%= @bet_returns.last %></h3>
+  </div>
+  <div class="chart">
+    <canvas id="myChart" style="background-color: transparent;"></canvas>
+    <% content_for(:after_js) do %>
+      <script>
+      var ctx = document.getElementById("myChart");
+      var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: <%= raw @bet_dates %>,
+          datasets: [{
+              data: <%= raw @bet_returns %>,
+              label: "Your profit",
+              backgroundColor: "rgba(0, 21, 33, 0.7)",
+              borderColor: "rgba(80, 255, 177, 1)",
+              borderWidth: 1,
+              borderCapStyle: 'butt',
+              fill: false
+            }
+          ]
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'Your performance',
+            fontColor: 'rgba(0,0,0,0)',
+            fontStyle: 'light'
+          }
+        }
+      });
+      </script>
+    <% end %>
+  </div>
+
+
+
+  <div class="user-bets-grid">
     <h2>My bets</h2>
     <div class="filter-bar">
     <%= link_to 'All', dashboard_path(b: 'all')%>
     <%= link_to 'Won', dashboard_path(b: 'win') %>
     <%= link_to 'Lost', dashboard_path(b: 'lost')%>
     <%= link_to 'Pending', dashboard_path(b: 'pending')%>
+    </div>
   </div>
 </div>
-
-<% @user_bets.each do |bet| %>
-  <%= bet.match.status %>
-<% end %>
-
-
-<!-- needs fix -->
-
-<canvas id="myChart" style="background-color: transparent;"></canvas>
-
-<% content_for(:after_js) do %>
-
-<script>
-
-// function addData(chart, label, data) {
-//     chart.data.labels.push(<%#= @bet.created_at %>);
-//     chart.data.datasets.forEach((dataset) => {
-//         dataset.data.push(<%#= (@bet.stake * @bet.odd) %>);
-//     });
-//     chart.update();
-// }
-
-
-var ctx = document.getElementById("myChart");
-var myChart = new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: <%= raw @bet_dates %>,
-    datasets: [{
-        data: <%= raw @bet_returns %>,
-        label: "Your profit",
-        borderColor: "#c45850",
-        fill: false
-      }
-    ]
-  },
-  options: {
-    title: {
-      display: true,
-      text: 'Your performance'
-    }
-  }
-});
-</script>
-<% end %>
