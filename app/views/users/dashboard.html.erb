@@ -1,0 +1,52 @@
+<div class="dashboard">
+  <%= render 'shared/user-grid' %>
+   <div class="user-bets-grid">
+    <h2>My bets</h2>
+    <div class="filter-bar">
+    <%= link_to 'All', dashboard_path(b: 'all')%>
+    <%= link_to 'Won', dashboard_path(b: 'win') %>
+    <%= link_to 'Lost', dashboard_path(b: 'lost')%>
+    <%= link_to 'Pending', dashboard_path(b: 'pending')%>
+  </div>
+</div>
+
+
+<!-- needs fix -->
+
+<canvas id="myChart" width="200" height="200" style="background-color: black;"></canvas>
+
+<% content_for(:after_js) do %>
+
+<script>
+
+// function addData(chart, label, data) {
+//     chart.data.labels.push(<%#= @bet.created_at %>);
+//     chart.data.datasets.forEach((dataset) => {
+//         dataset.data.push(<%#= (@bet.stake * @bet.odd) %>);
+//     });
+//     chart.update();
+// }
+
+var data = [20, 10];
+var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
+    datasets: [{
+        data: [6,3,2,2,7,26,82,172,312,433],
+        label: "Your performance",
+        borderColor: "#c45850",
+        fill: false
+      }
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: 'Your performance'
+    }
+  }
+});
+</script>
+<% end %>
