@@ -30,4 +30,27 @@ class User < ApplicationRecord
   def completed_bets
     bets.joins(:match).where('matches.status = ?', 'FINISHED').order(:created_at)
   end
+
+  # TOMMY'S METHODS ###########
+  def wins
+    winning_bets = []
+    self.bets.each do |bet|
+      if bet.won? == "win"
+        winning_bets << bet
+      end
+    end
+  end
+
+  def losses
+    losing_bets = []
+    self.bets.each do |bet|
+      if bet.nil?
+      else
+        if bet.won? == "lose"
+          losing_bets << bet
+        end
+      end
+    end
+  end
+
 end

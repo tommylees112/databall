@@ -1,17 +1,124 @@
-<div class="container text-center grid">
-  <div class="bar-chart">
-    <canvas id="birdsChart" width="600" height="400"></canvas>
-    <% content_for(:after_js) do  %>
+<div class="dashboard-container">
+    <div class="dashboard-navigation">
+        <%= link_to "#" do %>
+            <i class="fa fa-home" aria-hidden="true"></i>
+        <% end %>
+        <%= link_to "#" do %>
+          <i class="fa fa-bars" aria-hidden="true"></i>
+        <% end %>
+        <%= link_to "#" do %>
+          <i class="fa fa-line-chart" aria-hidden="true"></i>
+        <% end %>
+    </div>
+
+    <div class="dashboard-main-grid">
+    <!-- MAIN CHART -->
+      <div class="main-chart">
+      <%= bar_chart @odds.group(:outcome).count %>
+
+<!--         <canvas id="main-chart-id" class="chartjs" width="426" height="213"></canvas>
+        <script>
+            new Chart(document.getElementById("chartjs-0"),
+              { "type":"line",
+                "data":
+                  {"labels":
+                    ["January","February","March","April","May","June","July"],
+                    "datasets":
+                      [{
+                          "label":"My First Dataset",
+                          "data":[65,59,80,81,56,55,40],
+                          "fill":false,
+                          "borderColor":"rgb(75, 192, 192)",
+                          "lineTension":0.1
+                        }
+                      ]
+                    },
+                "options": {}
+              }
+            );
+        </script> -->
+      </div>
+
+    <!-- BAR CHART -->
+      <div class="bar-chart">
+      </div>
+    <!-- EXTRA INFO -->
+      <div class="wins">
+          <h4>Wins</h4>
+          <h5><%= @wins.count %></h5>
+      </div>
+      <div class="losses">
+          <h4>Losses</h4>
+          <h5><%= @losses.count %></h5>
+      </div>
+      <div class="total-profit">
+          <h4>Profit</h4>
+          <h5><%= @bet_returns.last %></h5>
+      </div>
+    </div>
+
+<!--     <div class="dashboard-second-grid">
+      <div class="filter-bar">
+        <%# link_to "All", dashboard_path(b: 'all')%>
+        <%# link_to "Won", dashboard_path(b: 'win') %>
+        <%# link_to "Lost", dashboard_path(b: 'lost')%>
+        <%# link_to "Pending", dashboard_path(b: 'pending')%>
+      </div>
+      <div class="odds-container"></div>
+    </div> -->
+
+<!--     <div class="dashboard-third-grid">
+      <div class="secondary-main-chart"></div>
+      <div class="odds-container-under-chart"></div>
+    </div> -->
+</div>
+
+<!-- COMMENTED OUT -->
+
+<!-- LINECHART -->
+<!-- <canvas id="lineChart" style="background-color: transparent;"></canvas>
+    <% content_for(:after_js) do %>
+        <script>
+            var ctx = document.getElementById("lineChart");
+            var lineChart = new Chart(ctx, {
+              type: 'line',
+              data: {
+                labels: <%# raw @bet_dates %>,
+                datasets: [{
+                    data: <%# raw @bet_returns %>,
+                    label: "Your profit",
+                    backgroundColor: "rgba(0, 21, 33, 0.7)",
+                    borderColor: "rgba(80, 255, 177, 1)",
+                    borderWidth: 1,
+                    borderCapStyle: 'butt',
+                    fill: false
+                  }
+                ]
+              },
+              options: {
+                title: {
+                  display: true,
+                  text: 'Your performance',
+                  fontColor: 'rgba(0,0,0,0)',
+                  fontStyle: 'light'
+                }
+              }
+            });
+        </script>
+    <% end %> -->
+<!-- BARCHART -->
+ <!-- <canvas id="bar-chart"></canvas>
+  <% content_for(:after_js) do  %>
       <script>
-        new Chart(document.getElementById("birdsChart"), {
+        new Chart(document.getElementById("bar-chart"), {
         type: 'bar',
         data: {
-          labels: <%= raw @bet_dates %>,
+          labels: <%# raw @bet_dates %>,
           datasets: [
             {
               label: "Performance",
-              backgroundColor: <%= raw @bet_color %>,
-              data: <%= raw @bet_returns %>
+              backgroundColor: <%# raw @bet_color %>,
+              data: <%# raw @bet_returns %>
             }
           ]
         },
@@ -19,62 +126,10 @@
           legend: { display: false },
           title: {
             display: true,
-            text: 'Predicted world population (millions) in 2050'
+            text: 'Bar Chart'
           }
         }
     });
       </script>
-    <% end %>
-  </div>
-
-  <div class="profit">
-    <h4 style="color: #50FFB1;">Max: <%= @bet_returns.max %>$</h4>
-    <h4 style="color: #EA526F;">Lowest: <%= @bet_returns.min %>$</h4>
-    <h4 style="color: #50FFB1;">Total bets: <%= @bet_returns.count %></h4>
-    <h3 style="color: #EA526F;">Current profit: <%= @bet_returns.last %></h3>
-  </div>
-  <div class="chart">
-    <canvas id="myChart" style="background-color: transparent;"></canvas>
-    <% content_for(:after_js) do %>
-      <script>
-      var ctx = document.getElementById("myChart");
-      var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: <%= raw @bet_dates %>,
-          datasets: [{
-              data: <%= raw @bet_returns %>,
-              label: "Your profit",
-              backgroundColor: "rgba(0, 21, 33, 0.7)",
-              borderColor: "rgba(80, 255, 177, 1)",
-              borderWidth: 1,
-              borderCapStyle: 'butt',
-              fill: false
-            }
-          ]
-        },
-        options: {
-          title: {
-            display: true,
-            text: 'Your performance',
-            fontColor: 'rgba(0,0,0,0)',
-            fontStyle: 'light'
-          }
-        }
-      });
-      </script>
-    <% end %>
-  </div>
-
-
-
-  <div class="user-bets-grid">
-    <h2>My bets</h2>
-    <div class="filter-bar">
-    <%= link_to 'All', dashboard_path(b: 'all')%>
-    <%= link_to 'Won', dashboard_path(b: 'win') %>
-    <%= link_to 'Lost', dashboard_path(b: 'lost')%>
-    <%= link_to 'Pending', dashboard_path(b: 'pending')%>
-    </div>
-  </div>
-</div>
+  <% end %>
+ -->
