@@ -31,6 +31,8 @@ DICTIONARY = {
     "st Étienne": "AS Saint-Étienne",
     "St Étienne": "AS Saint-Étienne",
     "St \U+FFC3tienne": "AS Saint-Étienne",
+    "St tienne": "AS Saint-Etienne",
+    "st \U+FFC3tienne": "AS Saint- tienne",
     "amiens": "Amiens SC",
     "angers": "Angers SCO",
     "dijon fco": "Dijon FCO",
