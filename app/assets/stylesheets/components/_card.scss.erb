@@ -7,12 +7,10 @@
   display: flex;
   position: relative;
   justify-content: space-between;
-    &:hover .hexagon {
-      transform: scale(1.1);
-    }
-
+  &:hover .hexagon {
+    transform: scale(1.1);
+  }
   .flex-item {
-    flex: 1 0 30%;
 
   }
   .rating {
@@ -40,20 +38,28 @@
     }
   }
   .card-teams {
-
     .team {
       color: white;
+      width: 300px;
       .team-logo {
         width: 50px;
       }
     }
   }
 
-h5.team-name {
-  text-align: left;
-}
+  h5.team-name {
+    text-align: left;
+  }
 
   .card-middle {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .card-end {
+    margin-right: 60px;
     display: flex;
     align-items: center;
     .hexagon {
@@ -82,116 +88,80 @@ h5.team-name {
     }
   }
 
-  .card-odds {
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-
-      .btn {
-        z-index: 3;
-    padding: 3px;
-    text-align: center;
-    border-radius: 30px;
-    font-size:19px;
-    background-color: rgba(80, 255, 177, 0.8);
-    color: black;
-    font-weight: lighter;
-    border: 1px solid $green;
-    border-color: transparent;
-    width: 100%;
-    height: 40%;
-    &:hover {
-      background-color: rgba(80, 255, 177, 1);
-      text-decoration: none !important;
-      color: black;
-    }
-    }
-    .input-group-addon {
-      background: transparent;
-      border: none;
-    }
-    .form-control {
-      margin: 5px;
-      width: 75px;
-      background: transparent;
-      border: none;
-      border-bottom: 2px solid white;
-      &:focus {
-        box-shadow: none;
-      }
-    }
+.card-odds {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+.avatar-square {
+  width: 50px;
+}
+.winning-team {
+  padding-bottom: 8px;
+  h5 {
+  border-bottom: 2px solid $green;
+  padding-bottom: 2px;
   }
-
-
-  .avatar-square {
-    width: 50px;
-  }
-
-
-  .winning-team {
-    padding-bottom: 8px;
-    h5 {
-    border-bottom: 2px solid $green;
-    padding-bottom: 2px;
-    }
-  }
-
-
+}
   .icons {
     display: flex;
     align-items: center;
-
-.hexagon {
-  position: relative;
-  img {
-    width: 80px;
-
-  }
-  &:hover {
     .hexagon {
-      transform: scale(1.1);
-      a {
-        text-decoration: none;
-        color:white;
+      position: relative;
+      img {
+        width: 80px;
       }
-      .match-rating {
-        display: none;
-      }
-      .hover-text {
-        display: flex;
-        text-align: center;
-
+      &:hover {
+        .hexagon {
+          transform: scale(1.1);
+          a {
+            text-decoration: none;
+            color:white;
+          }
+          .match-rating {
+            display: none;
+          }
+          .hover-text {
+            display: flex;
+            text-align: center;
+          }
+        }
       }
     }
   }
 }
-}
-}
 
-#new_match {
+.new_match {
   text-decoration: none;
   color: white;
+  display: none;
   &:hover {
-
     color: white;
+  }
+  &.active {
+    display: block;
   }
 }
 
-// TOMMY'S CSS EDITS
 .outcome  {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 0;
+  h3 {
     margin: 0;
-    h3 {
-      margin: 0;
-    }
+  }
 }
 
 .bookmaker {
-  margin-left: -105px;
+  margin-right: 270px;
+  width: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
 }
 

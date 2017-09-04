@@ -1,7 +1,10 @@
   <div class="index-card" data-target="#new_match">
+
+
     <div class="rating">
-      <span><%= index+1 %></span>
+      <span><%= count %></span>
     </div>
+
     <div class="card-teams flex-item">
       <div class="team <%= "winning-team" if true %>">
         <% if odd.match.home_team.logo %>
@@ -31,32 +34,19 @@
       </div>
     </div>
 
-
-  <!-- TOMMY'S CODE STARTS HERE  -->
-    <div class="outcome">
-      <h3><%= odd.outcome.upcase %></h3>
-    </div>
-    <!-- TOMMYS CODE ENDS HERE -->
-
-    <div class="card-odds flex-item">
-      <div class="bookmaker">
-        <%= cl_image_tag("#{odd.bookmaker.logo}.png", :radius=>15, :width=>50, :crop=>"scale")  %>
-
-        <span id = "new_match" ><%= odd.odds.to_f %></span>
+    <div class="card-middle">
+      <div class="outcome">
+        <h3><%= odd.outcome.upcase %></h3>
       </div>
 
-      <form class="form-inline">
-        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-          <div class="input-group-addon">£</div>
-          <input type="text" autocomplete="off" class="form-control form-input-odd" placeholder="1" data-insert="#insert-text<%= odd.id %>">
-        </div>
-        <label>Profit:</label>
-        <span class="model-prediction" id = "insert-text<%= odd.id %>">2</span>
-      </form>
+      <div class="bookmaker">
+        <%= cl_image_tag("#{odd.bookmaker.logo}.png", :radius=>15, :width=>50, :crop=>"scale")  %>
+        <span class="new_match active" id="decimal_odd" ><%= odd.odds %></span>
+        <span class="new_match" id="fractional_odd" ><%= odd.frac_odd %></span>
+      </div>
     </div>
 
-
-    <div class="card-middle flex-item">
+    <div class="card-end">
       <% rating = odd.mapped_rating %>
       <% if %>
         <% (rating <= 100) && (rating > 97) %>
@@ -79,7 +69,5 @@
         <% end %>
       </div>
     </div>
-
-
-  </div>
+</div>
 
