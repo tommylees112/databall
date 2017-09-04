@@ -156,9 +156,10 @@ namespace :odds do
       html_doc.search('.contents tr').each_with_index do |element, index|
         outcome = outcomes[index]
         element.search('.cellOdd').each do |column|
-          odd = convert_odds(column.text.strip)
+          frac_odd = column.text.strip
+          odd = convert_odds(frac_odd)
           rating = rate_bet(outcome, odd, match)
-          Odd.create!(bookmaker: Bookmaker.find_by(name: column.attribute('title').value), match_id: match.id, outcome: outcome, odds: odd, rating: rating) if Bookmaker.find_by(name: column.attribute('title').value)
+          Odd.create!(bookmaker: Bookmaker.find_by(name: column.attribute('title').value), match_id: match.id, outcome: outcome, odds: odd, rating: rating, frac_odd: frac_odd) if Bookmaker.find_by(name: column.attribute('title').value)
         end
       end
     end

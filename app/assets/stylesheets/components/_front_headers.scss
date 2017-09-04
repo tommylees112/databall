@@ -8,9 +8,14 @@
     font-weight: bold;
   }
 }
+.top-row {
+  display: flex;
+  justify-content: space-between;
+}
 .body-headers {
   display: flex;
   justify-content: space-between;
+
 }
 
 #outcome-header {
@@ -23,7 +28,7 @@
   padding-right: 100px;
 }
 .card-container {
-  height: 65vh;
+  height: 70vh;
   padding-top: 20px;
   overflow: hidden;
   position: relative;
