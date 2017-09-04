@@ -4,6 +4,7 @@ class BetsController < ApplicationController
     @bet.odd = Odd.find(params[:odd_id])
     @bet.user = current_user
     @bet.save
+    @bets = Bet.all
     redirect_to odds_path
   end
 
@@ -17,19 +18,9 @@ class BetsController < ApplicationController
     @bet.update(bets_params)
   end
 
-  def index
-    @bets = Bet.all
-  end
-
-  def show
-    @bets = current_user.bets
-    @bet = Bet.find(params[:id])
-  end
-
   private
 
   def bets_params
     params.require(:bet).permit(:stake)
   end
-
 end
