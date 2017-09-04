@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170903142651) do
+ActiveRecord::Schema.define(version: 20170904101832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(version: 20170903142651) do
     t.integer  "gameweek"
     t.integer  "league_id"
     t.string   "status"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.float    "home_adj_goals"
     t.float    "away_adj_goals"
     t.float    "home_shot_xg"
@@ -83,6 +83,10 @@ ActiveRecord::Schema.define(version: 20170903142651) do
     t.float    "home_non_shot_xg"
     t.float    "away_non_shot_xg"
     t.string   "url"
+    t.float    "final_home_win_probability"
+    t.float    "final_away_win_probability"
+    t.float    "final_draw_probability"
+    t.string   "outcome"
     t.index ["away_team_id"], name: "index_matches_on_away_team_id", using: :btree
     t.index ["home_team_id"], name: "index_matches_on_home_team_id", using: :btree
     t.index ["league_id"], name: "index_matches_on_league_id", using: :btree
