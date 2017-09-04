@@ -64,7 +64,7 @@ end
 
 def matches_in_csv_format(array_of_matches)
   array_of_matches.each_with_index do |match, index|
-      puts "#{index+1}\t#{match.gameweek}\t#{match.league.name}\t#{match.home_team.name}\t#{match.goals_home_team}\t#{match.away_team.name}\t#{match.goals_away_team}\t#{match.outcome}\t#{match.predicted_outcome}\t#{match.final_home_win_probability}\t#{match.final_away_win_probability}\t#{match.final_draw_probability}"
+      puts "#{index+1}\t#{match.gameweek}\t#{match.match_date}\t#{match.league.name}\t#{match.home_team.name}\t#{match.goals_home_team}\t#{match.away_team.name}\t#{match.goals_away_team}\t#{match.outcome}\t#{match.predicted_outcome}\t#{match.final_home_win_probability}\t#{match.final_away_win_probability}\t#{match.final_draw_probability}"
   end
 end
 
