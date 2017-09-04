@@ -17,6 +17,15 @@ class BetsController < ApplicationController
     @bet.update(bets_params)
   end
 
+  def index
+    @bets = Bet.all
+  end
+
+  def show
+    @bets = current_user.bets
+    @bet = Bet.find(params[:id])
+  end
+
   private
 
   def bets_params
