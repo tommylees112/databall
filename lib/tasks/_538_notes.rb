@@ -344,7 +344,7 @@ end
     #             div.team-div
     #               span.name(innertext) # = team1
     #               span.score(innertext) # = match_score
-    #           td.prob
+    #           td.prob (probability of event)
     #           td.prob.tie-prob
     #         tr.match-bottom
     #           td.team
@@ -400,3 +400,141 @@ end
     #         # model inputs
     #       end
     #     end
+
+def find_accented_home_team_names(_538_team_name)
+  if _538_team_name.start_with?('legan')
+    home_team_object = Team.find_by_name("CD Leganes")
+  # elsif _538_team_name
+  #   home_team_object = Team.find_by_name("CD Leganes")
+  # elsif _538_team_name
+  #   home_team_object = Team.find_by_name("CD Leganes")
+  end
+  return home_team_object
+end
+
+def find_accented_away_team_names(_538_team_name)
+  if _538_team_name.start_with?('legan')
+    away_team_object = Team.find_by_name("CD Leganes")
+  end
+  return away_team_object
+end
+
+    League.all.each do |league|
+
+      puts "Starting to seed data for the #{league.name} ... "
+
+      league_name = league.name.downcase.strip.gsub(' ', '-')
+      url = "https://projects.fivethirtyeight.com/soccer-predictions/#{league_name}/"
+
+      webpage = open(url).read
+      html_doc = Nokogiri::HTML(webpage)
+
+      # GET TIMESTAMP FOR MODEL UPDATED AT ...
+      time_string = html_doc.css('h3.timestamp').text.strip
+      # => "Updated Aug. 27, 2017 at 12:55 PM"
+      #clean up the string
+      time_string.slice! "Updated "
+      time_string.slice! "at "
+      time_string.slice! "."
+      # => "Aug 27, 2017 12:55 PM"
+      model_updated_date = DateTime.strptime(time_string, '%b %e, %Y %m:%M %p')
+
+      #3 GET COMPLETED MATCH STATS
+          _completed_match_div = html_doc.search('.games-container.completed').children
+          # drop the first element(dirty)
+          _all_completed_matches = _completed_match_div[1..-1]
+
+          _all_completed_matches.each do |match_html|
+
+          ## INIT THE OBJECTS
+              _538_home_team = match_html.attribute('data-team1').value.downcase
+              _538_away_team = match_html.attribute('data-team2').value.downcase
+
+              puts "#{_538_home_team} -v- #{_538_away_team}"
+
+              puts "finding HOME: #{_538_home_team} name ... "
+              if Team.find_by_name(DICTIONARY["#{_538_home_team}".to_sym])
+                puts Team.find_by_name(DICTIONARY["#{_538_home_team}".to_sym]).name
+                puts "object found"
+              else
+                puts "#{_538_home_team} object not found"
+                puts 'Is nil?' + DICTIONARY["#{_538_home_team}".to_sym].nil?
+              end
+
+              puts "finding AWAY:#{_538_away_team} name ... "
+              if Team.find_by_name(DICTIONARY["#{_538_away_team}".to_sym])
+                puts Team.find_by_name(DICTIONARY["#{_538_away_team}".to_sym]).name
+                puts "object found"
+              else
+                puts "#{_538_away_team} object not found"
+                home_team_object = find_shitty_home_team_names(_538_home_team)
+                puts home_team_object
+              end
+
+              home_team_object = Team.find_by_name(DICTIONARY["#{_538_home_team}".to_sym])
+              p home_team_object
+              away_team_object = Team.find_by_name(DICTIONARY["#{_538_away_team}".to_sym])
+              p away_team_object
+
+              if home_team_object.nil?
+                home_team_object = find_shitty_home_team_names(_538_home_team)
+              end
+              if away_team_object.nil?
+                away_team_object = find_shitty_away_team_names(_538_home_team)
+              end
+
+              match_object = Match.find_by home_team: home_team_object, away_team: away_team_object
+
+            ## GET THE VARIABLES
+            # get the table rows with the stats
+
+              stats_rows = match_html.css('tr')[-3..-1].children
+
+              _adj_goals = stats_rows[1..2]
+              home_adj_goals = _adj_goals[0].inner_text.to_f
+              away_adj_goals = _adj_goals[1].inner_text.to_f
+
+              _shot_xg = stats_rows[4..5]
+              home_shot_xg = _shot_xg[0].inner_text.to_f
+              away_shot_xg = _shot_xg[1].inner_text.to_f
+
+              _non_shot_xg = stats_rows[7..8]
+              home_non_shot_xg = _non_shot_xg[0].inner_text.to_f
+              away_non_shot_xg = _non_shot_xg[1].inner_text.to_f
+
+              ##NEW
+              probabilities = []
+              match_html.css('.prob').each do |prob|
+                 proability_str = prob.inner_text
+                 proability_str.slice! "%"
+                 probabilities << proability_str.to_i / 100.0
+              end
+
+              final_home_win_probability = probabilities[0]
+              final_away_win_probability = probabilities[1]
+              final_draw_probability = probabilities[2]
+
+            ## SET THE VARIABLES
+              match_object.home_adj_goals = home_adj_goals
+              match_object.away_adj_goals = away_adj_goals
+              match_object.home_shot_xg = home_shot_xg
+              match_object.away_shot_xg = away_shot_xg
+              match_object.home_non_shot_xg = home_non_shot_xg
+              match_object.away_non_shot_xg = away_non_shot_xg
+
+            ## NEW
+              match_object.final_home_win_probability = final_home_win_probability
+              match_object.final_away_win_probability = final_away_win_probability
+              match_object.final_draw_probability = final_draw_probability
+
+            ## SAVE THE OBJECTS
+              match_object.save
+
+          end
+
+    end
+
+
+
+
+
