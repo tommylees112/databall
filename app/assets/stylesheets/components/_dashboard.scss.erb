@@ -1,18 +1,12 @@
-.user-grid {
-  .user-info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    color: black;
-
-    img {
-      width: 50px;
-      border-radius: 50%;
-    }
-  }
+.grid {
+  background-image: linear-gradient(rgba(0, 21, 33, 0.79)), url('<%= asset_path("fifawallpaper.png") %>');
+  display: grid;
+  grid-template-columns: 300px repeat(3,1fr) ;
+  grid-template-rows: 50% 50%;
+  height: calc(100vh - 70px);
+  padding: 20px;
 }
 
-.dashboard {
+.bar-chart {
 
 }
