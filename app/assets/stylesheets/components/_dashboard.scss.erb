@@ -1,0 +1,54 @@
+
+.dashboard-container {
+  background-image: linear-gradient(rgba(0, 21, 33, 0.79)), url('<%= asset_path("fifawallpaper.png") %>');
+  height: calc(100vh - 70px);
+  display: flex;
+  // grid-template-columns: 50px 1fr;
+  // grid-template-rows: 1fr;
+}
+.dashboard-navigation {
+  flex: 0 0 50px;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: #0094C6;
+  font-size: 30px;
+  padding-left: 7px;
+  a:hover i {
+    transform: scale(1.1);
+    color: #0094C6;
+    transition-duration: 0.3s;
+  }
+  height: 100%;
+}
+
+.tab-content {
+  flex: 1 0 auto;
+}
+
+// FLEX STYLE
+// .secondary-content{
+//   display: flex;
+// }
+// .bar-chart {
+//   flex: 1 0 60%;
+// }
+// .wins-losses{
+//   flex: 1 0 20%;
+// }
+// .wins{
+// }
+// .losses {
+// }
+// .total-profit{
+//   flex: 1 0 20%;
+// }
+// #bar-chart{
+//   height: 100px;
+//   width: 100px;
+// }
+// #main-chart-id{
+//   display: block;
+//   width: 426px;
+//   height: 213px;
+// }

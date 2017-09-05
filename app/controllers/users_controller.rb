@@ -15,7 +15,6 @@ class UsersController < ApplicationController
 
     @bet_dates = current_user.completed_bets.pluck(:created_at).map{ |d| d.strftime('%d %b %Y') }
 
-
     @bet_color = []
     @user.bets.each do |b|
       if b.won? == "win"
@@ -25,16 +24,28 @@ class UsersController < ApplicationController
       end
     end
 
-    @bet_returns = current_user.completed_bets.map do |b|
-      case b.won?
+    @bet_returns = current_user.completed_bets.map do |bet|
+      case bet.won?
       when 'win'
-        b.stake * b.odd.odds
+        bet.stake * bet.odd.odds
       when 'pending'
         0
       when 'lose'
-        - b.stake
+        - bet.stake
       end
     end
-  end
 
+    @profits = @bet_dates.zip @bet_returns
+
+    # TOMMY'S CODE
+    @bets = @user.bets
+    # @odds = Odd.first(50).map {|odd| odd.odds}
+    # @graph_data = [[1,10],[2,30],[3,33],[4,40],[5,60],[6,61],[7,62],[8,63],[8,64],[9,67],]
+    @wins = @user.wins
+    @losses =@user.losses
+    @profit = @bet_returns
+
+    # END OF DASHBOARD
+  end
+  #########
 end

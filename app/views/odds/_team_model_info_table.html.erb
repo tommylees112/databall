@@ -1,0 +1,36 @@
+<% home_team_model = home_team.team_model_outputs.first %>
+<% away_team_model = away_team.team_model_outputs.first %>
+        <div class="row">
+          <div class="team-info text-center col-xs-4 col-xs-offset-2">
+              <div class="home-team">
+                <h4><%= home_team.name %></h4>
+              </div>
+              <div class="team-offensive-score">
+                <p></p>
+              </div>
+              <div class="team-offensive-score">
+                <p>Offensive Score</p>
+                <p class="data"><%= "%.2f" % home_team_model.offensive_score %></p>
+              </div>
+              <div class="team-defensive-score">
+                <p>Defensive Score</p>
+                <p class="data"><%= "%.2f" % home_team_model.defensive_score %></p>
+              </div>
+          </div>
+          <div class="team-info text-center col-xs-4">
+              <div class="away-team">
+                <h4><%= away_team.name %></h4>
+              </div>
+              <div class="team-offensive-score">
+                <p></p>
+              </div>
+              <div class="team-offensive-score">
+                <p>Offensive Score</p>
+                 <p class="data"><%= "%.2f" % away_team_model.offensive_score %></p>
+              </div>
+              <div class="team-defensive-score">
+                <p>Defensive Score</p>
+                 <p class="data"><%= "%.2f" % away_team_model.defensive_score %></p>
+              </div>
+          </div>
+        </div>

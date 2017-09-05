@@ -1,0 +1,56 @@
+<!-- LINE CHART -->
+<!--   <canvas id="lineChart" style="background-color: transparent;"></canvas>
+    <script>
+        var ctx = document.getElementById("lineChart");
+        var lineChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: <%# raw @bet_dates %>,
+            datasets: [{
+                data: <%# raw @bet_returns %>,
+                label: "Your profit",
+                backgroundColor: "rgba(0, 21, 33, 0.7)",
+                borderColor: "rgba(80, 255, 177, 1)",
+                borderWidth: 1,
+                borderCapStyle: 'butt',
+                fill: false
+              }
+            ]
+          },
+          options: {
+            title: {
+              display: true,
+              text: 'Your performance',
+              fontColor: 'rgba(0,0,0,0)',
+              fontStyle: 'light'
+            }
+          }
+        });
+    </script> -->
+
+<!-- BARCHART -->
+ <!-- <canvas id="bar-chart"></canvas>
+
+      <script>
+        new Chart(document.getElementById("bar-chart"), {
+        type: 'bar',
+        data: {
+          labels: <%# raw @bet_dates %>,
+          datasets: [
+            {
+              label: "Performance",
+              backgroundColor: <%# raw @bet_color %>,
+              data: <%# raw @bet_returns %>
+            }
+          ]
+        },
+        options: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'Bar Chart'
+          }
+        }
+    });
+      </script>
+ -->

@@ -1,0 +1,51 @@
+<% previous_matches = match.prev_info %>
+<% h2h_matches = match.h2h_info %>
+
+<div class="form-column text-center">
+  <table>
+    <thead>
+      <th><%= home_team.name %> Form</th>
+    </thead>
+    <tbody>
+      <% previous_matches[0].each do |match| %>
+        <tr>
+          <td>
+            <%= "#{match.match_date.strftime('%e/%m/%y')} #{match.home_team.name} #{match.goals_home_team} - #{match.goals_away_team} #{match.away_team.name} " %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="form-column text-center">
+  <table>
+    <thead>
+      <th><%= "Head to Head" %></th>
+    </thead>
+    <tbody>
+      <% h2h_matches.first(5).each do |match| %>
+        <tr>
+          <td>
+            <%= "#{match.match_date.strftime('%e/%m/%y')} #{match.home_team.name} #{match.goals_home_team} - #{match.goals_away_team} #{match.away_team.name} " %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="form-column text-center">
+  <table>
+    <thead>
+      <th><%= away_team.name %> Form</th>
+    </thead>
+    <tbody>
+      <% previous_matches[1].each do |match| %>
+        <tr>
+          <td>
+            <%= "#{match.match_date.strftime('%e/%m/%y')} #{match.home_team.name} #{match.goals_home_team} - #{match.goals_away_team} #{match.away_team.name} " %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
