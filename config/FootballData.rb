@@ -1,6 +1,6 @@
 FootballData.configure do |config|
     # get api key at 'http://api.football-data.org/register'
-    config.api_key = 'eb0643c7781c41aea30373aa79059908'
+    config.api_key = ENV['FOOTBALL_KEY']
 
     # default api version is 'alpha' if not setted
     config.api_version = 'alpha'
