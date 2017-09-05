@@ -140,16 +140,45 @@
 }
 .team-form-container {
   .form-table {
+    width: 1400px;
     padding-top: 30px;
+    padding-bottom: 30px;
     display: flex;
     justify-content: space-between;
   }
 }
 
 .form-column {
-  width: 450px;
+  width: 580px;
   font-size: 15px;
   display: flex;
   justify-content: space-around;
+    th {
+      text-align: center;
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+    td {
+      text-align: left;
+    }
+}
 
+.fa-check-circle-o {
+  color: $green;
+}
+.fa-times-circle-o {
+  color: $red;
+}
+.draw-underline {
+  border-bottom: 2px solid #B3B9BC;
+}
+.lose-underline {
+  border-bottom: 2px solid $red;
+}
+.win-underline {
+  border-bottom: 2px solid $green;
+}
+
+.header-underline {
+  border-bottom: 1px solid #B3B9BC;
 }

@@ -1,0 +1,19 @@
+<div class="dashboard_grid3">
+  <div class="main-chart2">
+    <h3>main chart</h3>
+    <%= line_chart User.group_by_day(:created_at).count %>
+  </div>
+  <div class="filter-bar2">
+      <%= link_to "All", dashboard_path(b: 'all')%>
+      <%= link_to "Won", dashboard_path(b: 'win') %>
+      <%= link_to "Lost", dashboard_path(b: 'lost')%>
+      <%= link_to "Pending", dashboard_path(b: 'pending')%>
+  </div>
+  <div class="odds-container">
+      <h3>Bets you have made:</h3>
+      <% @bets.each do |bet| %>
+        <%= render "shared/dashboard_card", bet: bet %>
+      <% end %>
+  </div>
+
+</div>

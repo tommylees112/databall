@@ -1,0 +1,26 @@
+<div class="dashboard_grid1">
+    <!-- MAIN CHART -->
+
+    <div class="main-chart">
+      <h3>main chart</h3>
+      <%# area_chart Match.group_by_hour(:created_at).maximum(:created_at), colors: ["pink", "#999"] %>
+    </div>
+    <!-- BAR CHART -->
+    <div class="bar-chart">
+      <h3>bar chart</h3>
+      <%= column_chart @profits %>
+    </div>
+    <!-- EXTRA INFO -->
+    <div class="wins">
+        <h4>Wins</h4>
+        <h5><%= @wins.count %></h5>
+    </div>
+    <div class="losses">
+        <h4>Losses</h4>
+        <h5><%= @losses.count %></h5>
+    </div>
+    <div class="total-profit">
+        <h4>Profit</h4>
+        <h5><%= @bet_returns.last %></h5>
+    </div>
+</div>

@@ -3,7 +3,7 @@ class OddsController < ApplicationController
   def index
     if params[:league].present?
       query = <<-SQL
-        SELECT *
+        SELECT o1.*
         FROM odds o1
         JOIN matches ON o1.match_id = matches.id
         JOIN leagues ON matches.league_id = leagues.id
@@ -22,7 +22,7 @@ class OddsController < ApplicationController
     else
       # Recommended:
       @odds = Odd.find_by_sql <<-SQL
-        SELECT *
+        SELECT o1.*
         FROM odds o1
         WHERE o1.id IN (
           SELECT id
@@ -36,8 +36,6 @@ class OddsController < ApplicationController
         LIMIT 5
       SQL
     end
-
-    @bet = Bet.new
   end
 
   def show

@@ -49,7 +49,7 @@
                         <div class="top">
                         </div>
                         <div class="middle">
-                            <p><%= @odd.rating.round(2) %></p>
+                            <p><%= @odd.mapped_rating %></p>
                         </div>
                         <div class="bottom"></div>
                   </div>
@@ -75,49 +75,10 @@
     <div class="show model-information">
         <div class="row">
             <h2 class="text-center" id="model-show-head">What does the model say?</h2>
-            <div class="col-xs-6 col-xs-offset-3 col-sm-offset-4 hex-grid-container">
-              <div class="text-center hex-grid-center">
-                  <%= render 'hex-grid2', model: match_model %>
-              </div>
-            </div>
+            <%= render 'hex-grid2', model: match_model %>
         </div>
-      <!-- NOTE 2x GRID -->
-      <%# render 'hex-container' %>
       <div class="team-info-container">
-        <div class="row">
-          <div class="team-info text-center col-xs-4 col-xs-offset-2">
-              <div class="home-team">
-                <h4><%= home_team.name %></h4>
-              </div>
-              <div class="team-offensive-score">
-                <p></p>
-              </div>
-              <div class="team-offensive-score">
-                <p>Offensive Score</p>
-                <p class="data"><%= "%.2f" % home_team_model.offensive_score %></p>
-              </div>
-              <div class="team-defensive-score">
-                <p>Defensive Score</p>
-                <p class="data"><%= "%.2f" % home_team_model.defensive_score %></p>
-              </div>
-          </div>
-          <div class="team-info text-center col-xs-4">
-              <div class="away-team">
-                <h4><%= away_team.name %></h4>
-              </div>
-              <div class="team-offensive-score">
-                <p></p>
-              </div>
-              <div class="team-offensive-score">
-                <p>Offensive Score</p>
-                 <p class="data"><%= "%.2f" % away_team_model.offensive_score %></p>
-              </div>
-              <div class="team-defensive-score">
-                <p>Defensive Score</p>
-                 <p class="data"><%= "%.2f" % away_team_model.defensive_score %></p>
-              </div>
-          </div>
-        </div>
+        <%= render "team_model_info_table", home_team: home_team, away_team: away_team %>
       </div>
     </div>
 </div>
@@ -129,16 +90,30 @@
 <div class="container3-show " style="background-color: #001521; width: 100%;">
   <div class="team-form-container">
     <div class="form-table container">
+    <%# render "form_table", home_team: home_team, away_team: away_team, match: @match %>
       <div class="form-column text-center">
         <table>
           <thead>
-            <th><%= home_team.name %> Form</th>
+              <th>
+                <span class="header-underline">
+              <%= home_team.name %> Form
+                </span>
+              </th>
           </thead>
           <tbody>
-            <% previous_matches[0].each do |match| %>
+            <% previous_matches[0].reverse.each do |match| %>
               <tr>
                 <td>
-                  <%= "#{match.match_date.strftime('%e/%m/%y')} #{match.home_team.name} #{match.goals_home_team} - #{match.goals_away_team} #{match.away_team.name} " %>
+                  <% if match.outcome == "Draw" %>
+                    <i class="fa fa-circle-o"></i>
+                  <% elsif match.outcome == "Home" && match.home_team.name == @match.home_team.name %>
+                    <i class="fa fa-check-circle-o"></i>
+                  <% elsif match.outcome == "Away" && match.away_team.name == @match.home_team.name %>
+                    <i class="fa fa-check-circle-o"></i>
+                  <% else %>
+                    <i class="fa fa-times-circle-o"></i>
+                  <% end %>
+                   <%= "#{match.match_date.strftime('%e/%m/%y')} #{match.home_team.name} #{match.goals_home_team} - #{match.goals_away_team} #{match.away_team.name}" %>
                 </td>
               </tr>
             <% end %>
@@ -148,13 +123,32 @@
       <div class="form-column text-center">
         <table>
           <thead>
-            <th><%= "Head to Head" %></th>
+            <th>
+              <span class="header-underline">
+                <%= "Head to Head" %>
+              </span>
+            </th>
           </thead>
           <tbody>
             <% h2h_matches.first(5).each do |match| %>
               <tr>
                 <td>
-                  <%= "#{match.match_date.strftime('%e/%m/%y')} #{match.home_team.name} #{match.goals_home_team} - #{match.goals_away_team} #{match.away_team.name} " %>
+                  <span><%= match.match_date.strftime('%e/%m/%y') %></span>
+                  <% if match.outcome == "Home" %>
+                    <span class="win-underline"><%= match.home_team.name %></span>
+                  <% elsif match.outcome == "Away" %>
+                    <span class="lose-underline"><%= match.home_team.name %></span>
+                  <% else %>
+                    <span class="draw-underline"><%= match.home_team.name %></span>
+                  <% end %>
+                  <span><%="#{match.goals_home_team} - #{match.goals_away_team}" %></span>
+                    <% if match.outcome == "Home" %>
+                    <span class="lose-underline"><%= match.away_team.name %></span>
+                  <% elsif match.outcome == "Away" %>
+                    <span class="win-underline"><%= match.away_team.name %></span>
+                  <% else %>
+                    <span class="draw-underline"><%= match.away_team.name %></span>
+                  <% end %>
                 </td>
               </tr>
             <% end %>
@@ -164,12 +158,25 @@
       <div class="form-column text-center">
         <table>
           <thead>
-            <th><%= away_team.name %> Form</th>
+            <th>
+              <span class="header-underline">
+                <%= away_team.name %> Form
+              </span>
+            </th>
           </thead>
           <tbody>
-            <% previous_matches[1].each do |match| %>
+            <% previous_matches[1].reverse.each do |match| %>
               <tr>
                 <td>
+                  <% if match.outcome == "Draw" %>
+                    <i class="fa fa-circle-o"></i>
+                  <% elsif match.outcome == "Home" && match.home_team.name == @match.away_team.name %>
+                    <i class="fa fa-check-circle-o"></i>
+                  <% elsif match.outcome == "Away" && match.away_team.name == @match.away_team.name %>
+                    <i class="fa fa-check-circle-o"></i>
+                  <% else %>
+                    <i class="fa fa-times-circle-o"></i>
+                  <% end %>
                   <%= "#{match.match_date.strftime('%e/%m/%y')} #{match.home_team.name} #{match.goals_home_team} - #{match.goals_away_team} #{match.away_team.name} " %>
                 </td>
               </tr>
@@ -181,6 +188,4 @@
   </div>
 </div>
 
-
 <%= render 'shared/bet_modal', odd: @odd %>
-
