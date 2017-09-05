@@ -100,7 +100,7 @@ class Match < ApplicationRecord
     second_team_away_prev = Match.where(away_team: self.away_team).where(status: "FINISHED")
     second_team_away_prev.each {|match| second_team_form << match}
 
-    return previous_matches = [first_team_form, second_team_form]
+    return previous_matches = [first_team_form.sort_by {|match| match.gameweek}, second_team_form.sort_by {|match| match.gameweek}]
   end
 
 
