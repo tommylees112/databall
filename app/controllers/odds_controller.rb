@@ -41,6 +41,7 @@ class OddsController < ApplicationController
   end
 
   def show
+    redirect_to new_charge_path if current_user.access == false
     @odd = Odd.find(params[:id])
     @bet = Bet.new
     @match = @odd.match #Match.where(status: "TIMED").first

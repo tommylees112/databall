@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def dashboard
+    redirect_to new_charge_path if current_user.access == false
     @user = current_user
 
     case params[:b]
