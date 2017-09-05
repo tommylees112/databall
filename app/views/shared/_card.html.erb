@@ -1,6 +1,5 @@
+<%= link_to odd_path(odd.id) do %>
   <div class="index-card" data-target="#new_match">
-
-
     <div class="rating">
       <span><%= count %></span>
     </div>
@@ -64,10 +63,9 @@
         <% hex = "yellowbright.png.png" %>
       <% end %>
       <div class="hexagon" style="background-image: url(<%= image_path hex %>)">
-        <%= link_to odd_path(odd) do %>
           <span class="match-rating"><%= rating %></span>
-        <% end %>
       </div>
     </div>
 </div>
 
+<% end %>

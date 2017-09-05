@@ -16,6 +16,10 @@
   color: white;
   position: relative;
   margin-left: 90px;
+  display: flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction: column;
 
   .fa {
     position: absolute;
@@ -30,14 +34,27 @@
   margin-top: 15%;
 }
 
+.card2 {
+  .card-category{
+    width: 120px;
+    img{
+  position: absolute;
+  bottom: 65%;
+  left: 5px;
 
+    }
+  }
+}
 
 .card-category {
   position: absolute;
-  bottom: 70%;
+  bottom: 60%;
   left: 15px;
   font-size: 18px;
   text-transform: uppercase;
+  img {
+    width: 120px;
+  }
 }
 .card-description {
   position: absolute;
@@ -45,7 +62,7 @@
   left: 15px;
   text-align: center;
   img {
-    width: 65%;
+    width: 75%;
 
   }
 }
@@ -60,9 +77,6 @@
 
 
 .container2 {
-  .card-category {
-    top:150px;
-  }
 
   .card-description {
     bottom: 25px;
@@ -87,12 +101,42 @@
   }
 
 }
-.fuckingtest {
-  img {
 
-  margin-left: 50% !important;
-  width: 512px !important;
-  height: auto !important;
+
+
+.card-des {
+  img{
+    width:300px;
   }
 }
+.span-green {
+  color: $green;
+}
 
+.span-blue {
+  color: #1795C4;
+}
+
+.span-pink {
+  color: #E85471;
+}
+
+.pink-hex {
+  border-left: 1px solid #E85471 !important;
+  white-space: normal;
+  word-wrap:break-word;
+}
+.card-desc1 {
+  border-left: 1px solid $green;
+  padding: 5px;
+  margin-bottom: 40px;
+  white-space: nowrap;
+  text-align: left;
+}
+
+
+.card-desc2 {
+  border-left: 1px solid $green;
+  padding: 5px;
+  text-align: left;
+}
