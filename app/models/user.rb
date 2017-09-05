@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :odds
-  has_many :bets
+  has_many :bets, dependent: :destroy;
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
