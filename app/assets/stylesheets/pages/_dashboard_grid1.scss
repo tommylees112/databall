@@ -1,0 +1,30 @@
+// #main-grid {
+//   display: grid;
+//   grid-template-columns: 55% 1fr 1fr;
+//   grid-template-rows: 55% 1fr 1fr;
+// }
+.dashboard_grid1{
+  display: grid;
+  grid-template-columns: 55% 1fr 1fr;
+  grid-template-rows: 55% 1fr 1fr;
+}
+.main-chart {
+  grid-column: 1 / span 3;
+  grid-row: 1 / span 1;
+}
+.bar-chart {
+  grid-column: 1 / span 1;
+  grid-row: 2 / span 2;
+}
+.wins {
+  grid-column:2 / span 1;
+  grid-row:2 / span 1;
+}
+.losses {
+  grid-column:2 / span 1;
+  grid-row:3 / span 1;
+}
+.total-profit {
+  grid-column:3 / span 1;
+  grid-row:2 / span 2;
+}

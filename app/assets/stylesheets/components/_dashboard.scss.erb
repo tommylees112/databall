@@ -1,14 +1,12 @@
 .dashboard-container {
   background-image: linear-gradient(rgba(0, 21, 33, 0.79)), url('<%= asset_path("fifawallpaper.png") %>');
   height: calc(100vh - 70px);
-  display: grid;
-  grid-template-columns: 50px 1fr;
-  grid-template-rows: 1fr;
+  display: flex;
+  // grid-template-columns: 50px 1fr;
+  // grid-template-rows: 1fr;
 }
-
 .dashboard-navigation {
-  grid-column: 1/span1;
-  grid-row: 1/span1;
+  flex: 0 0 50px;
   display: flex;
   flex-direction: column;
   text-decoration: none;
@@ -23,66 +21,41 @@
   height: 100%;
 }
 
-.dashboard-main-grid {
-  grid-column: 2/span1;
-  grid-row: 1/span1;
-}
-.dashboard-second-grid {
-  grid-column: 2/span1;
-  grid-row: 1/span1;
-}
-.dashboard-third-grid {
-  grid-column: 2/span1;
-  grid-row: 1/span1;
+.tab-content {
+  flex: 1 0 auto;
 }
 
-// VIEW 1
-.dashboard-main-grid {
-  display: grid;
-  grid-template-columns: 55% 1fr 1fr;
-  grid-template-rows: 55% 1fr 1fr;
-}
-.main-chart {
-  grid-column: 1/span3;
-  grid-row: 1/span1;
-}
-.bar-chart {
-  grid-column: 1/span1;
-  grid-row: 2/span2;
-}
-.wins{
-  grid-column: 2/span1;
-  grid-row: 2/span1;
-}
-.losses {
-  grid-column: 2/span1;
-  grid-row: 3/span1;
-}
-.total-profit{
-  grid-column: 3/span1;
-  grid-row: 2/span2;
-}
+// FLEX STYLE
+// .secondary-content{
+//   display: flex;
+// }
+// .bar-chart {
+//   flex: 1 0 60%;
+// }
+// .wins-losses{
+//   flex: 1 0 20%;
+// }
+// .wins{
+// }
+// .losses {
+// }
+// .total-profit{
+//   flex: 1 0 20%;
+// }
+// #bar-chart{
+//   height: 100px;
+//   width: 100px;
+// }
+// #main-chart-id{
+//   display: block;
+//   width: 426px;
+//   height: 213px;
+// }
 
-#bar-chart{
-  height: 100px;
-  width: 100px;
-}
-
-#main-chart-id{
-  display: block;
-  width: 426px;
-  height: 213px;
-}
-
-// VIEW 2
-.dashboard-second-grid {
-  .odds-container{
-
-  }
-}
 
 // VIEW 3
 .dashboard-third-grid {
+  display: grid;
   .secondary-main-chart{
   }
   .odds-container-under-chart{

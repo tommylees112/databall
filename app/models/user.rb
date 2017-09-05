@@ -35,7 +35,8 @@ class User < ApplicationRecord
   def wins
     winning_bets = []
     self.bets.each do |bet|
-      if bet.won? == "win"
+      bet.won?
+      if bet.won # == "won"
         winning_bets << bet
       end
     end
@@ -44,11 +45,9 @@ class User < ApplicationRecord
   def losses
     losing_bets = []
     self.bets.each do |bet|
-      if bet.nil?
-      else
-        if bet.won? == "lose"
-          losing_bets << bet
-        end
+      bet.won?
+      if bet.won === false
+        losing_bets << bet
       end
     end
   end

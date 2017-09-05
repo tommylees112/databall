@@ -1,141 +1,24 @@
+<%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+<%= javascript_include_tag "dashboard" %>
+
 <div class="dashboard-container">
-    <div class="dashboard-navigation">
-        <%= link_to "#" do %>
-            <i class="fa fa-home" aria-hidden="true"></i>
-        <% end %>
-        <%= link_to "#" do %>
-          <i class="fa fa-bars" aria-hidden="true"></i>
-        <% end %>
-        <%= link_to "#" do %>
-          <i class="fa fa-line-chart" aria-hidden="true"></i>
-        <% end %>
-    </div>
-
-    <div class="dashboard-main-grid">
-    <!-- MAIN CHART -->
-      <div class="main-chart">
-        <%= bar_chart @graph_data %>
+      <%= render "shared/dashboard-navigation" %>
+      <div class="tab-content">
+      <!-- GRID 1 -->
+        <div role="tabpanel" class="tab-pane active" id="main-grid">
+            <%= render "dashboard_grid1" %>
+        </div>
+      <!-- GRID 2 -->
+        <div role="tabpanel" class="tab-pane" id="second-grid">
+            <%= render "dashboard_grid2" %>
+        </div>
+      <!-- GRID 3 -->
+        <div role="tabpanel" class="tab-pane" id="third-grid">
+            <%= render "dashboard_grid3" %>
+        </div>
       </div>
-
-    <!-- BAR CHART -->
-      <div class="bar-chart">
-      </div>
-    <!-- EXTRA INFO -->
-      <div class="wins">
-          <h4>Wins</h4>
-          <h5><%= @wins.count %></h5>
-      </div>
-      <div class="losses">
-          <h4>Losses</h4>
-          <h5><%= @losses.count %></h5>
-      </div>
-      <div class="total-profit">
-          <h4>Profit</h4>
-          <h5><%= @bet_returns.last %></h5>
-      </div>
-    </div>
-
-<!-- VIEW 2 -->
-    <div class="dashboard-second-grid">
-      <div class="filter-bar">
-        <%# link_to "All", dashboard_path(b: 'all')%>
-        <%# link_to "Won", dashboard_path(b: 'win') %>
-        <%# link_to "Lost", dashboard_path(b: 'lost')%>
-        <%# link_to "Pending", dashboard_path(b: 'pending')%>
-      </div>
-      <div class="odds-container">
-        <% @odds.each do |odd| %>
-          <%= render "shared/dashboard_card" %>
-        <% end %>
-      </div>
-    </div>
-
-<!-- VIEW 2 -->
-<!--     <div class="dashboard-third-grid">
-      <div class="secondary-main-chart"></div>
-      <div class="odds-container-under-chart"></div>
-    </div> -->
+<!-- Dashboard_Container -->
 </div>
 
-<!-- COMMENTED OUT -->
-
-<!--         <canvas id="main-chart-id" class="chartjs" width="426" height="213"></canvas>
-        <script>
-            new Chart(document.getElementById("chartjs-0"),
-              { "type":"line",
-                "data":
-                  {"labels":
-                    ["January","February","March","April","May","June","July"],
-                    "datasets":
-                      [{
-                          "label":"My First Dataset",
-                          "data":[65,59,80,81,56,55,40],
-                          "fill":false,
-                          "borderColor":"rgb(75, 192, 192)",
-                          "lineTension":0.1
-                        }
-                      ]
-                    },
-                "options": {}
-              }
-            );
-        </script> -->
-
-<!-- LINECHART -->
-<!-- <canvas id="lineChart" style="background-color: transparent;"></canvas>
-    <% content_for(:after_js) do %>
-        <script>
-            var ctx = document.getElementById("lineChart");
-            var lineChart = new Chart(ctx, {
-              type: 'line',
-              data: {
-                labels: <%# raw @bet_dates %>,
-                datasets: [{
-                    data: <%# raw @bet_returns %>,
-                    label: "Your profit",
-                    backgroundColor: "rgba(0, 21, 33, 0.7)",
-                    borderColor: "rgba(80, 255, 177, 1)",
-                    borderWidth: 1,
-                    borderCapStyle: 'butt',
-                    fill: false
-                  }
-                ]
-              },
-              options: {
-                title: {
-                  display: true,
-                  text: 'Your performance',
-                  fontColor: 'rgba(0,0,0,0)',
-                  fontStyle: 'light'
-                }
-              }
-            });
-        </script>
-    <% end %> -->
-<!-- BARCHART -->
- <!-- <canvas id="bar-chart"></canvas>
-  <% content_for(:after_js) do  %>
-      <script>
-        new Chart(document.getElementById("bar-chart"), {
-        type: 'bar',
-        data: {
-          labels: <%# raw @bet_dates %>,
-          datasets: [
-            {
-              label: "Performance",
-              backgroundColor: <%# raw @bet_color %>,
-              data: <%# raw @bet_returns %>
-            }
-          ]
-        },
-        options: {
-          legend: { display: false },
-          title: {
-            display: true,
-            text: 'Bar Chart'
-          }
-        }
-    });
-      </script>
-  <% end %>
- -->
+<% content_for(:after_js) do %>
+<% end %>

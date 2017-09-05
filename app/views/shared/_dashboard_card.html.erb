@@ -1,0 +1,46 @@
+<div class="message <%= bet.won %>"></div>
+
+<div class="message <%= puts "Message" %>">
+  <div class="message-body cards-team">
+        <div class="team home-team">
+          <%= image_tag bet.match.home_team.logo, class:"team-avatar" %>
+          <span><%= bet.match.home_team.name %></span>
+        </div>
+        <div class="team away-team">
+          <%= image_tag bet.match.away_team.logo, class:"team-avatar" %>
+          <span><%= bet.match.away_team.logo %></span>
+        </div>
+  </div>
+
+  <div class="message-body score">
+    <% if bet.match.status == "FINISHED" %>
+    <div class="team home-team">
+      <h4><%= bet.match.goals_home_team %></h4>
+    </div>
+    <div class="team away-team">
+      <h4><%= bet.match.goals_away_team %></h4>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="message-body" id="stake">
+    <% if bet.odd.match.status == "FINISHED" %>
+      <%= render 'users/finished_body', bet: bet %>
+    <% else %>
+      <%= render 'users/pending_body', bet: bet %>
+    <% end %>
+  </div>
+
+  <div class="message-status">
+    <div class="message-date text-center">
+      <% date = bet.odd.match.match_date %>
+      <p class="date"><%= date.strftime('%b %e') %></p>
+      <p class="date"><%= date.strftime('%l:%M %p') %></p>
+    </div>
+  </div>
+
+  <div class="avatar-container">
+    <% creator = bet.odd.bookmaker %>
+    <%# image_tag bookie-icon %>
+  </div>
+</div>
