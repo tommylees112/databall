@@ -3,11 +3,11 @@
 <div class="message <%= puts "Message" %>">
   <div class="message-body cards-team">
         <div class="team home-team">
-          <%= image_tag bet.match.home_team.logo, class:"team-avatar" %>
+          <%= image_tag bet.match.home_team.logo ? bet.match.home_team.logo : 'logo.png', class:"team-avatar" %>
           <span><%= bet.match.home_team.name %></span>
         </div>
         <div class="team away-team">
-          <%= image_tag bet.match.away_team.logo, class:"team-avatar" %>
+          <%= image_tag bet.match.away_team.logo ? bet.match.away_team.logo : 'logo.png',, class:"team-avatar" %>
           <span><%= bet.match.away_team.name %></span>
         </div>
   </div>

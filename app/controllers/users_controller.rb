@@ -24,7 +24,7 @@ class UsersController < ApplicationController
       end
     end
 
-    @cumulative_total =
+    # @cumulative_total =
 
 
     @bet_returns = current_user.completed_bets.map do |bet|

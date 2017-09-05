@@ -141,19 +141,18 @@ class Match < ApplicationRecord
     end
   end
 
-  def _update_bets
-    if self.status == 'FINISHED'
-      self.bets.each do |bet|
-      if self.goals_home_team > self.goals_away_team
-        bet.odd.outcome == 'Home' ? bet.won! : bet.lost!
-      elsif self.goals_home_team < self.goals_away_team
-        bet.odd.outcome == 'Away' ? bet.won! : bet.lost!
-      else
-        bet.odd.outcome == 'Draw' ? bet.won! : bet.lost!
-      end
-    end
-    end
-  end
+  # def _update_bets
+  #   if self.status == 'FINISHED'
+  #     self.bets.each do |bet|
+  #     if self.goals_home_team > self.goals_away_team
+  #       bet.odd.outcome == 'Home' ? bet.won! : bet.lost!
+  #     elsif self.goals_home_team < self.goals_away_team
+  #       bet.odd.outcome == 'Away' ? bet.won! : bet.lost!
+  #     else
+  #       bet.odd.outcome == 'Draw' ? bet.won! : bet.lost!
+  #     end
+  #   end
+  # end
 
   private
 

@@ -23,13 +23,22 @@ def seed_random_odds
   end
 end
 
+def print_bets
+  array = []
+  Bet.all.each do |bet|
+    sub_array = []
+    sub_array << "#{bet.match.home_team.name} -v- #{bet.match.away_team.name}"
+    sub_array << "BET: #{bet.odd.outcome}\tACTUAL: #{bet.match.outcome}"
+    array << sub_array
+  end
+  puts array
+end
+
 15.times do
   finished_matches = Match.where(status: "FINISHED")
   match = finished_matches.sample
-  p match
   match.update_bets
   odd = match.odds.first
   generate_bet(odd)
 end
 
-Bet.all
