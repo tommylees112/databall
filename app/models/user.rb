@@ -45,9 +45,13 @@ class User < ApplicationRecord
   def losses
     losing_bets = []
     self.bets.each do |bet|
+      #set the bet.won field
       bet.won?
-      if bet.won === false
-        losing_bets << bet
+      #if match is yet to be played = nil
+      unless bet.won.nil?
+        if bet.won === false
+          losing_bets << bet
+        end
       end
     end
   end

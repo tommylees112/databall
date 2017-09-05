@@ -1,14 +1,67 @@
 <div class="dashboard_grid1">
     <!-- MAIN CHART -->
-
     <div class="main-chart">
-      <h3>main chart</h3>
-      <%# area_chart Match.group_by_hour(:created_at).maximum(:created_at), colors: ["pink", "#999"] %>
+      <!-- <h3>main chart</h3> -->
+      <canvas id="lineChart" style="background-color: transparent;"></canvas>
+      <script>
+          var canvas_element = document.getElementById("lineChart");
+          var lineChart = new Chart(canvas_element, {
+            type: 'line',
+            data: {
+              labels: <%= raw @bet_dates %>,
+              datasets: [{
+                  data: <%= raw @bet_returns %>,
+                  label: "Your profit",
+                  backgroundColor: "rgba(0, 21, 33, 0.7)",
+                  borderColor: "rgba(80, 255, 177, 1)",
+                  borderWidth: 1,
+                  borderCapStyle: 'butt',
+                  fill: true
+                }
+              ]
+            },
+            options: {
+              title: {
+                display: true,
+                text: 'Profit',
+                fontColor: 'rgba(0,0,0,0)',
+                fontStyle: 'light'
+              },
+              hover: {
+                intersect: true,
+                animationDuration: 400,
+              }
+            }
+          });
+      </script>
     </div>
     <!-- BAR CHART -->
     <div class="bar-chart">
-      <h3>bar chart</h3>
-      <%= column_chart @profits %>
+      <!-- <h3>bar chart</h3> -->
+      <%#= column_chart @profits %>
+      <canvas id="bar-chart"></canvas>
+      <script>
+        new Chart(document.getElementById("bar-chart"), {
+        type: 'bar',
+        data: {
+          labels: <%= raw @bet_dates %>,
+          datasets: [
+            {
+              label: "Performance",
+              backgroundColor: <%= raw @bet_color %>,
+              data: <%= raw @bet_returns %>
+            }
+          ]
+        },
+        options: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'Bar Chart'
+                }
+              }
+          });
+      </script>
     </div>
     <!-- EXTRA INFO -->
     <div class="wins">
