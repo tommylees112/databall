@@ -147,8 +147,8 @@ namespace :odds do
       return rating = (odd * model_prob).round(2)
     end
 
-    Match.where(status: "TIMED").each do |match|
-      p (match.home_team.name + "v" + match.away_team.name)
+    def make_odds(match)
+      p (match.home_team.name + " v " + match.away_team.name)
       url = build_url(match)
       html_file = open(url).read
       html_doc = Nokogiri::HTML(html_file)
@@ -163,6 +163,23 @@ namespace :odds do
         end
       end
     end
+
+    Match.where(status: "TIMED").where(league: 1).order(:gameweek).first(20).each do |match|
+      make_odds(match)
+    end
+    Match.where(status: "TIMED").where(league: 2).order(:gameweek).first(20).each do |match|
+      make_odds(match)
+    end
+    Match.where(status: "TIMED").where(league: 3).order(:gameweek).first(18).each do |match|
+      make_odds(match)
+    end
+    Match.where(status: "TIMED").where(league: 4).order(:gameweek).first(20).each do |match|
+      make_odds(match)
+    end
+    Match.where(status: "TIMED").where(league: 5).order(:gameweek).first(20).each do |match|
+      make_odds(match)
+    end
+
   end
 
   task clean_up: :environment do
@@ -171,13 +188,11 @@ namespace :odds do
   end
 
   task match_test: :environment do
-    desc 'Destroys all odds with no bets on them'
-
     fixtures_url = 'http://api.football-data.org/v1/competitions/450/fixtures'
     fixtures_serialized = open(fixtures_url).read
     fixtures = JSON.parse(fixtures_serialized)
     fixtures["fixtures"].each do |fixture|
-      p fixture["_links"]["self"]["href"]
+    fixture["_links"]["self"]["href"]
     end
   end
 end
