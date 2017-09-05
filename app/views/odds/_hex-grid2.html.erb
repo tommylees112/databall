@@ -1,31 +1,36 @@
 <!-- https://jtauber.github.io/articles/css-hexagon.html-->
-<div class="hex_show-row">
-      <div class="hex_show">
-          <h3 class="home-win-text">Home Win</h3>
-          <div class="top">
+
+<div class="col-xs-6 col-xs-offset-3 col-sm-offset-4 hex-grid-container">
+  <div class="text-center hex-grid-center">
+    <div class="hex_show-row">
+          <div class="hex_show">
+              <h3 class="home-win-text">Home Win</h3>
+              <div class="top">
+              </div>
+              <div class="middle">
+                <p><%= (model.home_win_probability * 100).floor %>%</p>
+              </div>
+              <div class="bottom"></div>
           </div>
-          <div class="middle">
-            <p><%= (model.home_win_probability * 100).floor %>%</p>
+          <div class="hex_show">
+              <h3 class="away-win-text">Away Win</h3>
+              <div class="top">
+              </div>
+              <div class="middle">
+                <p><%= (model.away_win_probability * 100).floor %>%</p>
+              </div>
+              <div class="bottom"></div>
           </div>
-          <div class="bottom"></div>
-      </div>
-      <div class="hex_show">
-          <h3 class="away-win-text">Away Win</h3>
-          <div class="top">
+    </div>
+    <div class="hex_show-row even">
+          <div class="hex_show">
+              <div class="top"></div>
+              <div class="middle">
+                <p><%= (model.draw_probability * 100).floor %>%</p>
+              </div>
+              <div class="bottom"></div>
+              <h3 class="draw-text">Draw</h3>
           </div>
-          <div class="middle">
-            <p><%= (model.away_win_probability * 100).floor %>%</p>
-          </div>
-          <div class="bottom"></div>
-      </div>
-</div>
-<div class="hex_show-row even">
-      <div class="hex_show">
-          <div class="top"></div>
-          <div class="middle">
-            <p><%= (model.draw_probability * 100).floor %>%</p>
-          </div>
-          <div class="bottom"></div>
-          <h3 class="draw-text">Draw</h3>
-      </div>
+    </div>
+  </div>
 </div>

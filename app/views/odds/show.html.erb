@@ -75,112 +75,22 @@
     <div class="show model-information">
         <div class="row">
             <h2 class="text-center" id="model-show-head">What does the model say?</h2>
-            <div class="col-xs-6 col-xs-offset-3 col-sm-offset-4 hex-grid-container">
-              <div class="text-center hex-grid-center">
-                  <%= render 'hex-grid2', model: match_model %>
-              </div>
-            </div>
+            <%= render 'hex-grid2', model: match_model %>
         </div>
-      <!-- NOTE 2x GRID -->
-      <%# render 'hex-container' %>
       <div class="team-info-container">
-        <div class="row">
-          <div class="team-info text-center col-xs-4 col-xs-offset-2">
-              <div class="home-team">
-                <h4><%= home_team.name %></h4>
-              </div>
-              <div class="team-offensive-score">
-                <p></p>
-              </div>
-              <div class="team-offensive-score">
-                <p>Offensive Score</p>
-                <p class="data"><%= "%.2f" % home_team_model.offensive_score %></p>
-              </div>
-              <div class="team-defensive-score">
-                <p>Defensive Score</p>
-                <p class="data"><%= "%.2f" % home_team_model.defensive_score %></p>
-              </div>
-          </div>
-          <div class="team-info text-center col-xs-4">
-              <div class="away-team">
-                <h4><%= away_team.name %></h4>
-              </div>
-              <div class="team-offensive-score">
-                <p></p>
-              </div>
-              <div class="team-offensive-score">
-                <p>Offensive Score</p>
-                 <p class="data"><%= "%.2f" % away_team_model.offensive_score %></p>
-              </div>
-              <div class="team-defensive-score">
-                <p>Defensive Score</p>
-                 <p class="data"><%= "%.2f" % away_team_model.defensive_score %></p>
-              </div>
-          </div>
-        </div>
+        <%= render "team_model_info_table", home_team: home_team, away_team: away_team %>
       </div>
     </div>
 </div>
 <!-- ________________________________ -->
 <!-- CONTAINER 3 -->
 <!-- ________________________________ -->
-<% previous_matches = @match.prev_info %>
-<% h2h_matches = @match.h2h_info %>
 <div class="container3-show " style="background-color: #001521; width: 100%;">
   <div class="team-form-container">
     <div class="form-table container">
-      <div class="form-column text-center">
-        <table>
-          <thead>
-            <th><%= home_team.name %> Form</th>
-          </thead>
-          <tbody>
-            <% previous_matches[0].each do |match| %>
-              <tr>
-                <td>
-                  <%= "#{match.match_date.strftime('%e/%m/%y')} #{match.home_team.name} #{match.goals_home_team} - #{match.goals_away_team} #{match.away_team.name} " %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-      <div class="form-column text-center">
-        <table>
-          <thead>
-            <th><%= "Head to Head" %></th>
-          </thead>
-          <tbody>
-            <% h2h_matches.first(5).each do |match| %>
-              <tr>
-                <td>
-                  <%= "#{match.match_date.strftime('%e/%m/%y')} #{match.home_team.name} #{match.goals_home_team} - #{match.goals_away_team} #{match.away_team.name} " %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-      <div class="form-column text-center">
-        <table>
-          <thead>
-            <th><%= away_team.name %> Form</th>
-          </thead>
-          <tbody>
-            <% previous_matches[1].each do |match| %>
-              <tr>
-                <td>
-                  <%= "#{match.match_date.strftime('%e/%m/%y')} #{match.home_team.name} #{match.goals_home_team} - #{match.goals_away_team} #{match.away_team.name} " %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
+    <%= render "form_table", home_team: home_team, away_team: away_team, match: @match %>
     </div>
   </div>
 </div>
 
-
 <%= render 'shared/bet_modal', odd: @odd %>
-

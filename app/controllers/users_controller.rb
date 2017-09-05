@@ -37,7 +37,8 @@ class UsersController < ApplicationController
 
     # TOMMY'S CODE
     @bets = @user.bets
-    @odds = Odd.all
+    @odds = Odd.first(50).map {|odd| odd.odds}
+    @graph_data = [[1,10],[2,30],[3,33],[4,40],[5,60],[6,61],[7,62],[8,63],[8,64],[9,67],]
     @wins = @user.wins
     @losses =@user.losses
     @profit = @bet_returns

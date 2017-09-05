@@ -14,7 +14,50 @@
     <div class="dashboard-main-grid">
     <!-- MAIN CHART -->
       <div class="main-chart">
-      <%= bar_chart @odds.group(:outcome).count %>
+        <%= bar_chart @graph_data %>
+      </div>
+
+    <!-- BAR CHART -->
+      <div class="bar-chart">
+      </div>
+    <!-- EXTRA INFO -->
+      <div class="wins">
+          <h4>Wins</h4>
+          <h5><%= @wins.count %></h5>
+      </div>
+      <div class="losses">
+          <h4>Losses</h4>
+          <h5><%= @losses.count %></h5>
+      </div>
+      <div class="total-profit">
+          <h4>Profit</h4>
+          <h5><%= @bet_returns.last %></h5>
+      </div>
+    </div>
+
+<!-- VIEW 2 -->
+    <div class="dashboard-second-grid">
+      <div class="filter-bar">
+        <%# link_to "All", dashboard_path(b: 'all')%>
+        <%# link_to "Won", dashboard_path(b: 'win') %>
+        <%# link_to "Lost", dashboard_path(b: 'lost')%>
+        <%# link_to "Pending", dashboard_path(b: 'pending')%>
+      </div>
+      <div class="odds-container">
+        <% @odds.each do |odd| %>
+          <%= render "shared/dashboard_card" %>
+        <% end %>
+      </div>
+    </div>
+
+<!-- VIEW 2 -->
+<!--     <div class="dashboard-third-grid">
+      <div class="secondary-main-chart"></div>
+      <div class="odds-container-under-chart"></div>
+    </div> -->
+</div>
+
+<!-- COMMENTED OUT -->
 
 <!--         <canvas id="main-chart-id" class="chartjs" width="426" height="213"></canvas>
         <script>
@@ -37,43 +80,6 @@
               }
             );
         </script> -->
-      </div>
-
-    <!-- BAR CHART -->
-      <div class="bar-chart">
-      </div>
-    <!-- EXTRA INFO -->
-      <div class="wins">
-          <h4>Wins</h4>
-          <h5><%= @wins.count %></h5>
-      </div>
-      <div class="losses">
-          <h4>Losses</h4>
-          <h5><%= @losses.count %></h5>
-      </div>
-      <div class="total-profit">
-          <h4>Profit</h4>
-          <h5><%= @bet_returns.last %></h5>
-      </div>
-    </div>
-
-<!--     <div class="dashboard-second-grid">
-      <div class="filter-bar">
-        <%# link_to "All", dashboard_path(b: 'all')%>
-        <%# link_to "Won", dashboard_path(b: 'win') %>
-        <%# link_to "Lost", dashboard_path(b: 'lost')%>
-        <%# link_to "Pending", dashboard_path(b: 'pending')%>
-      </div>
-      <div class="odds-container"></div>
-    </div> -->
-
-<!--     <div class="dashboard-third-grid">
-      <div class="secondary-main-chart"></div>
-      <div class="odds-container-under-chart"></div>
-    </div> -->
-</div>
-
-<!-- COMMENTED OUT -->
 
 <!-- LINECHART -->
 <!-- <canvas id="lineChart" style="background-color: transparent;"></canvas>

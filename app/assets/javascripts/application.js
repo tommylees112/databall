@@ -7,5 +7,5 @@
 // <--> TOMMYS CODE <-->
 // require Chart.bundle
 //= require chartkick
-//= require highcharts
-//= require turbolinks
+// require highcharts
+// require turbolinks
