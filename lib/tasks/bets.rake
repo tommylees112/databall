@@ -1,7 +1,11 @@
 namespace :bets do
   task seed_historical: :environment do
 
-    User.where(email: "email@email.com").first.destroy
+    puts "Seeding Historical Bets ... "
+
+    if User.where(email: "email@email.com").first
+      User.where(email: "email@email.com").first.destroy
+    end
 
     website_historical = User.create!(first_name: 'website_historical', email: "email@email.com", password: "password")
 
@@ -41,6 +45,8 @@ namespace :bets do
     historical_matches.each do |match_array|
       create_bet(match_array)
     end
+
+    puts "Historical bets made !!!"
 
   end
 end
