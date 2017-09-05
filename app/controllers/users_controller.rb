@@ -16,21 +16,23 @@ class UsersController < ApplicationController
     @bet_dates = current_user.completed_bets.pluck(:created_at).map{ |d| d.strftime('%d %b %Y') }
 
     @bet_color = []
-    @user.bets.each do |b|
-      if b.won? == "win"
+    @user.bets.each do |bet|
+      if bet.won? == "win"
         @bet_color << "#50FFB1"
       else
         @bet_color << "#EA526F"
       end
     end
 
+    @cumulative_total =
+
+
     @bet_returns = current_user.completed_bets.map do |bet|
-      case bet.won?
-      when 'win'
+      if bet.won?
         bet.stake * bet.odd.odds
-      when 'pending'
+      elsif bet.pending?
         0
-      when 'lose'
+      else
         - bet.stake
       end
     end

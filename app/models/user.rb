@@ -33,27 +33,11 @@ class User < ApplicationRecord
 
   # TOMMY'S METHODS ###########
   def wins
-    winning_bets = []
-    self.bets.each do |bet|
-      bet.won?
-      if bet.won # == "won"
-        winning_bets << bet
-      end
-    end
+    bets.select &:won?
   end
 
   def losses
-    losing_bets = []
-    self.bets.each do |bet|
-      #set the bet.won field
-      bet.won?
-      #if match is yet to be played = nil
-      unless bet.won.nil?
-        if bet.won === false
-          losing_bets << bet
-        end
-      end
-    end
+    bets.select &:lost?
   end
 
 end
