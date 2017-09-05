@@ -1,7 +1,7 @@
 <div class="text-center"><span>£</span><span class="price"><%= bet.stake %></span></div>
 <p>on <%= bet.odd.outcome %></p>
 
-<% if bet.won %>
+<% if bet.won? %>
   <div class="hover-box">
       <h6 class="text-center">winnings</h6>
       <p>£ <span class="won"><%= bet.winnings %></span></p>

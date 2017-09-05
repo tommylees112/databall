@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170904101832) do
+ActiveRecord::Schema.define(version: 20170905163600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,9 +33,9 @@ ActiveRecord::Schema.define(version: 20170904101832) do
     t.integer  "user_id"
     t.integer  "odd_id"
     t.float    "stake"
-    t.boolean  "won"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "status",     default: 0
     t.index ["odd_id"], name: "index_bets_on_odd_id", using: :btree
     t.index ["user_id"], name: "index_bets_on_user_id", using: :btree
   end
@@ -86,7 +86,6 @@ ActiveRecord::Schema.define(version: 20170904101832) do
     t.float    "final_home_win_probability"
     t.float    "final_away_win_probability"
     t.float    "final_draw_probability"
-    t.string   "outcome"
     t.index ["away_team_id"], name: "index_matches_on_away_team_id", using: :btree
     t.index ["home_team_id"], name: "index_matches_on_home_team_id", using: :btree
     t.index ["league_id"], name: "index_matches_on_league_id", using: :btree
