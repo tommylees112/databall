@@ -29,7 +29,7 @@
     <div class="col-xs-12 col-sm-4">
       <div class="card">
         <div class="card-category">
-          <h2>We make</h2><h3><span class="span-green">picking winners</h3></span> <span class="span-green"><h4>simple</h4></span>
+          <h2 style="text-transform: lowercase; font-size: 50px;">We make</h2><h3 style="text-transform: lowercase;"><span class="span-green">picking winners</h3></span> <span class="span-green"><h4 style="text-transform: lowercase;">simple</h4></span>
         </div>
         <div class="card-description">
           <div class="card-desc1">
@@ -47,45 +47,59 @@
 
 <div class="container2" style="background-color: #001D2E; width: 100%;">
   <div class="row">
-    <div class="col-xs-12 col-sm-4">
-      <div class="card card2">
-        <div class="card-description">
-          <div class="card-desc1">
-            <h4>A simple <span class="span-blue">recommendation</span> system<h4>
-             <h4>outlining the best bets from <span>across Europe</span></h4>
-          </div>
-          <div class="card-desc2">
-            <h4>Delve <span class="span-blue">deeper</span> into the bets that catch your eye before you <span>make the bet</span></h4>
-          </div>
-        <div class="card-category">
-          <%= image_tag 'bluehex.png' %>
+  <div class="col-xs-12 col-sm-4">
+    <div class="card">
+      <div class="card-category" style="white-space: nowrap;">
+        <h2 style="font-size: 32px; text-transform: lowercase; font-weight: lighter;";>Giving you <span class="span-blue" style="font-size: 53px;">access</span> to <br>advanced<span class="span-blue"> data science</span><br><span class="span-blue"> methods</span></h2>
+      </div>
+      <div class="card-description">
+        <div class="card-desc1" style="border-left:1px solid #1795C4 !important;">
+          <h4>Make use of our <span class="span-blue">bespoke<br></span> multi-layered <span class="span-blue">statistical model</span></h4>
         </div>
+        <div class="card-desc2" style="border-left:1px solid #1795C4 !important;">
+          <h4>Utilise the <span class="span-blue">power of data science</span> without needing a PhD</h4>
         </div>
       </div>
     </div>
+  </div>
     <div class="col-xs-12 col-sm-4">
-      <div class="card">
-
+      <div class="card card2">
+        <div class="card-category" style="position: absolute;left: 400px;">
+          <%= image_tag 'bluehex.png' %>
+        </div>
+        <div class="card-des" style="position: absolute; left: 300px; bottom: 50px;">
+          <%= image_tag "chart-line.png" %>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 
+
 <div class="container3-show" style="background-color: #001521; width: 100%;">
   <div class="row">
     <div class="col-xs-12 col-sm-4">
       <div class="card">
-        <div class="card-category">Complexity simplified</div>
-        <i class="fa fa-tasks fa-4x" aria-hidden="true"></i>
+        <div class="card-category"><%= image_tag 'pinkhex.png' %></div>
         <div class="card-description">
-          <p>Our interface will make it easy to spot opportunities and condense the complexity of the beautiful game into an engine for profit.</p>
+          <%= image_tag "3pinkhex.png" %>
         </div>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-4">
-      <div class="card fuckingtest">
-        <%= image_tag "cardtest.png", class:"img-data" %>
+    <div class="col-xs-12 col-sm-4 col-sm-offset-2">
+      <div class="card">
+        <div class="card-category" style="position: absolute; bottom: 55%; white-space: nowrap;">
+          <h3 style="text-transform: lowercase;">Allowing you to <br><span class="span-pink" style="font-size: 45px;">track performance<br> </span>of <span class="span-pink">your portfolio</span></h3>
+        </div>
+        <div class="card-description">
+          <div class="card-desc1 pink-hex">
+            <h4><span class="span-pink">Add bets</span> to your profile to keep <br><span class="span-pink">track</span> of your <span class="span-pink">winnings</span></h4>
+          </div>
+          <div class="card-desc2 pink-hex">
+            <h4>Use our tool to <span class="span-pink">test the model</span><br>performance over time</h4>
+          </div>
+        </div>
       </div>
     </div>
   </div>
