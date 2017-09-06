@@ -10,15 +10,15 @@ League.destroy_all
 ########### PLANS #######################################
 #########################################################
 
-plan = Stripe::Plan.create(
-  :amount => 1000,
-  :interval => 'month',
-  :name => 'Basic Plan',
-  :currency => 'aud',
-  :id => 'basic'
-)
+# plan = Stripe::Plan.create(
+#   :amount => 1000,
+#   :interval => 'month',
+#   :name => 'Basic Plan',
+#   :currency => 'aud',
+#   :id => 'basic'
+# )
 
-Plan.create(name: plan.name, stripe_id: plan.id, display_price: (plan.amount.to_f / 100))
+# Plan.create(name: plan.name, stripe_id: plan.id, display_price: (plan.amount.to_f / 100))
 
 ##############################################################################
 ######     MATCHES, LEAGUES, TEAMS                                  ##########

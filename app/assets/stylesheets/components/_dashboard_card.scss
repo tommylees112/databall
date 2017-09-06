@@ -29,8 +29,15 @@
   margin:0;
   font-size: 13px;
   color: rgba(0,0,0,0.4);
+  .vs-card{
+    padding-right: 20px;
+  }
   &.cards-team {
     min-width: 230px;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding:20px;
   }
 }
 .team-avatar {

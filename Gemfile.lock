@@ -338,11 +338,10 @@ DEPENDENCIES
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
-<<<<<<< HEAD
+
   stripe
-=======
   turbolinks
->>>>>>> e533c92cdff3ed6788c1ed408162f33ea6859b96
+
   uglifier
   web-console (>= 3.3.0)
 

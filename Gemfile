@@ -26,7 +26,7 @@ gem 'cloudinary'
 
 gem 'stripe'
 gem 'money-rails'
-=======
+
 # TOMMY'S ATTEMPT @ charting
 gem "chartkick"
 gem 'groupdate'
