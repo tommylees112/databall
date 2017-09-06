@@ -18,7 +18,6 @@ premier_teams_url = 'http://api.football-data.org/v1/competitions/445/teams'
 premier_teams_serialized = open(premier_teams_url, "X-Auth-Token" => ENV['FOOTBALL_KEY']).read
 premier_teams = JSON.parse(premier_teams_serialized)
 
-
 bundesliga_teams_url = 'http://api.football-data.org/v1/competitions/452/teams'
 bundesliga_teams_serialized = open(bundesliga_teams_url, "X-Auth-Token" => ENV['FOOTBALL_KEY']).read
 bundesliga_teams = JSON.parse(bundesliga_teams_serialized)
