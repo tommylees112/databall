@@ -70,7 +70,16 @@ class UsersController < ApplicationController
     @bets = @user.bets
     @wins = @user.wins
     @losses =@user.losses
-    @profit = @bet_returns.reduce(0, :+).round(2)
+    @total_stake = @bets.sum(:stake).round(2)
+    ## OLD PROFIT = @profit = (@bet_returns.reduce(0, :+)
+
+    # CACLULATE PROFIT
+    winnings = []
+    @wins.each{ |bet| winnings << (bet.stake * bet.odd.odds) }
+    winning_profit = winnings.reduce(0, :+)
+
+    losing_total =
+    @profit = @user.wins
 
     # END OF DASHBOARD
   end
