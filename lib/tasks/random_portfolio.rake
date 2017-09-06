@@ -43,7 +43,7 @@ namespace :random_portfolio do
         finished_matches.sample
       end
 
-      def create_random_bets(number_of_bets, user: User.first)
+      def create_random_bets(number_of_bets, user = User.first)
         seed_random_odds_for_finished_games
         number_of_bets.times do
           match = sample_finished_matches
