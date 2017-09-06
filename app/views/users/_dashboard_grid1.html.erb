@@ -17,7 +17,7 @@
             data: {
               labels: <%= raw @bet_dates %>,
               datasets: [{
-                  data: <%= raw @bet_returns %>,
+                  data: <%= raw @cumulative_total %>,
                   label: "Total Profit",
                   backgroundColor: "rgba(0, 21, 33, 0.7)",
                   borderColor: "rgba(80, 255, 177, 1)",
@@ -58,7 +58,7 @@
                     }
                 }]
             }
-          });
+          }});
       </script>
     </div>
     <!-- BAR CHART -->

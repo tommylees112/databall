@@ -117,8 +117,6 @@ namespace :odds do
       "Ligue 1" => "france/le-championnat"
     }
 
-
-
     def build_url(match)
       gameweek = match.gameweek
       sub_url_fixture = DICTIONARY[match.home_team.name] + "-v-" + DICTIONARY[match.away_team.name]

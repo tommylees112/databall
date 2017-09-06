@@ -39,7 +39,11 @@
       </div>
 
       <div class="bookmaker">
-        <%= cl_image_tag("#{odd.bookmaker.logo}.png", :radius=>15, :width=>50, :crop=>"scale")  %>
+        <% if odd.bookmaker %>
+          <%= cl_image_tag("#{odd.bookmaker.logo}.png", :radius=>15, :width=>50, :crop=>"scale")  %>
+        <% else %>
+          <%= image_tag 'logo.png' %>
+        <% end %>
         <span class="new_match active" id="decimal_odd" ><%= odd.odds %></span>
         <span class="new_match" id="fractional_odd" ><%= odd.frac_odd %></span>
       </div>

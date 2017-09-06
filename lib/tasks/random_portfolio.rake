@@ -1,3 +1,7 @@
+namespace :random_portfolio do
+  task seed: :environment do
+    puts "Starting to create random bets"
+      # RANDOM BETS ON ALL FINISHED MATCHES
       OUTCOME = ["Home","Away","Draw"]
 
       def generate_odd(match)
@@ -6,7 +10,7 @@
         odds_number = rand(1.1..2.0).round(2)
         odd.odds = odds_number
         odd.bookmaker = Bookmaker.all.sample
-        odd.rating = 1.0
+        odd.rating = 80
         odd.save!
       end
 
@@ -49,4 +53,15 @@
         end
       end
 
-      create_random_bets(15, User.first)
+      ################# CHANGE THESE VARIABLES ####################
+
+      number_of_bets = 15
+      user = User.first
+
+      #############################################################
+
+      create_random_bets(number_of_bets, User.first)
+
+      puts "#{number_of_bets} bets created for User: #{user.id} - #{user.email}"
+  end
+end

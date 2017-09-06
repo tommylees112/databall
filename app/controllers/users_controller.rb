@@ -18,14 +18,27 @@ class UsersController < ApplicationController
 
     @bet_color = []
     @user.bets.each do |bet|
-      if bet.won? == "win"
+      if bet.status == "won"
         @bet_color << "#50FFB1"
       else
         @bet_color << "#EA526F"
       end
     end
 
-    # @cumulative_total =
+     def calculate_cumulative_total
+        cumulative_total = [0]
+        @user.bets.each do |bet|
+          previous_total = cumulative_total.last
+          new_value = 0
+          if bet.won?
+            new_value = previous_total + bet.stake * bet.odd.odds
+          elsif bet.lost?
+          end
+          cumulative_total << new_value
+        end
+     end
+
+     @cumulative_total = calculate_cumulative_total
 
 
     @bet_returns = current_user.completed_bets.map do |bet|

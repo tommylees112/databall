@@ -1,7 +1,6 @@
 require 'open-uri'
 require 'json'
 
-
 class Match < ApplicationRecord
   # ASSOCIATIONS
   belongs_to :home_team, class_name: 'Team', foreign_key: 'home_team_id'
@@ -131,9 +130,9 @@ class Match < ApplicationRecord
   def update_bets
     return if status != 'FINISHED'
     bets.each do |bet|
-      if goals_home_team > goals_away_team
+      if self.goals_home_team > self.goals_away_team
         bet.odd.outcome == 'Home' ? bet.won! : bet.lost!
-      elsif goals_home_team < goals_away_team
+      elsif self.goals_home_team < self.goals_away_team
         bet.odd.outcome == 'Away' ? bet.won! : bet.lost!
       else
         bet.odd.outcome == 'Draw' ? bet.won! : bet.lost!
