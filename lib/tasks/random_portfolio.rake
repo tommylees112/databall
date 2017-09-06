@@ -10,7 +10,7 @@ namespace :random_portfolio do
         odds_number = rand(1.1..2.0).round(2)
         odd.odds = odds_number
         odd.bookmaker = Bookmaker.all.sample
-        odd.rating = 1.0
+        odd.rating = 80
         odd.save!
       end
 
