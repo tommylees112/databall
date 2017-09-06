@@ -66,11 +66,24 @@ class UsersController < ApplicationController
 
     @profits = @bet_dates.zip @bet_returns
 
-    # TOMMY'S CODE
+    ####### TOMMY'S CODE #######
     @bets = @user.bets
     @wins = @user.wins
-    @losses =@user.losses
-    @profit = @bet_returns.reduce(0, :+).round(2)
+    @losses = @user.losses
+
+    # CALCULATE TOTAL MONEY BET
+    _stakes = []
+    @bets.each { |bet| _stakes << bet.stake }
+    @total_stake = _stakes.reduce(0, :+)
+
+    # CACLULATE PROFIT/LOSS
+    _winnings = []
+    @wins.each { |bet| _winnings << ((bet.stake * bet.odd.odds) - bet.stake) }
+    winning_profit = _winnings.reduce(0, :+)
+    _losses = []
+    @losses.each { |bet| _losses << bet.stake}
+    losing_total = _losses.reduce(0, :+)
+    @total_profit = (winning_profit - losing_total).round(2)
 
     # END OF DASHBOARD
   end
