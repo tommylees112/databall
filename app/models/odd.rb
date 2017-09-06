@@ -2,6 +2,7 @@ class Odd < ApplicationRecord
   after_create :set_odds_bias
 
   VALUES = ["Home", "Away", "Draw"]
+  RATING_CAP = 1.27
   # ASSOCIATIONS
   belongs_to :match
   belongs_to :bookmaker
@@ -22,7 +23,9 @@ class Odd < ApplicationRecord
      away_prob = match.model_output.away_win_probability
      draw_prob = match.model_output.draw_probability
      difference = (home_prob - away_prob)
-    if difference > 0.3 && outcome == "Home"
+    if rating > RATING_CAP
+      self.odds_bias_filter = false
+    elsif difference > 0.3 && outcome == "Home"
       self.odds_bias_filter = true
     elsif difference < -0.3 && outcome == "Away"
       self.odds_bias_filter = true
@@ -35,8 +38,8 @@ class Odd < ApplicationRecord
   end
 
   def mapped_rating
-    highest_valid_score = Odd.where(odds_bias_filter: true).order(rating: :DESC).first.rating
-    return ((self.rating / highest_valid_score) * 100).round(2)
+    # highest_valid_score = Odd.where(odds_bias_filter: true).order(rating: :DESC).first.rating
+    return ((self.rating / RATING_CAP) * 100).round(2)
   end
 
 end
