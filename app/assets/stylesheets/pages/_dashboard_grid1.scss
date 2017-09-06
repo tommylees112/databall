@@ -6,7 +6,8 @@
 .dashboard_grid1{
   display: grid;
   grid-template-columns: 55% 1fr 1fr;
-  grid-template-rows: 55% 1fr 1fr;
+  grid-template-rows: 400px 1fr 1fr;
+  height: calc(100vh - 70px);
 }
 .main-chart {
   grid-column: 1 / span 3;
@@ -27,4 +28,21 @@
 .total-profit {
   grid-column:3 / span 1;
   grid-row:2 / span 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h4 {
+    flex: 0 0 auto;
+  }
+  h5 {
+    flex: 1 0 auto;
+  }
+}
+
+.text-green {
+ color: #50FFB1;
+}
+.text-red {
+ color: #EA526F;
 }

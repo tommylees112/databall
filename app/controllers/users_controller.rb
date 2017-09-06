@@ -19,26 +19,39 @@ class UsersController < ApplicationController
     @user.bets.each do |bet|
       if bet.status == "won"
         @bet_color << "#50FFB1"
-      else
+      elsif bet.status == "lost"
         @bet_color << "#EA526F"
+      else
+        @bet_color << "#959595"
       end
     end
 
-     def calculate_cumulative_total
-        cumulative_total = [0]
-        @user.bets.each do |bet|
-          previous_total = cumulative_total.last
-          new_value = 0
-          if bet.won?
-            new_value = previous_total + bet.stake * bet.odd.odds
-          elsif bet.lost?
-          end
-          cumulative_total << new_value
-        end
-     end
+    @cumulative_total = []
+    @user.bets.each do |bet|
+      previous_total = @cumulative_total.last || 0
+      @cumulative_total << (if bet.won?
+        previous_total + bet.stake * bet.odd.odds
+      elsif bet.lost?
+        previous_total - bet.stake
+      else
+        previous_total
+      end)
+    end
 
-     @cumulative_total = calculate_cumulative_total
-
+    @completed_bet_returns = []
+    @completed_bet_status = []
+    @completed_bet_color = []
+    @user.completed_bets.each do |bet|
+      if bet.won?
+        @completed_bet_returns << bet.stake * bet.odd.odds
+        @completed_bet_status << "won"
+        @completed_bet_color << "#50FFB1"
+      elsif bet.lost?
+        @completed_bet_returns << - bet.stake
+        @completed_bet_status << "lost"
+        @completed_bet_color << "#EA526F"
+      end
+    end
 
     @bet_returns = current_user.completed_bets.map do |bet|
       if bet.won?
@@ -56,7 +69,7 @@ class UsersController < ApplicationController
     @bets = @user.bets
     @wins = @user.wins
     @losses =@user.losses
-    @profit = @bet_returns
+    @profit = @bet_returns.reduce(0, :+).round(2)
 
     # END OF DASHBOARD
   end
