@@ -1,6 +1,7 @@
 namespace :random_portfolio do
   task seed: :environment do
     puts "Starting to create random bets"
+    puts "REMEMBER TO CREATE A USER"
       # RANDOM BETS ON ALL FINISHED MATCHES
       OUTCOME = ["Home","Away","Draw"]
 
