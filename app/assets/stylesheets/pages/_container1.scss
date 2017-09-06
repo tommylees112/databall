@@ -1,0 +1,25 @@
+.container1 {
+  margin:0;
+  .first-nav{
+    background-color: $green;
+  }
+}
+
+#hex1 {
+  top: 15px;
+  left: 15px;
+}
+
+.container-image1 {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+}
+
+#content1 {
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1 0 auto;
+  // float: right;
+  right: 10px;
+}
