@@ -4,10 +4,7 @@
   grid-template-rows: 10% 1fr;
 }
 
-.filter-bar{
-  grid-column: 1 / span 1;
-  grid-row: 1 / span 1;
-}
+
 
 .odds-container{
   grid-column: 1 / span 1;
@@ -20,6 +17,42 @@
 
 }
 
+.filter-bar {
+  width: 97%;
+  margin: 10px;
+  height:51px;
+  background-color: white;
+  font-size: 39px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 7px;
+
+  a {
+    text-decoration: none;
+    color: $dark-blue;
+    &:hover {
+      text-decoration: none;
+
+    }
+  }
+
+  .dashboard-tab {
+    width: 25%;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.5);
+    border-radius: 7px;
+    &:hover {
+      background-color: $green;
+    }
+  }
+
+
+}
+
+.testwork-lost {
+  background-color: $red !important;
+}
 // VIEW 2
 // .dashboard-second-grid {
 //   display: flex;
