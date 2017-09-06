@@ -105,6 +105,14 @@ ActiveRecord::Schema.define(version: 20170905163600) do
     t.index ["match_id"], name: "index_odds_on_match_id", using: :btree
   end
 
+  create_table "plans", force: :cascade do |t|
+    t.string   "stripe_id",     null: false
+    t.string   "name",          null: false
+    t.decimal  "display_price", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "team_model_outputs", force: :cascade do |t|
     t.float    "defensive_score"
     t.float    "offensive_score"
@@ -156,6 +164,10 @@ ActiveRecord::Schema.define(version: 20170905163600) do
     t.string   "token"
     t.datetime "token_expiry"
     t.boolean  "admin",                  default: false, null: false
+    t.jsonb    "stripe_customer"
+    t.boolean  "access",                 default: true
+    t.jsonb    "stripe_subscription"
+    t.datetime "trial_end"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

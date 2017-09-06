@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def dashboard
+
     @user = current_user
 
     case params[:b]
