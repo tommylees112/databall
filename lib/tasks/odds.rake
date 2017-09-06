@@ -177,7 +177,6 @@ namespace :odds do
     Match.where(status: "TIMED").where(league: 5).order(:gameweek).first(20).each do |match|
       make_odds(match)
     end
-
   end
 
   task clean_up: :environment do
