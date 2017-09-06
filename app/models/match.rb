@@ -30,7 +30,7 @@ class Match < ApplicationRecord
   end
 
   def outcome
-    return 'pending' if status != "FINISHED"
+    return 'pending' if status != "FINISHED" && status != "H2H"
     if goals_home_team > goals_away_team
       "Home"
     elsif goals_home_team < goals_away_team

@@ -15,7 +15,7 @@ namespace :bets do
       p "#{home.name} vs #{away.name}"
       match = Match.where(home_team: home).where(away_team: away).first
       bookmaker = Bookmaker.all.sample
-      odd = Odd.create!(match: match, bookmaker: bookmaker, odds: bet_array[2], outcome: bet_array[3])
+      odd = Odd.create!(match: match, bookmaker: bookmaker, odds: bet_array[2], outcome: bet_array[3], rating: 50)
       Bet.create!(user: bet_array[4], stake: bet_array[5], odd: odd)
     end
 

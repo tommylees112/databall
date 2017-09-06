@@ -3,17 +3,6 @@ class UsersController < ApplicationController
 
     @user = current_user
 
-    case params[:b]
-    when 'win'
-      @user_bets = @user.completed_bets.select { |b| b.won? == 'win' }
-    when 'lost'
-      @user_bets = @user.completed_bets.select { |b| b.won? == 'lose' }
-    when 'pending'
-      @user_bets = @user.bets.select { |b| b.won? == 'pending' }
-    else
-      @user_bets = @user.bets
-    end
-
     @bet_dates = current_user.completed_bets.pluck(:created_at).map{ |d| d.strftime('%d %b %Y') }
 
     @bet_color = []
@@ -67,7 +56,7 @@ class UsersController < ApplicationController
     @profits = @bet_dates.zip @bet_returns
 
     # TOMMY'S CODE
-    @bets = @user.bets
+    @bets = @user.bets.order(created_at: :desc)
     @wins = @user.wins
     @losses =@user.losses
     @profit = @bet_returns.reduce(0, :+).round(2)
