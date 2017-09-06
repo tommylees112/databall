@@ -1,15 +1,23 @@
 // WHOLE BOX
 .message {
+
   display: flex;
   position: relative;
   align-items: center;
   padding: 0;
   border: 1px solid rgba(220,224,244,0.4);
-  border-radius: 4px;
-  justify-content: space-between;
+  border-radius: 7px;
+  justify-content: space-around;
+  background-color: transparent;
   margin: 10px;
+  color: white;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.6);
   // NOTE: development only
-  background-color: white;
+
+}
+
+.home-away-draw {
+  font-size: 33px;
 }
 .message.pending {
   border: 3px solid $gray;
@@ -20,6 +28,24 @@
 .message.lose {
   border: 3px solid $red;
 }
+.home-away-draw {
+  color: white;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.6);
+  margin: 0;
+}
+
+.bookmaker-dashboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .avatar-container {
+    padding-right: 10px;
+  }
+}
+.stake {
+  color: white;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.6);
+}
 
 // TEAMS
 .message-body {
@@ -28,9 +54,9 @@
   padding-left: 0;
   margin:0;
   font-size: 13px;
-  color: rgba(0,0,0,0.4);
   .vs-card{
     padding-right: 20px;
+    padding-left: 20px;
   }
   &.cards-team {
     min-width: 230px;
@@ -38,8 +64,10 @@
     justify-content:space-between;
     align-items: center;
     padding:20px;
+    color: white;
   }
 }
+
 .team-avatar {
   height: 40px;
   width: 40px;
@@ -47,6 +75,10 @@
 }
 .team {
   margin: 3px;
+  .winning-team-dashboard {
+    border-bottom: 1px solid $green;
+    padding-bottom: 3px;
+  }
 }
 .price {
   font-size: 45px;
