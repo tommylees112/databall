@@ -61,16 +61,16 @@
       <% end %>
   </div>
   <div class="filter-bar2">
-      <%= link_to "All", dashboard_path(b: 'all')%>
-      <%= link_to "Won", dashboard_path(b: 'win') %>
-      <%= link_to "Lost", dashboard_path(b: 'lost')%>
-      <%= link_to "Pending", dashboard_path(b: 'pending')%>
+      <h3>Bets you have made:</h3>
+      <%= link_to 'All', "", class: "dashboard-tab all" %>
+      <%= link_to 'Won', "", class: "dashboard-tab", "data-target" => ".won" %>
+      <!-- <div class="dashboard-tab"></div> -->
+      <%= link_to 'Lost', "", class: "dashboard-tab", "data-target" => ".lost" %>
+      <%= link_to 'Pending', "", class: "dashboard-tab", "data-target" => ".pending" %>
   </div>
   <div class="odds-container">
-      <h3>Bets you have made:</h3>
       <% @bets.each do |bet| %>
         <%= render "shared/dashboard_card", bet: bet %>
       <% end %>
   </div>
-
 </div>

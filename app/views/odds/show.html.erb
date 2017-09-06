@@ -85,12 +85,10 @@
 <!-- ________________________________ -->
 <!-- CONTAINER 3 -->
 <!-- ________________________________ -->
-<% previous_matches = @match.prev_info %>
-<% h2h_matches = @match.h2h_info %>
 <div class="container3-show " style="background-color: #001521; width: 100%;">
   <div class="team-form-container">
     <div class="form-table container">
-    <%= render "form_table", home_team: home_team, away_team: away_team, match: @match %>
+    <%= render "form_table", match: @match %>
     </div>
   </div>
 </div>
