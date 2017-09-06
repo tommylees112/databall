@@ -74,7 +74,6 @@ DICTIONARY = {
     "ac milan": "AC Milan",
     "athletic bilbao": "Athletic Club",
     "leganés": "CD Leganes",
-    "leganés": "CD Leganes",
     "leganes": "CD Leganes",
     "legan%C3%A9s": "CD Leganes",
     "atlético madrid": "Club Atlético de Madrid",
