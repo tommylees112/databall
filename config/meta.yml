@@ -1,0 +1,5 @@
+meta_product_name: "DataBall"
+meta_title: "DataBall - Informing You With Data"
+meta_description: "Relevant description"
+meta_image: "databall-background.png"                       # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards
