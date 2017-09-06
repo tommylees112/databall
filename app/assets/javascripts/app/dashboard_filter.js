@@ -22,6 +22,10 @@ $(document).ready(function() {
   $("#lost-click").click(function() {
     $(".dashboard-tab").removeClass("testwork");
     $(this).addClass("testwork-lost");
+    $(".dashboard-tab").click(function() {
+
+    $(".dashboard-tab").removeClass("testwork-lost")
+    })
   });
 });
 
