@@ -20,6 +20,8 @@ class Match < ApplicationRecord
   validates :league, presence: true
   # validates :outcome, inclusion: {in: VALUES}
 
+  after_save :update_bets
+
   def teams
     { home: home_team, away: away_team }
   end
@@ -29,20 +31,14 @@ class Match < ApplicationRecord
   end
 
   def outcome
-    if self.status = "FINISHED"
-      outcome = ""
-      if self.goals_home_team > self.goals_away_team
-        outcome = "Home"
-        self.outcome = outcome
-       elsif self.goals_home_team < self.goals_away_team
-         outcome = "Away"
-         self.outcome = outcome
-       elsif self.goals_home_team == self.goals_away_team
-         outcome = "Draw"
-         self.outcome = outcome
-       end
+    return 'pending' if status != "FINISHED"
+    if goals_home_team > goals_away_team
+      "Home"
+    elsif goals_home_team < goals_away_team
+      "Away"
+    else
+      "Draw"
     end
-    return outcome
   end
 
   def model_output
@@ -131,6 +127,32 @@ class Match < ApplicationRecord
       return false
     end
   end
+
+  def update_bets
+    return if status != 'FINISHED'
+    bets.each do |bet|
+      if goals_home_team > goals_away_team
+        bet.odd.outcome == 'Home' ? bet.won! : bet.lost!
+      elsif goals_home_team < goals_away_team
+        bet.odd.outcome == 'Away' ? bet.won! : bet.lost!
+      else
+        bet.odd.outcome == 'Draw' ? bet.won! : bet.lost!
+      end
+    end
+  end
+
+  # def _update_bets
+  #   if self.status == 'FINISHED'
+  #     self.bets.each do |bet|
+  #     if self.goals_home_team > self.goals_away_team
+  #       bet.odd.outcome == 'Home' ? bet.won! : bet.lost!
+  #     elsif self.goals_home_team < self.goals_away_team
+  #       bet.odd.outcome == 'Away' ? bet.won! : bet.lost!
+  #     else
+  #       bet.odd.outcome == 'Draw' ? bet.won! : bet.lost!
+  #     end
+  #   end
+  # end
 
   private
 

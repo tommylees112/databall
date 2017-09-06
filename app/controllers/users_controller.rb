@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def dashboard
-    redirect_to new_charge_path if current_user.access == false
+
     @user = current_user
 
     case params[:b]
@@ -17,21 +17,23 @@ class UsersController < ApplicationController
     @bet_dates = current_user.completed_bets.pluck(:created_at).map{ |d| d.strftime('%d %b %Y') }
 
     @bet_color = []
-    @user.bets.each do |b|
-      if b.won? == "win"
+    @user.bets.each do |bet|
+      if bet.won? == "win"
         @bet_color << "#50FFB1"
       else
         @bet_color << "#EA526F"
       end
     end
 
+    # @cumulative_total =
+
+
     @bet_returns = current_user.completed_bets.map do |bet|
-      case bet.won?
-      when 'win'
+      if bet.won?
         bet.stake * bet.odd.odds
-      when 'pending'
+      elsif bet.pending?
         0
-      when 'lose'
+      else
         - bet.stake
       end
     end
@@ -40,8 +42,6 @@ class UsersController < ApplicationController
 
     # TOMMY'S CODE
     @bets = @user.bets
-    # @odds = Odd.first(50).map {|odd| odd.odds}
-    # @graph_data = [[1,10],[2,30],[3,33],[4,40],[5,60],[6,61],[7,62],[8,63],[8,64],[9,67],]
     @wins = @user.wins
     @losses =@user.losses
     @profit = @bet_returns

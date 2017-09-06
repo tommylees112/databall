@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :odds
-  has_many :bets
+  has_many :bets, dependent: :destroy;
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
@@ -33,23 +33,11 @@ class User < ApplicationRecord
 
   # TOMMY'S METHODS ###########
   def wins
-    winning_bets = []
-    self.bets.each do |bet|
-      bet.won?
-      if bet.won # == "won"
-        winning_bets << bet
-      end
-    end
+    bets.select &:won?
   end
 
   def losses
-    losing_bets = []
-    self.bets.each do |bet|
-      bet.won?
-      if bet.won === false
-        losing_bets << bet
-      end
-    end
+    bets.select &:lost?
   end
 
 end
