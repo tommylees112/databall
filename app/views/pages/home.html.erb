@@ -5,7 +5,66 @@
       <p>data driven recommendations for the weekend winner</p>
       <!-- UNSURE ABOUT THIS IMAGE -->
       <%# image_tag "screen.png", class:"screen" %>
-
+        <div class="home-chart">
+            <canvas id="modelPerformance" style="background-color: transparent;"></canvas>
+            <%= content_for :after_js do %>
+            <script>
+                var inputs = {
+                  min: -100,
+                  max: 100,
+                  count: 8,
+                  decimals: 2,
+                  continuity: 1
+                };
+                var canvas_element = document.getElementById("modelPerformance");
+                var lineChart = new Chart(canvas_element, {
+                  type: 'line',
+                  data: {
+                    labels: <%= raw @bet_dates %>,
+                    datasets: [{
+                        data: <%= raw @cumulative_total %>,
+                        label: "Total Profit",
+                        backgroundColor: "rgba(0, 21, 33, 0.7)",
+                        borderColor: "rgba(80, 255, 177, 1)",
+                        borderWidth: 1,
+                        borderCapStyle: 'butt',
+                        fill: true
+                      }
+                    ]
+                  },
+                  options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    title: {
+                      display: true,
+                      text: 'Cumulative Profit',
+                      fontColor: 'rgba(0,0,0,0)',
+                      fontStyle: 'light'
+                    },
+                    hover: {
+                      intersect: true,
+                      animationDuration: 400,
+                    },
+                    scales: {
+                      xAxes: [{
+                          display: true,
+                          scaleLabel: {
+                              display: true,
+                              labelString: 'Month'
+                          }
+                      }],
+                      yAxes: [{
+                          display: true,
+                          scaleLabel: {
+                              display: true,
+                              labelString: 'Value'
+                          }
+                      }]
+                  }
+                }});
+            </script>
+            <% end %>
+          </div>
       <!-- ## -->
     </div>
   </div>
