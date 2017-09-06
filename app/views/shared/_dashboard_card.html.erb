@@ -1,27 +1,28 @@
 <div class="message <%= bet.won? ? 'won' : nil %>"></div>
 
 
+
 <% dashboard_card_color = nil %>
-<% @user.bets.each do |bet|%>
+
   <% if bet.status == "pending" %>
     <%  dashboard_card_color = "#959595" %>
   <% elsif bet.status == "won" %>
     <% dashboard_card_color = "#50FFB1" %>
-  <% else %>
+  <% elsif bet.status == "lost" %>
     <% dashboard_card_color = "#EA526F" %>
+
 <% end %>
-<% end %>
 
 
 
 
-<div class="message <%= puts "Message"%>" style="border:2px solid <%= "#{dashboard_card_color}" %>; height: 60px;">
+<div class="message active <%= bet.status %>" style="border:2px solid <%= "#{dashboard_card_color}" %>; height: 60px;">
   <div class="message-body cards-team">
         <div class="team home-team">
           <%= image_tag bet.match.home_team.logo ? bet.match.home_team.logo : 'logo.png', class:"team-avatar" %>
           <span class="<%= "winning-team-dashboard" if @user.bets.each do |bet| bet.odd.outcome == "Home" end  %>"><%= bet.match.home_team.name %></span>
-          <span class="vs-card">VS</span>
         </div>
+          <span class="vs-card">VS</span>
         <div class="team away-team">
           <%= image_tag bet.match.away_team.logo ? bet.match.away_team.logo : 'logo.png', class:"team-avatar" %>
           <span><%= bet.match.away_team.name %></span>
@@ -32,29 +33,33 @@
     <h2 class="home-away-draw"> <%= bet.odd.outcome %> </h2>
   </div>
 
+  <div class="test-width">
+
 
   <div class="message-body stake">
       <%= bet.stake %>
   </div>
 
   <div class="message-body score">
-    <% if bet.match.status == "FINISHED" %>
+    <% if bet.status == "won" || bet.status == "lost" %>
     <div class="team home-team">
-      <h4><%= bet.match.goals_home_team %></h4>
+      <%= bet.match.goals_home_team %>
     </div>
+    <span> : </span>
     <div class="team away-team">
-      <h4><%= bet.match.goals_away_team %></h4>
+      <%= bet.match.goals_away_team %>
     </div>
     <% end %>
   </div>
 
-  <div class="message-body" id="stake">
+
+<div class="message-body" id="stake">
     <% if bet.odd.match.status == "FINISHED" %>
       <%= render 'users/finished_body', bet: bet %>
     <% else %>
       <%= render 'users/pending_body', bet: bet %>
     <% end %>
-  </div>
+</div>
 
 
 <div class="bookmaker-dashboard">
@@ -65,5 +70,6 @@
   <div class="bookmaker-odds">
     <%= bet.odd.odds %>
   </div>
+</div>
 </div>
 </div>
