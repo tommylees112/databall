@@ -1,205 +1,48 @@
-<div class="banner">
-  <div class="banner-hex">
-    <div class="banner-content">
-      <h1>Experience Winning</h1>
-      <p>data driven recommendations for the weekend winner</p>
-      <!-- UNSURE ABOUT THIS IMAGE -->
-      <%# image_tag "screen.png", class:"screen" %>
-        <div class="home-chart">
-            <canvas id="modelPerformance" style="background-color: transparent;"></canvas>
-            <%= content_for :after_js do %>
-            <script>
-                var inputs = {
-                  min: -100,
-                  max: 100,
-                  count: 8,
-                  decimals: 2,
-                  continuity: 1
-                };
-                var canvas_element = document.getElementById("modelPerformance");
-                var lineChart = new Chart(canvas_element, {
-                  type: 'line',
-                  data: {
-                    labels: <%= raw @bet_dates %>,
-                    datasets: [{
-                        data: <%= raw @cumulative_total %>,
-                        label: "Total Profit",
-                        backgroundColor: "rgba(0, 21, 33, 0.7)",
-                        borderColor: "rgba(80, 255, 177, 1)",
-                        borderWidth: 1,
-                        borderCapStyle: 'butt',
-                        fill: true
-                      }
-                    ]
-                  },
-                  options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    title: {
-                      display: true,
-                      text: 'Cumulative Profit',
-                      fontColor: 'rgba(0,0,0,0)',
-                      fontStyle: 'light'
-                    },
-                    hover: {
-                      intersect: true,
-                      animationDuration: 400,
-                    },
-                    scales: {
-                      xAxes: [{
-                          display: true,
-                          scaleLabel: {
-                              display: true,
-                              labelString: 'Month'
-                          }
-                      }],
-                      yAxes: [{
-                          display: true,
-                          scaleLabel: {
-                              display: true,
-                              labelString: 'Value'
-                          }
-                      }]
-                  }
-                }});
-            </script>
-            <% end %>
+<div class="landing-page">
+  <%= render "landing_banner" %>
+    <!-- <div class="ready">
+      <h4>Ready to get started?</h4>
+      <a class="" data-toggle="modal" data-target="#upModal">Sign up</a>
+    </div> -->
+  <%= render "container1" %>
+  <%= render "container2" %>
+  <%= render "container3" %>
+  <!-- MODAL -->
+    <div id="upModal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
-      <!-- ## -->
-    </div>
-  </div>
-</div>
+          <div class="modal-container">
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                <div class="modal-body">
 
-<div class="ready">
-  <h4>Ready to get started?</h4>
-  <a class="navbar-wagon-item navbar-wagon-link" data-toggle="modal" data-target="#upModal">Sign up</a>
-</div>
+                  <h2>Sign up</h2>
 
-<div class="container1" style="background-color: #001521; width: 100%;">
-  <div class="landing-page-navigation"></div>
-  <div class="row">
-    <div class="col-xs-12 col-sm-4">
-      <div class="card">
-        <div class="card-category"><%= image_tag 'greenhex.png' %></div>
-        <div class="card-description">
-          <%= image_tag 'greennet.png' %>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <div class="card">
-        <div class="card-category">
-          <h2 style="text-transform: lowercase; font-size: 50px;">We make</h2><h3 style="text-transform: lowercase;"><span class="span-green">picking winners</h3></span> <span class="span-green"><h4 style="text-transform: lowercase;">simple</h4></span>
-        </div>
-        <div class="card-description">
-          <div class="card-desc1">
-            <h4>A simple <span class="span-green">recommendation</span> system<h4>
-             <h4>outlining the best bets from <span>across Europe</span></h4>
-          </div>
-          <div class="card-desc2">
-            <h4>Delve <span class="span-green">deeper</span> into the bets that catch your eye before you <span>make the bet</span></h4>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+                  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                    <%= f.error_notification %>
 
-<div class="container2" style="background-color: #001D2E; width: 100%;">
-  <div class="row">
-  <div class="col-xs-12 col-sm-4">
-    <div class="card">
-      <div class="card-category" style="white-space: nowrap;">
-        <h2 style="font-size: 32px; text-transform: lowercase; font-weight: lighter;";>Giving you <span class="span-blue" style="font-size: 53px;">access</span> to <br>advanced<span class="span-blue"> data science</span><br><span class="span-blue"> methods</span></h2>
-      </div>
-      <div class="card-description">
-        <div class="card-desc1" style="border-left:1px solid #1795C4 !important;">
-          <h4>Make use of our <span class="span-blue">bespoke<br></span> multi-layered <span class="span-blue">statistical model</span></h4>
-        </div>
-        <div class="card-desc2" style="border-left:1px solid #1795C4 !important;">
-          <h4>Utilise the <span class="span-blue">power of data science</span> without needing a PhD</h4>
-        </div>
-      </div>
-    </div>
-  </div>
-    <div class="col-xs-12 col-sm-4">
-      <div class="card card2">
-        <div class="card-category" style="position: absolute;left: 400px;">
-          <%= image_tag 'bluehex.png' %>
-        </div>
-        <div class="card-des" style="position: absolute; left: 300px; bottom: 50px;">
-          <%= image_tag "chart-line.png" %>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+                    <div class="form-inputs">
+                      <%= f.input :email, required: true, autofocus: true %>
+                      <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+                      <%= f.input :password_confirmation, required: true %>
+                    </div>
 
-
-
-<div class="container3-show" style="background-color: #001521; width: 100%;">
-  <div class="row">
-    <div class="col-xs-12 col-sm-4">
-      <div class="card">
-        <div class="card-category"><%= image_tag 'pinkhex.png' %></div>
-        <div class="card-description">
-          <%= image_tag "3pinkhex.png" %>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-4 col-sm-offset-2">
-      <div class="card">
-        <div class="card-category" style="position: absolute; bottom: 55%; white-space: nowrap;">
-          <h3 style="text-transform: lowercase;">Allowing you to <br><span class="span-pink" style="font-size: 45px;">track performance<br> </span>of <span class="span-pink">your portfolio</span></h3>
-        </div>
-        <div class="card-description">
-          <div class="card-desc1 pink-hex">
-            <h4><span class="span-pink">Add bets</span> to your profile to keep <br><span class="span-pink">track</span> of your <span class="span-pink">winnings</span></h4>
-          </div>
-          <div class="card-desc2 pink-hex">
-            <h4>Use our tool to <span class="span-pink">test the model</span><br>performance over time</h4>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div id="upModal" class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-container">
-        <div class="row">
-          <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-            <div class="modal-body">
-
-              <h2>Sign up</h2>
-
-              <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-                <%= f.error_notification %>
-
-                <div class="form-inputs">
-                  <%= f.input :email, required: true, autofocus: true %>
-                  <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-                  <%= f.input :password_confirmation, required: true %>
+                    <div class="form-actions", style="margin-bottom: 20px;">
+                      <%= f.button :submit, "Sign up" %>
+                    </div>
+                    <% end %>
+                    <hr>
+                  <hr>
+                  <%= render "devise/shared/links" %>
                 </div>
-
-                <div class="form-actions", style="margin-bottom: 20px;">
-                  <%= f.button :submit, "Sign up" %>
-                </div>
-                <% end %>
-                <hr>
-              <hr>
-              <%= render "devise/shared/links" %>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 </div>
-
