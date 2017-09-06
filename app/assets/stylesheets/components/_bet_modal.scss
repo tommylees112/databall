@@ -1,51 +1,55 @@
-.modal-dialog {
-  vertical-align: middle;
-  border-radius: 4px;
-}
-
-#makeBet {
-  h4 {
-    text-align: center;
+.bet-modal {
+  .modal-dialog {
+    vertical-align: middle;
+    border-radius: 4px;
   }
-  h3 {
-    text-align: center;
-    margin-top: 10px;
+
+  #makeBet {
+    h4 {
+      text-align: center;
+    }
+    h3 {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .modal-header {
+      padding: 10px;
+    }
+
+  }
+  #bet_stake {
+    width: 150px;
+  }
+  .modal-btn {
+    background-color: $green;
+    color: white;
+    border: none;
+    border-radius: 3px;
+  }
+  .modal-close {
+    color: white;
+  }
+  .modal-content {
+    color: $light-gray;
   }
   .modal-header {
-    padding: 10px;
+    background-color: #001D2E;
+  }
+  .modal-body {
+    background-color: #001521;
+  }
+  .modal-bookie {
+    display: flex;
+    align-items: center;
+    background-color: #001D2E;
+    padding: 20px 20px;
+  }
+  .bookie-message {
+    flex: 0 0 50%;
+  }
+  .bookie-link {
+    flex: 0 0 50%;
   }
 
 }
-#bet_stake {
-  width: 150px;
-}
-.modal-btn {
-  background-color: $green;
-  color: white;
-  border: none;
-  border-radius: 3px;
-}
-.modal-close {
-  color: white;
-}
-.modal-content {
-  color: $light-gray;
-}
-.modal-header {
-  background-color: #001D2E;
-}
-.modal-body {
-  background-color: #001521;
-}
-.modal-bookie {
-  display: flex;
-  align-items: center;
-  background-color: #001D2E;
-  padding: 20px 20px;
-}
-.bookie-message {
-  flex: 0 0 50%;
-}
-.bookie-link {
-  flex: 0 0 50%;
-}
+
