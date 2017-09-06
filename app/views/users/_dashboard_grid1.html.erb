@@ -102,11 +102,11 @@
         <h5 class="text-red text-center"><%= @losses.count %></h5>
     </div>
     <div class="total-profit other-information">
-        <h4>Winnings</h4>
-        <h5><%= @profit > 0 ? "" : "-" %>£ <span class="<%= @profit > 0 ? "text-green" : "text-red" %>"><%= @profit.abs %></span></h5>
+        <h4>Profit</h4>
+        <h5><%= @total_profit > 0 ? "" : "-" %>£ <span class="<%= @total_profit > 0 ? "text-green" : "text-red" %>"><%= @total_profit.abs %></span></h5>
     </div>
     <div class="total-bet other-information">
       <h4>Invested</h4>
-      <h5>£ <%= @total_stake %></h5>
+      <h5 class="text-center">£ <%= @total_stake %></h5>
     </div>
 </div>
