@@ -64,7 +64,7 @@ class Match < ApplicationRecord
 
   def h2h_info
     h2h_url = self.url
-    h2h_serialized = open(h2h_url).read
+    h2h_serialized = open(h2h_url, "X-Auth-Token" => ENV['FOOTBALL_KEY']).read
     h2h = JSON.parse(h2h_serialized)
 
     h2h_array = []

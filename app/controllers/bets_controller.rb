@@ -5,7 +5,10 @@ class BetsController < ApplicationController
     @bet.user = current_user
     @bet.save
     @bets = Bet.all
-    redirect_to odds_path
+    # redirect_to odds_path
+    respond_to do |format|
+      format.js
+    end
   end
 
   def destroy

@@ -1,15 +1,40 @@
 <div class="message <%= bet.won? ? 'won' : nil %>"></div>
 
-<div class="message <%= puts "Message" %>">
+
+<% dashboard_card_color = nil %>
+<% @user.bets.each do |bet|%>
+  <% if bet.status == "pending" %>
+    <%  dashboard_card_color = "#959595" %>
+  <% elsif bet.status == "won" %>
+    <% dashboard_card_color = "#50FFB1" %>
+  <% else %>
+    <% dashboard_card_color = "#EA526F" %>
+<% end %>
+<% end %>
+
+
+
+
+<div class="message <%= puts "Message"%>" style="border:2px solid <%= "#{dashboard_card_color}" %>; height: 60px;">
   <div class="message-body cards-team">
         <div class="team home-team">
           <%= image_tag bet.match.home_team.logo ? bet.match.home_team.logo : 'logo.png', class:"team-avatar" %>
-          <span><%= bet.match.home_team.name %></span>
+          <span class="<%= "winning-team-dashboard" if @user.bets.each do |bet| bet.odd.outcome == "Home" end  %>"><%= bet.match.home_team.name %></span>
+          <span class="vs-card">VS</span>
         </div>
         <div class="team away-team">
           <%= image_tag bet.match.away_team.logo ? bet.match.away_team.logo : 'logo.png', class:"team-avatar" %>
           <span><%= bet.match.away_team.name %></span>
         </div>
+  </div>
+
+  <div class="message-body outcome">
+    <h2 class="home-away-draw"> <%= bet.odd.outcome %> </h2>
+  </div>
+
+
+  <div class="message-body stake">
+      <%= bet.stake %>
   </div>
 
   <div class="message-body score">
@@ -31,16 +56,14 @@
     <% end %>
   </div>
 
-  <div class="message-status">
-    <div class="message-date text-center">
-      <% date = bet.odd.match.match_date %>
-      <p class="date"><%= date.strftime('%b %e') %></p>
-      <p class="date"><%= date.strftime('%l:%M %p') %></p>
-    </div>
-  </div>
 
+<div class="bookmaker-dashboard">
   <div class="avatar-container">
     <% creator = bet.odd.bookmaker %>
-    <%# image_tag bookie-icon %>
+    <%= cl_image_tag("#{creator.logo}.png", :radius=>15, :width=>50, :crop=>"scale")  %>
   </div>
+  <div class="bookmaker-odds">
+    <%= bet.odd.odds %>
+  </div>
+</div>
 </div>
