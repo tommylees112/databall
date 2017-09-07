@@ -26,6 +26,20 @@
   padding: 15px;
 }
 
+#landing-button{
+    background-color: transparent;
+    border: solid 4px #50FFB1;
+    border-radius: 9px;
+    padding: 11px;
+    h4 {
+      margin: 0;
+    }
+    &:hover {
+      transform: scale(1.1);
+      color: white !important;
+      transition-duration: 0.4s;
+    }
+}
 //CHART CODE
 .model-chart {
   height: 330px;
@@ -33,7 +47,6 @@
 .model-chart-container{
   padding: 10px;
 }
-
 
 .card {
   height: 450px;

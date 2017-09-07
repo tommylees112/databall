@@ -3,7 +3,7 @@
     <div class="banner-content">
         <h1>Betting Insights, Informed by Data</h1>
         <p>data driven recommendations for only <strike class="strike-price">£15</strike> <span class="price-landing">£5</span> per month</p>
-        <div class="btn btn-primary" data-toggle="modal" data-target="#upModal">
+        <div class="btn landing-button" data-toggle="modal" data-target="#upModal" id="landing-button">
             <h4>Sign Up</h4>
         </div>
           <!-- UNSURE ABOUT THIS IMAGE -->
@@ -37,6 +37,9 @@
                             ]
                           },
                           options: {
+                            legend: {
+                              display: false
+                            },
                             responsive: true,
                             maintainAspectRatio: false,
                             title: {
