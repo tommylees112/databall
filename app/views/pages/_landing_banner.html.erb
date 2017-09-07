@@ -1,7 +1,7 @@
 <div class="banner">
   <div class="banner-hex">
     <div class="banner-content">
-        <h1>Experience Winning</h1>
+        <h1>Reccomended Bets For The Weekend Winner</h1>
         <p>data driven recommendations for the weekend winner</p>
         <div class="btn btn-primary" data-toggle="modal" data-target="#upModal"><h4>Sign Up</h4></div>
           <!-- UNSURE ABOUT THIS IMAGE -->
@@ -21,9 +21,9 @@
                     var lineChart = new Chart(canvas_element, {
                       type: 'line',
                       data: {
-                        labels: <%= raw @bet_dates %>,
+                        labels: <%= raw bet_dates %>,
                         datasets: [{
-                            data: <%= raw @cumulative_total %>,
+                            data: <%= raw cumulative_total %>,
                             label: "Total Profit",
                             backgroundColor: "rgba(0, 21, 33, 0.7)",
                             borderColor: "rgba(80, 255, 177, 1)",
