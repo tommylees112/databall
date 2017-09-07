@@ -12,7 +12,8 @@
   }
 }
 .odds-show-grid {
-  margin-bottom: 100px;
+  margin: 0 auto 20px auto;
+  width: 50%;
   h2, h3, h4, h6 {
     opacity: 0.6;
   }
@@ -31,10 +32,10 @@
 }
 
 .banner.show {
-  min-height: 85vh;
+  min-height: 80vh;
 }
 #show-page-banner {
-  height: 95vh;
+  height: 80vh;
 }
 
 .banner-team-div {
@@ -42,16 +43,18 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 35px;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .team-image {
   img {
-    height: 200px;
+    height: 170px;
   }
 }
 
 .banner-content{
-  min-height: 750px;
+  min-height: 600px;
 }
 
 // HEX GRID (probabilities)
@@ -74,9 +77,6 @@
   grid-template-columns:50% 50%;
   grid-template-rows:50% 50%;
   // width: ;
-  .grid {
-    max-width: 250px;
-  }
 }
 
 #model-show-head {
@@ -124,7 +124,7 @@
 }
 
 .hex-grid-container {
-  margin-bottom: 100px;
+  margin-bottom: 30px;
 }
 
 .hex-grid-center {
@@ -141,7 +141,7 @@
 .team-form-container {
   .form-table {
     width: 1400px;
-    padding-top: 30px;
+    padding-top: 0px;
     padding-bottom: 30px;
     display: flex;
     justify-content: space-between;
@@ -181,4 +181,7 @@
 
 .header-underline {
   border-bottom: 1px solid #B3B9BC;
+}
+.form-header {
+  margin-top: 0px;
 }

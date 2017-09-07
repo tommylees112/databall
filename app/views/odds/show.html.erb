@@ -5,13 +5,11 @@
 <% match_model = @match.match_model_outputs.first %>
 
 <% hex = "dark-purple.png" %>
-<!-- ________________________________ -->
-<!-- CONTAINER 1 -->
-<!-- ________________________________ -->
-<div class="show banner" id="show-page-banner">
+
+<div class="show banner text-center" id="show-page-banner">
   <div id="show-banner-hex">
     <div class="banner-content">
-      <div class="banner-team-div col-xs-10 col-xs-offset-1">
+      <div class="banner-team-div">
         <div class="team-div">
             <div class="team-image">
               <%= image_tag home_team.logo %>
@@ -33,7 +31,7 @@
         </div>
         </div>
         <div class="row">
-          <div class="col-xs-6 col-xs-offset-3 odds-show-grid">
+          <div class="odds-show-grid">
             <div class="match-info-grid">
                 <div class="grid" id="prediction">
                   <h6>Prediction</h6>
@@ -68,24 +66,18 @@
     </div>
   </div>
 </div>
-<!-- ________________________________ -->
-<!-- CONTAINER 2 -->
-<!-- ________________________________ -->
+
 <div class="container2" id="model-output-container" style="background-color: #001D2E; width: 100%;">
     <div class="show model-information">
         <div class="row">
             <h2 class="text-center" id="model-show-head">What does the model say?</h2>
             <%= render 'hex-grid2', model: match_model %>
         </div>
-      <div class="team-info-container">
-        <%= render "team_model_info_table", home_team: home_team, away_team: away_team %>
-      </div>
     </div>
 </div>
-<!-- ________________________________ -->
-<!-- CONTAINER 3 -->
-<!-- ________________________________ -->
+
 <div class="container3-show " style="background-color: #001521; width: 100%;">
+  <h2 class="form-header text-center" id="model-show-head">Form Information</h2>
   <div class="team-form-container">
     <div class="form-table container">
     <%= render "form_table", match: @match %>
