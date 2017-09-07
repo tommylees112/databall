@@ -51,7 +51,7 @@ namespace :bets do
   end
 
   task my_bets: :environment do
-    hamish = User.where(email: "hachall@hotmail.com")
+    hamish = User.where(email: "hachall@hotmail.com").first
 
     def create_bet(bet_array)
       home = Team.find_by(name: bet_array[0])
