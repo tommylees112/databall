@@ -45,6 +45,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 10px;
   .avatar-container {
     padding-right: 10px;
   }
@@ -63,6 +64,10 @@
   }
 // TEAMS
 .message-body {
+  &.bet-outcome {
+    width: 80px;
+    text-align: right;
+  }
   // flex-grow: 1;
   margin-left: 0;
   padding-left: 0;
@@ -176,22 +181,36 @@
 }
 
 .test-width {
-  width: 30%;
+  width: 36%;
   display: flex;
   justify-content: space-between;
   align-items:center;
 }
-
 .headers {
   display: flex;
-  justify-content:space-around;
-  }
-
-  #outcome-head {
-    margin-left:674px;
 }
 
-
+#header-empty-space{
+  flex: 0 0 46.5%;
+}
+#dash-headers-box {
+  flex: 0 0 53.5%;
+  display: flex;
+  justify-content: space-around;
+}
+#outcome-head {
+    margin-left:0px;
+}
 #stake-head {
-  margin-left:37px;
+  margin-left: 0px;
 }
+#bookmaker-head {
+  margin-right: 10px;
+}
+#stupid-dumb-div {
+  display: flex;
+  justify-content: space-between;
+  width: 190px;
+  padding: 0px 15px;
+}
+

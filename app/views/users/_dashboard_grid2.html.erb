@@ -1,7 +1,4 @@
 <div class="dashboard_grid2">
-
-
-    <div class="odds-container2">
       <h3>Bets you have made:</h3>
     <div class="filter-bar">
       <%= link_to 'All', "", class: "dashboard-tab all" %>
@@ -10,12 +7,20 @@
       <%= link_to 'Pending', "", class: "dashboard-tab", "data-target" => ".pending" %>
     </div>
       <div class="headers">
-        <h5 id="outcome-head">Outcome</h5>
-        <h5 id="stake-head">Stake</h5>
-        <h5 id="result-head">Score</h5>
-        <h5 id="bet-result-head">Bet</h5>
-        <h5 id="bookmaker-head">Bookmaker</h5>
+        <div id="header-empty-space">
+
+        </div>
+        <div id="dash-headers-box">
+          <h5 id="outcome-head">Outcome</h5>
+          <div id="stupid-dumb-div">
+            <h5 id="stake-head">Stake</h5>
+            <h5 id="result-head">Score</h5>
+          </div>
+          <h5 id="bet-result-head">Bet</h5>
+          <h5 id="bookmaker-head">Bookmaker</h5>
+        </div>
       </div>
+    <div class="odds-container2">
       <% @bets.each do |bet| %>
         <%= render "shared/dashboard_card", bet: bet %>
       <% end %>

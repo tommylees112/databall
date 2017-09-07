@@ -10,7 +10,7 @@
       <div class="modal-body">
         <%= simple_form_for [odd, @bet], remote: true do |f| %>
           <%= f.label 'Stake:' %>
-          <%= f.input :stake, label: false, input_html: { min: '0', step: 'any' }  do %>
+          <%= f.input :stake, label: false, :class => "stake-input", input_html: { min: '0', step: 'any' } do %>
           <%= content_tag :span, "£", class: "add-on" %>
           <%= f.number_field :stake %>
           <%= f.submit 'Add Bet', :class => "modal-btn", input_html: { class: "align-right" } %>
