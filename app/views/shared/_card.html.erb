@@ -86,8 +86,12 @@
       <% hex = "dark-purple.png" %>
       <% end %>
 
+      <% if rating > 88 %>
+        <% black_color = "black-span" %>
+      <% end %>
+
       <div class="hexagon" style="background-image: url(<%= image_path hex %>)">
-          <span class="match-rating"><%= rating %></span>
+          <span class="match-rating <%= black_color %>"> <%= rating %></span>
       </div>
     </div>
 </div>
