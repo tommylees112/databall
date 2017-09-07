@@ -46,6 +46,9 @@
     </div>
 
     <div class="card-middle">
+      <div class="match-date">
+        <h4><%= odd.match.match_date.strftime('%e/%m/%y') %></h4>
+      </div>
       <div class="outcome">
         <h3><%= odd.outcome.upcase %> <%# odd.outcome.upcase == "DRAW" ? "" : "win" %></h3>
       </div>
