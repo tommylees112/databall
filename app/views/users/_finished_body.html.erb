@@ -1,12 +1,12 @@
 
 <% if bet.won? %>
   <div class="hover-box">
-      <h6 class="text-center">winnings</h6>
+      <h6 class="">winnings</h6>
       <p>£ <span class="won"><%= bet.winnings %></span></p>
   </div>
 <% else %>
     <div class="hover-box">
-      <h6 class="text-center">lost</h6>
+      <h6 class="">lost</h6>
       <p>£ <span class="lost"><%= bet.stake %></span></p>
   </div>
 <% end %>
