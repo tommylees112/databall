@@ -1,5 +1,5 @@
 <div class="dashboard_grid3">
-  <div class="main-chart2">
+  <!-- <div class="main-chart2">
     <h3>main chart</h3>
     <canvas id="lineChart" style="background-color: transparent;"></canvas>
     <script>
@@ -29,7 +29,7 @@
           }
         });
     </script>
-  </div>
+  </div> -->
   <div class="filter-bar2">
       <%= link_to "All", dashboard_path(b: 'all')%>
       <%= link_to "Won", dashboard_path(b: 'win') %>
@@ -42,5 +42,5 @@
         <%= render "shared/dashboard_card", bet: bet %>
       <% end %>
   </div>
-
+  <button type="button" class="btn btn-default fuckoff"><%= link_to "Cancel subscription",cancel_plan_path %></button>
 </div>
