@@ -1,0 +1,41 @@
+.dashboard-navigation {
+  flex: 0 0 50px;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: #0094C6;
+  font-size: 30px;
+  padding-left: 7px;
+  height: 100%;
+  ul {
+    border: none;
+  }
+  .nav-tabs > li > a {
+    border: none;
+    color: #959595;
+  }
+  li {
+    background: transparent;
+  }
+  a:hover i {
+    transform: scale(1.1);
+    color: #50FFB1;
+    transition-duration: 0.3s;
+  }
+    a:active i {
+    color: #50FFB1;
+    transform: scale(1.1);
+  }
+  .nav-tabs > li.active > a, .nav-tabs > li > a:hover {
+    border: none;
+    color: #50FFB1 !important;
+    background: transparent;
+  }
+}
+
+.tab-content {
+  width: 100%;
+  a {
+
+  }
+}
