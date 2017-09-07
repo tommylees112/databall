@@ -1,8 +1,8 @@
 <div class="dashboard_grid1">
     <!-- MAIN CHART -->
     <div class="main-chart">
-      <!-- <h3>main chart</h3> -->
-      <canvas id="lineChart" style="background-color: transparent;"></canvas>
+      <canvas id="cumulativeOutcome" style="background-color: transparent;"></canvas>
+      <%= content_for :after_js do %>
       <script>
           var inputs = {
             min: -100,
@@ -11,7 +11,8 @@
             decimals: 2,
             continuity: 1
           };
-          var canvas_element = document.getElementById("lineChart");
+          var canvas_element = document.getElementById("cumulativeOutcome");
+          // canvas_element.height = 75;
           var lineChart = new Chart(canvas_element, {
             type: 'line',
             data: {
@@ -28,6 +29,8 @@
               ]
             },
             options: {
+              responsive: true,
+              maintainAspectRatio: false,
               title: {
                 display: true,
                 text: 'Cumulative Profit',
@@ -35,12 +38,8 @@
                 fontStyle: 'light'
               },
               hover: {
-                mode: nearest,
                 intersect: true,
                 animationDuration: 400,
-              },
-              tooltips: {
-                mode: index,
               },
               scales: {
                 xAxes: [{
@@ -60,12 +59,12 @@
             }
           }});
       </script>
+      <% end %>
     </div>
     <!-- BAR CHART -->
     <div class="bar-chart">
-      <!-- <h3>bar chart</h3> -->
-      <%#= column_chart @profits %>
       <canvas id="bar-chart"></canvas>
+      <%= content_for :after_js do %>
       <script>
         new Chart(document.getElementById("bar-chart"), {
         type: 'bar',
@@ -73,13 +72,15 @@
           labels: <%= raw @bet_dates %>,
           datasets: [
             {
-              label: "Performance",
-              backgroundColor: <%= raw @bet_color %>,
-              data: <%= raw @bet_returns %>
+              label: <%= @completed_bet_status = [] %>,
+              backgroundColor: <%= raw @completed_bet_color %>,
+              data: <%= raw @completed_bet_returns %>
             }
           ]
         },
         options: {
+          responsive: true,
+          maintainAspectRatio: false,
           legend: { display: false },
           title: {
             display: true,
@@ -88,18 +89,23 @@
               }
           });
       </script>
+      <% end %>
     </div>
     <!-- EXTRA INFO -->
-    <div class="wins">
+    <div class="wins other-information">
         <h4>Wins</h4>
-        <h5><%= @wins.count %></h5>
+        <h5 class="text-green text-center"><%= @wins.count %></h5>
     </div>
-    <div class="losses">
+    <div class="losses other-information">
         <h4>Losses</h4>
-        <h5><%= @losses.count %></h5>
+        <h5 class="text-red text-center"><%= @losses.count %></h5>
     </div>
-    <div class="total-profit">
+    <div class="total-profit other-information">
         <h4>Profit</h4>
-        <h5><%= @bet_returns.last %></h5>
+        <h5><%= @total_profit > 0 ? "" : "-" %>£ <span class="<%= @total_profit > 0 ? "text-green" : "text-red" %>"><%= @total_profit.abs %></span></h5>
+    </div>
+    <div class="total-bet other-information">
+      <h4>Invested</h4>
+      <h5 class="text-center">£ <%= @total_stake %></h5>
     </div>
 </div>

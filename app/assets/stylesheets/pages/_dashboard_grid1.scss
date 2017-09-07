@@ -1,12 +1,10 @@
-// #main-grid {
-//   display: grid;
-//   grid-template-columns: 55% 1fr 1fr;
-//   grid-template-rows: 55% 1fr 1fr;
-// }
+
+// GRID LAYOUT
 .dashboard_grid1{
   display: grid;
   grid-template-columns: 55% 1fr 1fr;
-  grid-template-rows: 55% 1fr 1fr;
+  grid-template-rows: 400px 1fr 1fr;
+  height: calc(100vh - 70px);
 }
 .main-chart {
   grid-column: 1 / span 3;
@@ -16,15 +14,69 @@
   grid-column: 1 / span 1;
   grid-row: 2 / span 2;
 }
+
+// GRID ELEMENTS
 .wins {
   grid-column:2 / span 1;
   grid-row:2 / span 1;
+  // DESIGN
 }
 .losses {
   grid-column:2 / span 1;
   grid-row:3 / span 1;
+  // DESIGN
 }
 .total-profit {
   grid-column:3 / span 1;
-  grid-row:2 / span 2;
+  grid-row:2 / span 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h4 {
+    flex: 0 0 auto;
+    opacity: 0.9;
+  }
+  h5 {
+    flex: 1 0 auto;
+    opacity: 0.9;
+    font-size: 30px;
+  }
+  // DESIGN
 }
+.total-bet {
+  grid-column:3 / span 1;
+  grid-row:3 / span 1;
+}
+.text-green {
+ color: #50FFB1;
+}
+.text-red {
+ color: #EA526F;
+}
+.other-information {
+  border-radius: 9px;
+  background-color: #001D2E;
+  opacity: 0.7;
+  margin: 20px;
+  &:hover{
+    opacity: 1;
+    transform: scale(1.05);
+    transition-duration: 0.4s;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

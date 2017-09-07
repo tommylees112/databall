@@ -4,7 +4,8 @@ $(document).ready(function() {
     $(".message").removeClass("active");
     $($(this).data("target")).addClass("active");
   })
-  $("#all").click(function() {
+  $(".dashboard-tab.all").click(function(e) {
+    e.preventDefault();
     $(".message").addClass("active");
 
   });

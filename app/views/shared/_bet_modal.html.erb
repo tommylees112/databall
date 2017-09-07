@@ -1,21 +1,31 @@
-<div id="makeBet-<%= odd.id %>" class="modal fade" role="dialog">
+<div id="makeBet-<%= odd.id %>" class="bet-modal modal fade" role="dialog">
   <div class="modal-dialog modal-sm">
 
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Add this bet to your profile</h4>
+        <button type="button" class="close modal-close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add this bet to your profile:</h4>
       </div>
       <div class="modal-body">
-        <%= simple_form_for [odd, @bet] do |f| %>
+        <%= simple_form_for [odd, @bet], remote: true do |f| %>
           <%= f.label 'Stake:' %>
           <%= f.input :stake, label: false, input_html: { min: '0', step: 'any' }  do %>
           <%= content_tag :span, "£", class: "add-on" %>
           <%= f.number_field :stake %>
-          <%= f.submit 'Add Bet', input_html: { class: "align-right" } %>
+          <%= f.submit 'Add Bet', :class => "modal-btn", input_html: { class: "align-right" } %>
           <% end %>
         <% end %>
+      </div>
+      <div class="modal-bookie">
+        <div class="bookie-message">
+          Click to go to:
+        </div>
+        <div class="bookie-link text-center">
+          <a href="<%= odd.bookmaker.url %>" target="_blank">
+            <%= cl_image_tag("#{odd.bookmaker.logo}.png", :radius=>15, :width=>80, :crop=>"scale")  %>
+          </a>
+        </div>
       </div>
     </div>
 

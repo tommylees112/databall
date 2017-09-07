@@ -3,7 +3,29 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>DataBall</title>
+    <title>DataBall - Informing You With Data</title>
+
+    <%= favicon_link_tag "favicon.png" %>
+
+    <!-- META TAGS FOR FB -->
+    <meta name="description" content="Statistically driven betting recommendations for the weekend winner">
+
+    <!-- Facebook Open Graph data -->
+    <meta property="og:title" content="DataBall - Informing You With Data" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= request.original_url %>" />
+    <meta property="og:image" content="databall-background.png" />
+    <meta property="og:description" content="<%= meta_description %>" />
+    <meta property="og:site_name" content="DataBall - Informing You With Data" />
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="<%= DEFAULT_META["twitter_account"] %>">
+    <meta name="twitter:title" content="@product_twitter_account">
+    <meta name="twitter:description" content="Statistically driven betting recommendations for the weekend winner">
+    <meta name="twitter:creator" content="@product_twitter_account">
+    <meta name="twitter:image:src" content="databall-background.png">
+
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>

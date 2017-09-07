@@ -5,7 +5,7 @@
           <thead>
               <th>
                 <span class="header-underline">
-              <%= home_team.name %> Form
+              <%= match.home_team.name %> Form
                 </span>
               </th>
           </thead>
@@ -39,24 +39,24 @@
             </th>
           </thead>
           <tbody>
-            <% h2h_matches.first(5).each do |match| %>
+            <% h2h_matches.first(5).each do |h2h_match| %>
               <tr>
                 <td>
-                  <span><%= match.match_date.strftime('%e/%m/%y') %></span>
-                  <% if match.outcome == "Home" %>
-                    <span class="win-underline"><%= match.home_team.name %></span>
-                  <% elsif match.outcome == "Away" %>
-                    <span class="lose-underline"><%= match.home_team.name %></span>
+                  <span><%= h2h_match.match_date.strftime('%e/%m/%y') %></span>
+                  <% if h2h_match.outcome == "Home" %>
+                    <span class="win-underline"><%= h2h_match.home_team.name %></span>
+                  <% elsif h2h_match.outcome == "Away" %>
+                    <span class="lose-underline"><%= h2h_match.home_team.name %></span>
                   <% else %>
-                    <span class="draw-underline"><%= match.home_team.name %></span>
+                    <span class="draw-underline"><%= h2h_match.home_team.name %></span>
                   <% end %>
-                  <span><%="#{match.goals_home_team} - #{match.goals_away_team}" %></span>
-                    <% if match.outcome == "Home" %>
-                    <span class="lose-underline"><%= match.away_team.name %></span>
-                  <% elsif match.outcome == "Away" %>
-                    <span class="win-underline"><%= match.away_team.name %></span>
+                  <span><%="#{h2h_match.goals_home_team} - #{h2h_match.goals_away_team}" %></span>
+                    <% if h2h_match.outcome == "Home" %>
+                    <span class="lose-underline"><%= h2h_match.away_team.name %></span>
+                  <% elsif h2h_match.outcome == "Away" %>
+                    <span class="win-underline"><%= h2h_match.away_team.name %></span>
                   <% else %>
-                    <span class="draw-underline"><%= match.away_team.name %></span>
+                    <span class="draw-underline"><%= h2h_match.away_team.name %></span>
                   <% end %>
                 </td>
               </tr>
@@ -69,7 +69,7 @@
           <thead>
             <th>
               <span class="header-underline">
-                <%= away_team.name %> Form
+                <%= match.away_team.name %> Form
               </span>
             </th>
           </thead>

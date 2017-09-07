@@ -30,7 +30,7 @@ class Match < ApplicationRecord
   end
 
   def outcome
-    return 'pending' if status != "FINISHED"
+    return 'pending' if status != "FINISHED" && status != "H2H"
     if goals_home_team > goals_away_team
       "Home"
     elsif goals_home_team < goals_away_team
@@ -64,7 +64,7 @@ class Match < ApplicationRecord
 
   def h2h_info
     h2h_url = self.url
-    h2h_serialized = open(h2h_url).read
+    h2h_serialized = open(h2h_url, "X-Auth-Token" => ENV['FOOTBALL_KEY']).read
     h2h = JSON.parse(h2h_serialized)
 
     h2h_array = []

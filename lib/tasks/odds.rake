@@ -6,6 +6,7 @@ namespace :odds do
     desc 'Scrapes all odds from internet'
 
     puts "Starting odds seed ..."
+
     DICTIONARY = {
       "Arsenal FC" => "arsenal",
       "Leicester City FC" => "leicester-city",
@@ -162,22 +163,53 @@ namespace :odds do
       end
     end
 
-    Match.where(status: "TIMED").where(league: 1).order(:gameweek).first(20).each do |match|
-      make_odds(match)
+    def find_league_id
+      leagues = []
+      prem = League.find_by name: "Premier League"
+      laliga = League.find_by name: "La Liga"
+      bund = League.find_by name: "Bundesliga"
+      serie = League.find_by name: "Serie A"
+      ligue = League.find_by name: "Ligue 1"
+      leagues = [prem, laliga, bund, serie, ligue]
+      return leagues
     end
-    Match.where(status: "TIMED").where(league: 2).order(:gameweek).first(20).each do |match|
-      make_odds(match)
-    end
-    Match.where(status: "TIMED").where(league: 3).order(:gameweek).first(18).each do |match|
-      make_odds(match)
-    end
-    Match.where(status: "TIMED").where(league: 4).order(:gameweek).first(20).each do |match|
-      make_odds(match)
-    end
-    Match.where(status: "TIMED").where(league: 5).order(:gameweek).first(20).each do |match|
+
+    leagues = find_league_id
+    # leagues[0].id
+    # leagues[1].id
+    # leagues[2].id
+    # leagues[3].id
+    # leagues[4].id
+    # (League.find_by name: "Premier League").id
+    # (League.find_by name: "La Liga").id
+    # (League.find_by name: "Bundesliga").id
+    # (League.find_by name: "Serie A").id
+    # (League.find_by name: "Ligue 1").id
+
+    puts "------ Scraping odds for Premier League ------"
+    Match.where(status: "TIMED").where(league: (League.find_by name: "Premier League").id).order(:gameweek).first(20).each do |match|
       make_odds(match)
     end
 
+    puts "------ Scraping odds for La Liga ------"
+    Match.where(status: "TIMED").where(league: (League.find_by name: "La Liga").id).order(:gameweek).first(20).each do |match|
+      make_odds(match)
+    end
+
+    puts "------ Scraping odds for Bundesliga ------"
+    Match.where(status: "TIMED").where(league: (League.find_by name: "Bundesliga").id).order(:gameweek).first(18).each do |match|
+      make_odds(match)
+    end
+
+    puts "------ Scraping odds for Serie A ------"
+    Match.where(status: "TIMED").where(league: (League.find_by name: "Serie A").id).order(:gameweek).first(20).each do |match|
+      make_odds(match)
+    end
+
+    puts "------ Scraping odds for Ligue 1 ------"
+    Match.where(status: "TIMED").where(league: (League.find_by name: "Ligue 1").id).order(:gameweek).first(20).each do |match|
+      make_odds(match)
+    end
   end
 
   task clean_up: :environment do

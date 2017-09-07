@@ -1,6 +1,7 @@
 namespace :random_portfolio do
   task seed: :environment do
     puts "Starting to create random bets"
+    puts "REMEMBER TO CREATE A USER"
       # RANDOM BETS ON ALL FINISHED MATCHES
       OUTCOME = ["Home","Away","Draw"]
 
@@ -10,7 +11,7 @@ namespace :random_portfolio do
         odds_number = rand(1.1..2.0).round(2)
         odd.odds = odds_number
         odd.bookmaker = Bookmaker.all.sample
-        odd.rating = 80
+        odd.rating = 0
         odd.save!
       end
 
