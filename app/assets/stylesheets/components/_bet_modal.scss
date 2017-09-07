@@ -52,6 +52,21 @@
   .bookie-link {
     flex: 0 0 50%;
   }
+  .modal-profile-button {
+    padding: 20px;
+    background-color: #001521;
+    .btn {
+      background-color: $light-gray;
+      color: #001521;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
 }
+#modal-flash {
+  background-color: rgba(80, 255, 177, 0.8);
+  color: white;
 
+}
 
