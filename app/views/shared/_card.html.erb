@@ -35,7 +35,7 @@
 
     <div class="card-middle">
       <div class="outcome">
-        <h3><%= odd.outcome.upcase %></h3>
+        <h3><%= odd.outcome.upcase %> <%# odd.outcome.upcase == "DRAW" ? "" : "win" %></h3>
       </div>
 
       <div class="bookmaker">
@@ -64,7 +64,8 @@
         <% (rating <= 87) && (rating > 80) %>
       <% hex = "very-light-green.png" %>
       <% else %>
-        <% hex = "yellowbright.png.png" %>
+        <!-- FIX THESE ADRIAN !!!!!!!!!!!!!!!!!!! (more logic) -->
+        <% hex = "yellowbright.png" %>
       <% end %>
       <div class="hexagon" style="background-image: url(<%= image_path hex %>)">
           <span class="match-rating"><%= rating %></span>
