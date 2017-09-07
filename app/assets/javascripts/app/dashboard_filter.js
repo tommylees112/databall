@@ -8,8 +8,8 @@ $(document).ready(function() {
     e.preventDefault();
     $(".message").addClass("active");
 
-  })
-})
+  });
+});
 
 $(document).ready(function() {
   $("#lost-click").click(function() {

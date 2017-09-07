@@ -12,21 +12,19 @@
 }
 
 .odds-container2 {
-  height: 80vh;
+  height: 90vh;
   overflow-y: scroll;
-
 }
 
 .filter-bar {
   width: 97%;
   margin: 10px;
-  height:51px;
+  height:41px;
   background-color: white;
-  font-size: 39px;
+  font-size: 29px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 7px;
 
   a {
     text-decoration: none;
@@ -41,7 +39,6 @@
     width: 25%;
     text-align: center;
     border: 1px solid rgba(0,0,0,0.5);
-    border-radius: 7px;
     &:hover {
       background-color: $green;
     }
