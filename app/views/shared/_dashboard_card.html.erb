@@ -33,11 +33,11 @@
           <div class="team away-team">
             <%= image_tag bet.match.away_team.logo ? bet.match.away_team.logo : 'logo.png', class:"team-avatar" %>
             <% if bet.match.outcome == "Draw" %>
-              <span class="draw-underline"><%= bet.match.home_team.name %></span>
+              <span class="draw-underline"><%= bet.match.away_team.name %></span>
             <% elsif bet.match.outcome == "Away" %>
-              <span class="win-underline"><%= bet.match.home_team.name %></span>
+              <span class="win-underline"><%= bet.match.away_team.name %></span>
             <% else %>
-              <span><%= bet.match.home_team.name %></span>
+              <span><%= bet.match.away_team.name %></span>
             <% end %>
           </div>
           </div>
