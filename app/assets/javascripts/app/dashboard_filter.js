@@ -7,8 +7,8 @@ $(document).ready(function() {
   $("#all").click(function() {
     $(".message").addClass("active");
 
-  })
-})
+  });
+});
 
 $(document).ready(function() {
   $("#lost-click").click(function() {
