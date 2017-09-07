@@ -1,5 +1,5 @@
-$(document).ready(function(){
-  $(".stripe-button-el").trigger("click");
+// $(document).ready(function(){
+//   $(".stripe-button-el").trigger("click");
 
-  });
-});
+//   });
+// });
