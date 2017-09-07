@@ -22,7 +22,7 @@ gem 'nokogiri'
 gem 'cloudinary'
 # gem 'date'
 # gem 'csv'
-
+gem "pundit"
 
 gem 'stripe'
 gem 'money-rails'

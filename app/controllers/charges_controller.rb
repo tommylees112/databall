@@ -1,6 +1,5 @@
 class ChargesController < ApplicationController
   def new
-
   end
 
   def create
@@ -19,6 +18,7 @@ class ChargesController < ApplicationController
       :currency    => 'gbp'
     )
     current_user.update(access: true)
+    redirect_to root_path
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path

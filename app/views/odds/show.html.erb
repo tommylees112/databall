@@ -18,8 +18,9 @@
               <h3><%= home_team.name %></h3>
             </div>
         </div>
-        <div class="vs">
-            <h3>vs.</h3>
+        <div class="">
+            <h3 class="vs">vs.</h3>
+            <h4 class="show-date"><%= @match.match_date.strftime('%A %b %e, %l:%M %p')%></h4>
         </div>
         <div class="team-div">
             <div class="team-image">

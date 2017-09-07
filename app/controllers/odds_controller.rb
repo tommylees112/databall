@@ -1,6 +1,7 @@
 class OddsController < ApplicationController
 
   def index
+    redirect_to new_charge_path if current_user.access == false
     if params[:league].present?
       query = <<-SQL
         SELECT o1.*
