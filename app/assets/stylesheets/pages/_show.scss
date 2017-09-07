@@ -25,10 +25,12 @@
 // CONTAINERS (page wrappers)
 .container3-show {
   height: auto;
+  padding-bottom: 30px;
+  padding-top: 30px;
 }
 
 #model-output-container {
-  min-height: 64vh
+  min-height: 55vh
 }
 
 .banner.show {

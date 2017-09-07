@@ -83,7 +83,7 @@
           maintainAspectRatio: false,
           legend: { display: false },
           title: {
-            display: true,
+            display: false,
             text: 'Bar Chart'
                 }
               }
@@ -92,13 +92,13 @@
       <% end %>
     </div>
     <!-- EXTRA INFO -->
-    <div class="wins other-information">
+    <div class="wins other-information text-center">
         <h4>Wins</h4>
-        <h5 class="text-green text-center"><%= @wins.count %></h5>
+        <h5 class="text-green text-center other-information-text"><%= @wins.count %></h5>
     </div>
-    <div class="losses other-information">
+    <div class="losses other-information text-center">
         <h4>Losses</h4>
-        <h5 class="text-red text-center"><%= @losses.count %></h5>
+        <h5 class="text-red text-center other-information-text"><%= @losses.count %></h5>
     </div>
     <div class="total-profit other-information">
         <h4>Profit</h4>
@@ -106,6 +106,6 @@
     </div>
     <div class="total-bet other-information">
       <h4>Invested</h4>
-      <h5 class="text-center">£ <%= @total_stake %></h5>
+      <h5 class="text-center other-information-text">£ <%= @total_stake %></h5>
     </div>
 </div>
