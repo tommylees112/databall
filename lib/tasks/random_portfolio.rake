@@ -57,7 +57,7 @@ namespace :random_portfolio do
       ################# CHANGE THESE VARIABLES ####################
 
       number_of_bets = 15
-      user = User.last
+      user = User.find(1)
 
       #############################################################
 

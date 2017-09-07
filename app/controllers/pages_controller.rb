@@ -6,10 +6,13 @@ class PagesController < ApplicationController
     ####### CAN WE ACCESS THIS USERS STUFF ???
     @model_user = User.find_by first_name: "website_historical"
 
-    @cumulative_total = []
+    @bet_dates = @model_user.completed_bets.pluck(:created_at).map{ |d| d.strftime('%d %b %Y') }
+
+
+    @completed_cumulative_total = []
         @model_user.bets.each do |bet|
-          previous_total = @cumulative_total.last || 0
-          @cumulative_total << (if bet.won?
+          previous_total = @completed_cumulative_total.last || 0
+          @completed_cumulative_total << (if bet.won?
             previous_total + bet.stake * bet.odd.odds
           elsif bet.lost?
             previous_total - bet.stake

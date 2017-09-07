@@ -14,7 +14,13 @@
         <div class="icons">
           <%= image_tag photo, class:"team-logo" %>
           <div style="margin-left: 20px;">
-          <h5 class="team-name"><%= odd.match.home_team.name %></h5>
+          <% if odd.outcome == "Draw" %>
+            <span class="draw-underline"><%= odd.match.home_team.name %></span>
+          <% elsif odd.outcome == "Home" %>
+            <span class="win-underline"><%= odd.match.home_team.name %></span>
+          <% else %>
+            <span class=""><%= odd.match.home_team.name %></span>
+          <% end %>
           </div>
         </div>
       </div>
@@ -27,15 +33,24 @@
         <div class="icons">
           <%= image_tag photo, class:"team-logo" %>
           <div style="margin-left: 20px;">
-          <h5 class="team-name"><%= odd.match.away_team.name %></h5>
+          <% if odd.outcome == "Draw" %>
+            <span class="draw-underline"><%= odd.match.away_team.name %></span>
+          <% elsif odd.outcome == "Away" %>
+            <span class="win-underline"><%= odd.match.away_team.name %></span>
+          <% else %>
+            <span class=""><%= odd.match.away_team.name %></span>
+          <% end %>
           </div>
         </div>
       </div>
     </div>
 
     <div class="card-middle">
+      <div class="match-date">
+        <h4><%= odd.match.match_date.strftime('%e/%m/%y') %></h4>
+      </div>
       <div class="outcome">
-        <h3><%= odd.outcome.upcase %></h3>
+        <h3><%= odd.outcome.upcase %> <%# odd.outcome.upcase == "DRAW" ? "" : "win" %></h3>
       </div>
 
       <div class="bookmaker">
@@ -84,6 +99,9 @@
       <% hex = "dark-purple.png" %>
       <% else %>
       <% hex = "dark-purple.png" %>
+
+        
+        
       <% end %>
 
       <% if rating > 88 %>

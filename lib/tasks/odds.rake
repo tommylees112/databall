@@ -149,6 +149,7 @@ namespace :odds do
     def make_odds(match)
       p (match.home_team.name + " v " + match.away_team.name)
       url = build_url(match)
+      p url
       html_file = open(url).read
       html_doc = Nokogiri::HTML(html_file)
       outcomes = ["Home", "Draw", "Away"]
@@ -158,7 +159,7 @@ namespace :odds do
           frac_odd = column.text.strip
           odd = convert_odds(frac_odd)
           rating = rate_bet(outcome, odd, match)
-          Odd.create!(bookmaker: Bookmaker.find_by(name: column.attribute('title').value), match_id: match.id, outcome: outcome, odds: odd, rating: rating, frac_odd: frac_odd) if Bookmaker.find_by(name: column.attribute('title').value)
+          Odd.create(bookmaker: Bookmaker.find_by(name: column.attribute('title').value), match_id: match.id, outcome: outcome, odds: odd, rating: rating, frac_odd: frac_odd) if Bookmaker.find_by(name: column.attribute('title').value)
         end
       end
     end
