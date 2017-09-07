@@ -15,20 +15,21 @@
 .body-headers {
   display: flex;
   justify-content: space-between;
+  padding: 0 25px 0 375px;
 
 }
-#outcome-date {
-    margin-left: 380px;
-}
-#outcome-header {
-  margin-left: 20px;
-}
-#odds-header {
-  margin-right: 0px;
-}
-#rating-header {
-  margin-right: 60px;
-}
+// #outcome-date {
+//     margin-left: 380px;
+// }
+// #outcome-header {
+//   margin-left: 20px;
+// }
+// #odds-header {
+//   margin-right: 0px;
+// }
+// #rating-header {
+//   margin-right: 60px;
+// }
 .card-container {
   height: 68vh;
   padding-top: 20px;
