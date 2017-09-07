@@ -20,13 +20,27 @@
   <div class="message-body cards-team">
         <div class="team home-team">
           <%= image_tag bet.match.home_team.logo ? bet.match.home_team.logo : 'logo.png', class:"team-avatar" %>
-          <span class="<%= "winning-team-dashboard" if @user.bets.each do |bet| bet.odd.outcome == "Home" end  %>"><%= bet.match.home_team.name %></span>
+          <% if bet.match.outcome == "Draw" %>
+            <span class="draw-underline"><%= bet.match.home_team.name %></span>
+          <% elsif bet.match.outcome == "Home" %>
+            <span class="win-underline"><%= bet.match.home_team.name %></span>
+          <% else %>
+            <span><%= bet.match.home_team.name %></span>
+          <% end %>
         </div>
           <span class="vs-card">VS</span>
-        <div class="team away-team">
-          <%= image_tag bet.match.away_team.logo ? bet.match.away_team.logo : 'logo.png', class:"team-avatar" %>
-          <span><%= bet.match.away_team.name %></span>
-        </div>
+          <div class="team-right">
+          <div class="team away-team">
+            <%= image_tag bet.match.away_team.logo ? bet.match.away_team.logo : 'logo.png', class:"team-avatar" %>
+            <% if bet.match.outcome == "Draw" %>
+              <span class="draw-underline"><%= bet.match.home_team.name %></span>
+            <% elsif bet.match.outcome == "Away" %>
+              <span class="win-underline"><%= bet.match.home_team.name %></span>
+            <% else %>
+              <span><%= bet.match.home_team.name %></span>
+            <% end %>
+          </div>
+          </div>
   </div>
 
   <div class="message-body outcome">
