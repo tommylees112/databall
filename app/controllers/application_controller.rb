@@ -3,11 +3,15 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   # before_action :set_access
 
+
+
   def default_url_options
     { host: ENV["HOST"] || "localhost:3000" }
   end
 
-  # private
+
+
+
 
   # def set_access
   #   if current_user.stripe_subscription['status'] == 'canceled'

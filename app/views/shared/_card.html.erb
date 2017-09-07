@@ -65,25 +65,51 @@
     </div>
 
     <div class="card-end">
-      <% rating = odd.mapped_rating %>
-      <% if %>
-        <% (rating <= 100) && (rating > 97) %>
+      <% rating = odd.mapped_rating.to_f %>
+      <% hex = "" %>
+      <% if (rating <= 100) && (rating > 98) %>
         <% hex = "yellowbright.png" %>
-      <% elsif %>
-        <% (rating <= 97) && (rating > 90) %>
+      <% elsif (rating <= 98) && (rating > 96) %>
         <% hex = "yellow1.png" %>
-      <% elsif %>
-        <% (rating <= 90) && (rating > 87) %>
+      <% elsif (rating <= 96) && (rating > 94) %>
         <% hex = "fucking-bright-green.png" %>
-      <% elsif %>
-        <% (rating <= 87) && (rating > 80) %>
+      <% elsif (rating <= 94) && (rating > 92) %>
       <% hex = "very-light-green.png" %>
+      <% elsif (rating <= 92) && (rating > 90) %>
+      <% hex = "light-green.png" %>
+      <% elsif (rating <= 90) && (rating > 88) %>
+      <% hex = "mid-green.png" %>
+      <% elsif (rating <= 88) && (rating > 86) %>
+      <% hex = "dark-green.png" %>
+      <% elsif (rating <= 86) && (rating > 84) %>
+      <% hex = "light-blue.png" %>
+      <% elsif (rating <= 84) && (rating > 82) %>
+      <% hex = "mid-blue.png" %>
+      <% elsif (rating <= 82) && (rating > 80) %>
+      <% hex = "dark-blue.png" %>
+      <% elsif (rating <= 80) && (rating > 78) %>
+      <% hex = "lightpurp.png" %>
+      <% elsif  (rating <= 78) && (rating > 76) %>
+      <% hex = "light-purple.png" %>
+      <% elsif  (rating <= 76) && (rating > 74) %>
+      <% hex = "mid-purple.png" %>
+      <% elsif  (rating <= 74) && (rating > 72) %>
+      <% hex = "dark-purple.png" %>
+      <% elsif  (rating <= 72) && (rating >= 70) %>
+      <% hex = "dark-purple.png" %>
       <% else %>
-        <!-- FIX THESE ADRIAN !!!!!!!!!!!!!!!!!!! (more logic) -->
-        <% hex = "yellowbright.png" %>
+      <% hex = "dark-purple.png" %>
+
+        
+        
       <% end %>
+
+      <% if rating > 88 %>
+        <% black_color = "black-span" %>
+      <% end %>
+
       <div class="hexagon" style="background-image: url(<%= image_path hex %>)">
-          <span class="match-rating"><%= rating %></span>
+          <span class="match-rating <%= black_color %>"> <%= rating %></span>
       </div>
     </div>
 </div>
