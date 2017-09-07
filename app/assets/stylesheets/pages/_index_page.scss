@@ -7,3 +7,28 @@
 #all-tab{
   font-size: 40px
 }
+
+.topfive{
+
+}
+#reccomended{
+  font-size:20px;
+  border-radius: 9px;
+  padding: 10px;
+  margin: 5px;
+  border: solid 4px #0094C6;
+  // background-color: rgba(255,255,255,0.1);
+
+}
+
+.tabs-container {
+}
+.league-tab {
+  &:hover {
+    transform: scale(1.1);
+    transition-duration: 0.4s;
+  }
+  &:active {
+    opacity: 0;
+  }
+}
