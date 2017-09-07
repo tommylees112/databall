@@ -2,12 +2,12 @@
 .message {
 
   display: flex;
+  justify-content: space-between;
   position: relative;
   align-items: center;
-  padding: 0;
+  padding: 0px 20px;
   border: 1px solid rgba(220,224,244,0.4);
   border-radius: 7px;
-  justify-content: space-around;
   background-color: transparent;
   margin: 10px;
   color: white;
@@ -68,32 +68,36 @@
   padding-left: 0;
   margin:0;
   font-size: 13px;
-  .vs-card{
-
-  }
-
-
   &.cards-team {
-    width: 450px;
+    width: 550px;
     display: flex;
-    justify-content:space-between;
     align-items: center;
-    padding:20px;
+    justify-content: space-between;
     color: white;
+    .team {
+      margin: 3px;
+      .away-team {
+
+      }
+    }
   }
+}
+.home-team {
+  flex: 0 0 45%;
+}
+
+.vs-card{
+  flex: 0 0 10%;
+}
+
+.team-right {
+  flex: 0 0 45%;
 }
 
 .team-avatar {
   height: 40px;
   width: 40px;
   margin-right: 10px;
-}
-.team {
-  margin: 3px;
-  .winning-team-dashboard {
-    border-bottom: 1px solid $green;
-    padding-bottom: 3px;
-  }
 }
 .price {
   font-size: 45px;
@@ -184,7 +188,7 @@
   }
 
   #outcome-head {
-    margin-left:591px;
+    margin-left:674px;
 }
 
 
