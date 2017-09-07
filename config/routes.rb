@@ -17,4 +17,6 @@ Rails.application.routes.draw do
 
   get "/dashboard", to: "users#dashboard"
   resources :charges
+  resources :subscribers
+  get '/cancel_plan', to: "subscribers#cancel_plan"
 end

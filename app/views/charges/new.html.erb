@@ -1,17 +1,38 @@
 <%= form_tag charges_path do %>
-  <article>
-    <% if flash[:error].present? %>
-      <div id="error_explanation">
-        <p><%= flash[:error] %></p>
+
+
+<div class="banner">
+  <div class="banner-hex">
+    <div class="fuckbutton">
+      <div class="charge-new">
+        <div class="charge-logo">
+          <%= image_tag "logo.png",class:"charge-avatar" %>
+          <span>DataBall</span>
+        </div>
+        <div class="money-shit">
+          <h4>1 x £ 5 per month</h4>
+          <p>2 week trial period<p>
+        </div>
+
+        <div class="more-money-shit">
+          <h4>£  5.00</h4>
+          <p>£ <span style="color: rgba(80, 255, 177, 1);">-5.00</span></p>
+        </div>
+        <div class="cancel">
+
+        <span style="font-size: 12px;">After the trial period ends you will be charged for £ 5</span><br>
+        <span style="font-size: 12px;">You can always cancel your subscription in the <%= link_to "Profile", dashboard_path  %></span>
+        </div>
       </div>
+    </div>
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+      data-description="A month's subscription"
+      data-amount="1000"
+      data-locale="auto"
+      data-label="Subscribe now">
+      </script>
+  </div>
+</div>
     <% end %>
-    <label class="amount">
-      <span>Amount: £10.00</span>
-    </label>
-  </article>
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="A month's subscription"
-          data-amount="1000"
-          data-locale="auto"></script>
-<% end %>
+
