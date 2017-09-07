@@ -27,6 +27,9 @@ gem "pundit"
 gem 'stripe'
 gem 'money-rails'
 
+gem 'sprockets', '>= 3.0.0'
+gem 'sprockets-es6'
+
 # TOMMY'S ATTEMPT @ charting
 gem "chartkick"
 gem 'groupdate'
