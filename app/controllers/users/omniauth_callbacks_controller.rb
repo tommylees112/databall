@@ -15,12 +15,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
           plan: 'basic-plan-databall',
         },
       ],
-      trial_end: (Time.now + 30.days).to_i,
+      trial_end: (Time.now + 14.days).to_i,
     )
 
     user.save
 
-    flash[:notice] = "Your trial will end in 30 days"
+
     else
       session['devise.facebook_data'] = request.env['omniauth.auth']
       redirect_to new_user_registration_url

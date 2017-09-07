@@ -19,12 +19,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
           plan: 'basic-plan-databall',
         },
       ],
-      trial_end: (Time.now + 30.days).to_i,
+      trial_end: (Time.now + 14.days).to_i,
     )
 
     resource.save
-
-    flash[:notice] = "Your trial will end in 30 days"
   end
 
   # GET /resource/edit
@@ -64,7 +62,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   def after_sign_up_path_for(resource)
-    '/odds' # Or :prefix_to_your_route
+    '/charges/new' # Or :prefix_to_your_route
   end
 
    def after_inactive_sign_up_path_for(resource)
