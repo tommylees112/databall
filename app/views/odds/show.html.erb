@@ -20,8 +20,9 @@
               <h3><%= home_team.name %></h3>
             </div>
         </div>
-        <div class="vs">
-            <h3>vs.</h3>
+        <div class="">
+            <h3 class="vs">vs.</h3>
+            <h4 class="show-date"><%= @match.match_date.strftime('%A %b %e, %l:%M %p')%></h4>
         </div>
         <div class="team-div">
             <div class="team-image">
@@ -77,9 +78,6 @@
             <h2 class="text-center" id="model-show-head">What does the model say?</h2>
             <%= render 'hex-grid2', model: match_model %>
         </div>
-      <div class="team-info-container">
-        <%= render "team_model_info_table", home_team: home_team, away_team: away_team %>
-      </div>
     </div>
 </div>
 <!-- ________________________________ -->
