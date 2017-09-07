@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170905163600) do
+ActiveRecord::Schema.define(version: 20170907171719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -165,7 +165,7 @@ ActiveRecord::Schema.define(version: 20170905163600) do
     t.datetime "token_expiry"
     t.boolean  "admin",                  default: false, null: false
     t.jsonb    "stripe_customer"
-    t.boolean  "access",                 default: true
+    t.boolean  "access",                 default: false
     t.jsonb    "stripe_subscription"
     t.datetime "trial_end"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
