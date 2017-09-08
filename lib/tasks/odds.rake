@@ -226,4 +226,20 @@ namespace :odds do
     fixture["_links"]["self"]["href"]
     end
   end
+
+  task clean_up_h2h_matches: :environment do
+    Match.where(status: "H2H").destroy_all
+  end
+
+
+
+
+
+
+
+
+
+
+
+
 end
