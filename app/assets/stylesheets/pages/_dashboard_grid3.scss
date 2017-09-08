@@ -9,16 +9,37 @@
 
   }
   .odds-container2 {
-
+    height: 70vh;
+    overflow-y: scroll;
   }
   .odds-container {
-    height: 40vh;
-    overflow-y: scroll;
+
   }
 }
 
 
 .filter-bar2{
-
 }
 
+.fuckoff {
+  border-radius: 8px;
+  background-color: $red;
+  border: none;
+  a {
+    color: black;
+    &:hover {
+      border-bottom: 1px solid $red;
+    }
+  }
+  &:hover {
+    background-color: white;
+  }
+}
+
+.cancel-subscription {
+  padding-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
