@@ -55,7 +55,7 @@
                 </div>
                 <div class="grid" id="bookies-odds">
                   <h6>Best Odds</h6>
-                    <%= link_to "#" do %>
+                    <%= link_to "#{@odd.bookmaker.url}" do %>
                       <p><%= cl_image_tag("#{@odd.bookmaker.logo}.png", :radius=>15, :width=>70, :height=>70, :crop=>"scale")  %>
                       <span><%= @odd.odds %></span></p>
                     <% end %>
