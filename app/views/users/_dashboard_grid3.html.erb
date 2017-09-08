@@ -1,15 +1,14 @@
 <div class="dashboard_grid3">
-  <!-- <div class="main-chart2">
-    <h3>main chart</h3>
-    <canvas id="lineChart" style="background-color: transparent;"></canvas>
+  <!-- <div class="main-chart2"> -->
+    <!-- <canvas id="lineChart" style="background-color: transparent;"></canvas>
     <script>
         var ctx = document.getElementById("lineChart");
         var lineChart = new Chart(ctx, {
           type: 'line',
           data: {
-            labels: <%= raw @bet_dates %>,
+            labels: <%# raw @bet_dates %>,
             datasets: [{
-                data: <%= raw @bet_returns %>,
+                data: <%# raw @bet_returns %>,
                 label: "Your profit",
                 backgroundColor: "rgba(0, 21, 33, 0.7)",
                 borderColor: "rgba(80, 255, 177, 1)",
@@ -20,27 +19,44 @@
             ]
           },
           options: {
-            title: {
-              display: true,
-              text: 'Your performance',
-              fontColor: 'rgba(0,0,0,0)',
-              fontStyle: 'light'
-            }
-          }
-        });
-    </script>
-  </div> -->
-  <div class="filter-bar2">
-      <%= link_to "All", dashboard_path(b: 'all')%>
-      <%= link_to "Won", dashboard_path(b: 'win') %>
-      <%= link_to "Lost", dashboard_path(b: 'lost')%>
-      <%= link_to "Pending", dashboard_path(b: 'pending')%>
-  </div>
-  <div class="odds-container">
+              responsive: true,
+              maintainAspectRatio: false,
+              title: {
+                display: true,
+                text: 'Cumulative Profit',
+                fontColor: 'rgba(0,0,0,0)',
+                fontStyle: 'light'
+              },
+              hover: {
+                intersect: true,
+                animationDuration: 400,
+              },
+              scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Month'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Value'
+                    }
+                }]
+              }
+            });
+    </script> -->
+  <!-- </div> -->
+  <div class="odds-container2">
       <h3>Bets you have made:</h3>
       <% @bets.each do |bet| %>
         <%= render "shared/dashboard_card", bet: bet %>
       <% end %>
   </div>
-  <button type="button" class="btn btn-default fuckoff"><%= link_to "Cancel subscription",cancel_plan_path %></button>
+  <div class="cancel-subscription container">
+      <button type="button" class="btn btn-default fuckoff"><%= link_to "Cancel subscription",cancel_plan_path %></button>
+  </div>
 </div>
