@@ -16,11 +16,17 @@
     height: 100%;
     /*background-color: #EFEFEF;*/
     color: #2E2F30;
-    text-align: center;
+    /*text-align: center;*/
     font-family: arial, sans-serif;
     margin: 0;
   }
+  .error-btn {
+    margin-left: 50px;
 
+    background-color: $light-gray;
+    color: white;
+    border-radius: 3px;
+  }
   .rails-default-error-page h1 {
     text-align: left;
     font-size: 70px;
@@ -48,8 +54,8 @@
   <div class="dialog">
     <div>
       <h1>500 Error</h1>
-      <p>We're sorry, but something went wrong. </p>
       <p>We fucked up.</p>
+      <a href="/" class="text-left error-btn">Go back to home</a>
   </div>
 </body>
 </html>
